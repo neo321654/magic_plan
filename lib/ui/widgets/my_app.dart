@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import '../../resources/res/app_extensions.dart';
+import '/resources/resources.dart';
 import '/ui/widgets/auth_widget.dart';
-import '/ui/widgets/example_widget.dart';
+import '/ui/widgets/greeting_widget.dart';
 import '/ui/widgets/loader_widget.dart';
 
 class MyApp extends StatelessWidget {

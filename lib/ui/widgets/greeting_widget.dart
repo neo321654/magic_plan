@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '../../resources/res/app_extensions.dart';
-
+import '/resources/resources.dart';
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
 import '/ui/navigation/main_navigation.dart';
@@ -73,13 +72,13 @@ class GreetingScreen extends StatelessWidget {
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
-            delegate: MyNav(),
+            delegate: MyNavBar(),
             pinned: true,
             floating: false,
           ),
-          SliverSafeArea(
+          const SliverSafeArea(
             top: false,
-            minimum: const EdgeInsets.only(top: 4),
+            minimum: EdgeInsets.only(top: 4),
             sliver: SliverToBoxAdapter(
               child: Column(
                 children: [
@@ -92,7 +91,9 @@ class GreetingScreen extends StatelessWidget {
                   Text('dfdfdf'),
                   Text('dfdfdf'),
                   Text('dfdfdf'),
-                  SizedBox(height: 1000,),
+                  SizedBox(
+                    height: 1000,
+                  ),
                   Text('dfdfdf'),
                   Text('dfdfdf'),
                   Text('dfdfdf'),
@@ -112,19 +113,19 @@ class GreetingScreen extends StatelessWidget {
   }
 }
 
-class MyNav extends SliverPersistentHeaderDelegate {
+class MyNavBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     // TODO: implement build
-    return  CupertinoNavigationBar(
+    return CupertinoNavigationBar(
       middle: Text(
-          "Мой аккаунт".tr,
-          style: TextStyle(
-            fontSize: 17,
-            //fontWeight: FontWeight.w600,
-          )
-      )
+        "Мой аккаунт".tr,
+        style: const TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 
