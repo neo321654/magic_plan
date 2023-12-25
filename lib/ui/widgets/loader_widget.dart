@@ -6,24 +6,23 @@ class _ViewModel {
   final _authService = AuthService();
   BuildContext context;
 
-  _ViewModel(this.context) {
-    init();
-  }
+  _ViewModel(this.context);
 
-  void init() async {
+  void checkAuth() async {
     final isAuth = await _authService.checkAuth();
     if (isAuth) {
-      _goToAppScreen();
+      _goToMainScreenAuth();
     } else {
-      _goToAuthScreen();
+      _goToMainScreenNoAuth();
     }
   }
 
-  void _goToAuthScreen() {
-    Navigator.of(context).pushNamedAndRemoveUntil('auth', (route) => false);
+  void _goToMainScreenNoAuth() {
+    Navigator.of(context).pushNamedAndRemoveUntil('example', (route) => false);
   }
 
-  void _goToAppScreen() {
+  //todo здесь подменить на другой скрин, когда мы зарегины
+  void _goToMainScreenAuth() {
     Navigator.of(context).pushNamedAndRemoveUntil('example', (route) => false);
   }
 }
@@ -33,8 +32,19 @@ class LoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: CircularProgressIndicator()),
+    return Scaffold(
+      backgroundColor: const Color(0xFF171717),
+      body: Center(
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: Colors.transparent, // Цвет фона
+          ),
+          onPressed: () {
+            context.read<_ViewModel>().checkAuth();
+          },
+          child: const Text('enter'),
+        ),
+      ),
     );
   }
 
