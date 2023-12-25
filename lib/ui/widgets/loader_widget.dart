@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
+
 import '/domain/services/auth_service.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class _ViewModel {
@@ -32,19 +33,17 @@ class LoaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return CupertinoPageScaffold(
       backgroundColor: const Color(0xFF171717),
-      body: Center(
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent, // Цвет фона
-          ),
+      child:  Center(
+        child: CupertinoButton(
           onPressed: () {
             context.read<_ViewModel>().checkAuth();
           },
           child: const Text('enter'),
         ),
       ),
+
     );
   }
 

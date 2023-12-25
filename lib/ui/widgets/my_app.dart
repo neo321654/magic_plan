@@ -1,14 +1,19 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import '/ui/widgets/auth_widget.dart';
 import '/ui/widgets/example_widget.dart';
 import '/ui/widgets/loader_widget.dart';
-import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+
+    SystemChrome.setPreferredOrientations(
+        [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+    return CupertinoApp(
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == 'auth') {
           return PageRouteBuilder<dynamic>(
@@ -31,9 +36,7 @@ class MyApp extends StatelessWidget {
         }
         return null;
       },
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: const CupertinoThemeData(brightness: Brightness.light),
       home: LoaderWidget.create(),
     );
   }
