@@ -77,33 +77,21 @@ class GreetingScreen extends StatelessWidget {
             pinned: true,
             floating: false,
           ),
-          const SliverSafeArea(
+           SliverSafeArea(
             top: false,
             minimum: EdgeInsets.only(top: 4),
             sliver: SliverToBoxAdapter(
               child: Column(
                 children: [
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  SizedBox(
+                  Text(
+                    "Приветствуем,".tr,
+                    style: AppTextStyles.subheadline,
+                  ),
+
+                  const SizedBox(
                     height: 1000,
                   ),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
-                  Text('dfdfdf'),
+
                 ],
               ),
             ),

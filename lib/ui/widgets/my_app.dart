@@ -39,7 +39,8 @@ class MyApp extends StatelessWidget {
         return null;
       },
       theme: const CupertinoThemeData(brightness: Brightness.light),
-      home: LoaderWidget.create(),
+      // home: LoaderWidget.create(),
+      home: GreetingScreen.create(),
     );
   }
 }
