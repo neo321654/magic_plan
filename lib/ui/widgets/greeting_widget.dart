@@ -69,6 +69,7 @@ class GreetingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<_ViewModel>();
     return CupertinoPageScaffold(
+      backgroundColor: AppColors.primaryMainBackground,
       child: CustomScrollView(
         slivers: <Widget>[
           SliverPersistentHeader(
@@ -106,7 +107,7 @@ class GreetingScreen extends StatelessWidget {
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -117,29 +118,24 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    // TODO: implement build
     return CupertinoNavigationBar(
+      border: Border.all(color: AppColors.primaryIcons),
+      backgroundColor: AppColors.primaryMainBackground,
       middle: Text(
         "Мой аккаунт".tr,
-        style: const TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-        ),
+        style: AppTextStyles.bodyBold,
       ),
     );
   }
 
   @override
-  // TODO: implement maxExtent
   double get maxExtent => 100.0;
 
   @override
-  // TODO: implement minExtent
   double get minExtent => 100.0;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    // TODO: implement shouldRebuild
     return false;
   }
 }
