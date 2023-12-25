@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
+import '/resources/app_extensions.dart';
 
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
@@ -117,9 +117,9 @@ class MyNav extends SliverPersistentHeaderDelegate {
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     // TODO: implement build
-    return const CupertinoNavigationBar(
+    return  CupertinoNavigationBar(
       middle: Text(
-          "Мой аккаунт",
+          "Мой аккаунт".tr,
           style: TextStyle(
             fontSize: 17,
             //fontWeight: FontWeight.w600,
