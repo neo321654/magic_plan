@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         } else if (settings.name == 'example') {
           return PageRouteBuilder<dynamic>(
             pageBuilder: (context, animation1, animation2) =>
-                ExampleWidget.create(),
+                GreetingScreen.create(),
             transitionDuration: Duration.zero,
           );
         } else if (settings.name == 'loader') {
