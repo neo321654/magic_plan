@@ -77,40 +77,54 @@ class GreetingScreen extends StatelessWidget {
             pinned: true,
             floating: false,
           ),
-          // SliverSafeArea(
-          //   top: false,
-          //   minimum: const EdgeInsets.only(top: 4),
-          //   sliver: SliverList(
-          //     delegate: _buildSliverChildBuilderDelegate(model),
-          //   ),
-          // )
+          SliverSafeArea(
+            top: false,
+            minimum: const EdgeInsets.only(top: 4),
+            sliver: SliverToBoxAdapter(
+              child: Column(
+                children: [
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  SizedBox(height: 1000,),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                  Text('dfdfdf'),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
   }
 }
 
-
-
-
-
-
 class MyNav extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
     // TODO: implement build
-    return CupertinoNavigationBar(
-      middle: Container(
-        color: Colors.red,
-        child: const Text(
-          'Search',
+    return const CupertinoNavigationBar(
+      middle: Text(
+          "Мой аккаунт",
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 15.5,
-          ),
-        ),
-      ),
+            fontSize: 17,
+            //fontWeight: FontWeight.w600,
+          )
+      )
     );
   }
 
