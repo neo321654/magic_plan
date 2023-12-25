@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import '/resources/app_extensions.dart';
+import '../../resources/res/app_extensions.dart';
 
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';

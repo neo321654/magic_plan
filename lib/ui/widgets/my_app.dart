@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import '/resources/app_extensions.dart';
+import '../../resources/res/app_extensions.dart';
 import '/ui/widgets/auth_widget.dart';
 import '/ui/widgets/example_widget.dart';
 import '/ui/widgets/loader_widget.dart';
