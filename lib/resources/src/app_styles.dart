@@ -2,11 +2,7 @@ import 'package:flutter/material.dart';
 import 'app_colors.dart';
 import 'package:magic_plan/resources/resources.dart';
 
-
-
 abstract class AppTextStyles {
-
-
   static TextStyle bodyBold = TextStyle(
     color: AppColors.primaryTexts,
     fontSize: 17.toFigma,
@@ -16,6 +12,11 @@ abstract class AppTextStyles {
     color: AppColors.primaryTexts,
     fontSize: 15.toFigma,
     fontWeight: FontWeight.w500,
-
+  );
+  static TextStyle t3Bold = TextStyle(
+    color: AppColors.primaryTexts,
+    fontSize: 20.toFigma,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.8,
   );
 }

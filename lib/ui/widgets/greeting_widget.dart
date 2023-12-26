@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import '/resources/resources.dart';
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
@@ -77,22 +78,42 @@ class GreetingScreen extends StatelessWidget {
             pinned: true,
             floating: false,
           ),
-           SliverSafeArea(
+          SliverSafeArea(
             top: false,
             minimum: EdgeInsets.only(top: 4),
             sliver: SliverToBoxAdapter(
-              child: Column(
-                children: [
-                  Text(
-                    "Приветствуем,".tr,
-                    style: AppTextStyles.subheadline,
-                  ),
-
-                  const SizedBox(
-                    height: 1000,
-                  ),
-
-                ],
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 24.0,
+                  horizontal: 8.0,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Text(
+                        "Приветствуем,".tr,
+                        style: AppTextStyles.subheadline,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 16.0),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Рады вас видеть!".tr,
+                            style: AppTextStyles.t3Bold,
+                          ),
+                          SvgPicture.asset('assets/svg/person.svg'),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 1000,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
@@ -127,3 +148,9 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
     return false;
   }
 }
+
+
+
+
+
+

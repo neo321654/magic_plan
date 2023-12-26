@@ -1,4 +1,3 @@
-class AppImages {
-  AppImages._();
-}
+abstract class AppImages {
 
+}
