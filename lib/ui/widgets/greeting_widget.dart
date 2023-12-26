@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '/resources/resources.dart';
 import '/domain/services/auth_service.dart';
@@ -109,6 +110,24 @@ class GreetingScreen extends StatelessWidget {
                           SvgPicture.asset('assets/svg/person.svg'),
                         ],
                       ),
+                    ),
+                    CupertinoListSection.insetGrouped(
+                      
+                      children: <CupertinoListTile>[
+                        CupertinoListTile.notched(
+                          title: const Text('Open pull request'),
+                          trailing: const CupertinoListTileChevron(),
+                          onTap: () {},
+                        ),
+                        CupertinoListTile.notched(
+                          title: const Text('View last commit'),
+                          additionalInfo: const Text('12 days ago'),
+                          trailing: const CupertinoListTileChevron(),
+                          onTap: () {},
+
+                        ),
+                      ],
+                      margin: EdgeInsets.all(0),
                     ),
                     const SizedBox(
                       height: 1000,
