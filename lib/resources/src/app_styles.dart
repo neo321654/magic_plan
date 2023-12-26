@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'app_colors.dart';
 import 'package:magic_plan/resources/resources.dart';
 
 abstract class AppTextStyles {
@@ -17,6 +16,18 @@ abstract class AppTextStyles {
     color: AppColors.primaryTexts,
     fontSize: 20.toFigma,
     fontWeight: FontWeight.w600,
+    letterSpacing: -0.8,
+  );
+  static TextStyle calloutBlue = TextStyle(
+    color: AppColors.accentsPrimary,
+    fontSize: 16.toFigma,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.8,
+  );
+  static TextStyle callout = TextStyle(
+    color: AppColors.primaryTexts,
+    fontSize: 16.toFigma,
+    fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );
 }

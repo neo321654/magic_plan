@@ -6,6 +6,7 @@ import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
 import '/ui/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
+import 'components/widgets.dart';
 
 class _ViewModelState {
   final String ageTitle;
@@ -81,7 +82,7 @@ class GreetingScreen extends StatelessWidget {
           ),
           SliverSafeArea(
             top: false,
-            minimum: EdgeInsets.only(top: 4),
+            minimum: const EdgeInsets.only(top: 4),
             sliver: SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
@@ -99,9 +100,13 @@ class GreetingScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top:6,left: 16.0,right: 16,),
+                      padding: const EdgeInsets.only(
+                        top: 6,
+                        left: 16.0,
+                        right: 16,
+                      ),
                       child: Row(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Рады вас видеть!".tr,
@@ -111,23 +116,31 @@ class GreetingScreen extends StatelessWidget {
                         ],
                       ),
                     ),
+                    SizedBox(height: 14,),
                     CupertinoListSection.insetGrouped(
-                      
-                      children: <CupertinoListTile>[
-                        CupertinoListTile.notched(
-                          title: const Text('Open pull request'),
-                          trailing: const CupertinoListTileChevron(),
+                      separatorColor: Colors.transparent,
+                      margin: const EdgeInsets.all(0),
+                      children: [
+                        CupertinoListTile(
+                          title: Text(
+                            'Войти в аккаунт'.tr,
+                            style: AppTextStyles.calloutBlue,
+                          ),
+                          trailing: const RightArrowWidget(),
                           onTap: () {},
+                          padding: AppDimensions.tilePadding,
                         ),
-                        CupertinoListTile.notched(
-                          title: const Text('View last commit'),
-                          additionalInfo: const Text('12 days ago'),
-                          trailing: const CupertinoListTileChevron(),
+                        Divider(
+                          height: 2,
+                          color: AppColors.primaryButtons,
+                        ),
+                        CupertinoListTile(
+                          title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
+                          trailing: const RightArrowWidget(),
                           onTap: () {},
-
+                          padding: AppDimensions.tilePadding,
                         ),
                       ],
-                      margin: EdgeInsets.all(0),
                     ),
                     const SizedBox(
                       height: 1000,
@@ -168,9 +181,3 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
     return false;
   }
 }
-
-
-
-
-
-
