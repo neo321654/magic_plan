@@ -84,7 +84,7 @@ class GreetingScreen extends StatelessWidget {
             sliver: SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  vertical: 24.0,
+                  vertical: 30.0,
                   horizontal: 8.0,
                 ),
                 child: Column(
@@ -98,8 +98,9 @@ class GreetingScreen extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(left: 16.0),
+                      padding: const EdgeInsets.only(top:6,left: 16.0,right: 16,),
                       child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             "Рады вас видеть!".tr,
