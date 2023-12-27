@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:magic_plan/resources/resources.dart';
 
-import '../../../resources/src/app_colors.dart';
 
 class MyNavBar extends SliverPersistentHeaderDelegate {
 
