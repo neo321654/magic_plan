@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import '/resources/resources.dart';
 import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
@@ -140,19 +141,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 10),
-                      TextField(
+                      CupertinoTextField(
                         textAlign: TextAlign.center,
                         controller: controller,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                          alignLabelWithHint: true,
-                          label: Center(
-                            child: Text(
-                              'Click to add a display name',
-                            ),
-                          ),
-                        ),
+                        placeholder: 'Click to add a display name'.tr,
+
                       ),
                       Text(user.email ?? user.phoneNumber ?? 'User'),
                       const SizedBox(height: 10),
