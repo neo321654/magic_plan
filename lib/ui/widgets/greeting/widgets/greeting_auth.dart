@@ -226,6 +226,125 @@ class GreetingAuth extends StatelessWidget {
                         'Изменяйте ваш профиль, email, пароль'.tr,
                         style: AppTextStyles.callout,
                       ),
+                      CupertinoListSection.insetGrouped(
+                        // separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
+                        children: [
+                          CupertinoListTile(
+                            title: Row(
+                              children: [
+                                Text(
+                                  'Apollonovasofia'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.primaryButtons,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Text(
+                                      'ВЛАДЕЛЕЦ'.tr,
+                                      style: AppTextStyles.callout
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            backgroundColor: AppColors.primaryBackgroundSearch,
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Профиль компании'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: Row(
+                              children: [
+                                Text(
+                                  'Настоить'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                const SizedBox(
+                                  width: 10,
+                                ),
+                                const RightArrowWidget(),
+                              ],
+                            ),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Подписка'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            leadingSize: 100,
+                            title:
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Создавайте неограниченные'.tr,
+                                      style: AppTextStyles.callout,
+                                    ),
+                                    Text(
+                                      'проекты,работайте в командах!'.tr,
+                                      style: AppTextStyles.callout,
+                                    ),
+                                    Text(
+                                      '3 тарифа, начиная от 300₽/месяц'.tr,
+                                      style: AppTextStyles.callout,
+                                    ),
+                                  ],
+                                ),
+                                CupertinoButton.filled(
+                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  child:
+                                  Text(
+                                    'ВЫБРАТЬ'.tr,
+                                    style: AppTextStyles.callout.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+
+
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+
+                        ],
+                      ),
+
+
+
                       TextButton(
                         onPressed: signOut,
                         child: Text('Выйти'.tr),
