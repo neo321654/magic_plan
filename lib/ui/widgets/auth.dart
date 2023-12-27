@@ -40,7 +40,8 @@ class AuthGate extends StatefulWidget {
 }
 
 class _AuthGateState extends State<AuthGate> {
-  TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  // TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -111,12 +112,14 @@ class _AuthGateState extends State<AuthGate> {
                           !isSendCode?
                           const SizedBox.shrink():
                           CupertinoTextField(
+                            keyboardType:TextInputType.phone,
                             placeholder: 'Ваш номер'.tr,
                             controller: phoneController,
                           ),
                           isSendCode?
                           const SizedBox.shrink():
                           CupertinoTextField(
+                            keyboardType:TextInputType.number,
                             obscureText: isHidePassword,
                             placeholder: 'Код'.tr,
                             controller: passwordController,
@@ -141,6 +144,7 @@ class _AuthGateState extends State<AuthGate> {
                                   :  !isSendCode? (){
                                 print('dflkdfjkj');
 
+                               //todo добавить проверку на поля
                                 _sendCode(verId: verificationId,smsCode: passwordController.text);
                               }: () {
                                 setState(() {
