@@ -105,7 +105,7 @@ class GreetingAuth extends StatelessWidget {
                         style: AppTextStyles.callout,
                       ),
                       CupertinoListSection.insetGrouped(
-                        separatorColor: Colors.transparent,
+                        // separatorColor: Colors.transparent,
                         margin: const EdgeInsets.all(0),
                         children: [
                           CupertinoListTile(
@@ -186,7 +186,16 @@ class GreetingAuth extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            trailing: const RightArrowWidget(),
+                            trailing: Row(
+                              children: [
+                                CupertinoButton.filled(
+
+                                  onPressed: () {},
+                                  child:  Text('ВЫБРАТЬ'.tr),
+                                ),
+                                const RightArrowWidget(),
+                              ],
+                            ),
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
