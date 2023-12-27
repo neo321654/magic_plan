@@ -115,12 +115,16 @@ class GreetingAuth extends StatelessWidget {
                                   'Apollonovasofia'.tr,
                                   style: AppTextStyles.callout,
                                 ),
+                                SizedBox(width: 10,),
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: AppColors.accentsHover,
+                                    color: AppColors.primaryButtons,
                                   ),
-                                  child: Text('ВЛАДЕЛЕЦ'.tr),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(4.0),
+                                    child: Text('ВЛАДЕЛЕЦ'.tr,style: AppTextStyles.callout.copyWith(color: Colors.white),),
+                                  ),
                                 ),
                               ],
                             ),
