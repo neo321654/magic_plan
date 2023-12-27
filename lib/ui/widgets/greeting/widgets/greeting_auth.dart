@@ -140,7 +140,16 @@ class GreetingAuth extends StatelessWidget {
                               'Профиль компании'.tr,
                               style: AppTextStyles.callout,
                             ),
-                            trailing: const RightArrowWidget(),
+                            trailing: Row(
+                              children: [
+                                Text(
+                                  'Настоить'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                SizedBox(width: 10,),
+                                const RightArrowWidget(),
+                              ],
+                            ),
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
@@ -148,8 +157,34 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             title: Text(
-                              'Профиль компании'.tr,
+                              'Подписка'.tr,
                               style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            leadingSize: 100,
+
+                            title: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Создавайте неограниченные'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                Text(
+                                  'проекты,работайте в командах!'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                Text(
+                                  '3 тарифа, начиная от 300₽/месяц'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                              ],
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
