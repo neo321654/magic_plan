@@ -166,90 +166,24 @@ class _ProfilePageState extends State<ProfilePage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () {
-                          user.sendEmailVerification();
-                        },
-                        child: const Text('Verify Email'),
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          final a = await user.multiFactor.getEnrolledFactors();
-                          print(a);
-                        },
-                        child: const Text('Get enrolled factors'),
-                      ),
+                      // TextButton(
+                      //   onPressed: () {
+                      //     user.sendEmailVerification();
+                      //   },
+                      //   child: const Text('Verify Email'),
+                      // ),
 
                       CupertinoTextField(
                         controller: phoneController,
                         suffix: const Icon(Icons.phone),
                         placeholder: 'Phone number',
-                        // decoration: const InputDecoration(
-                        //   icon: Icon(Icons.phone),
-                        //   hintText: '+33612345678',
-                        //   labelText: 'Phone number',
-                        // ),
-                      ),
-                      const SizedBox(height: 20),
-                      TextButton(
-                        onPressed: () async {
-                          final session = await user.multiFactor.getSession();
-                          await auth.verifyPhoneNumber(
-                            multiFactorSession: session,
-                            phoneNumber: phoneController.text,
-                            verificationCompleted: (_) {},
-                            verificationFailed: print,
-                            codeSent: (
-                              String verificationId,
-                              int? resendToken,
-                            ) async {
-                              final smsCode = await getSmsCodeFromUser(context);
-
-                              if (smsCode != null) {
-                                // Create a PhoneAuthCredential with the code
-                                final credential = PhoneAuthProvider.credential(
-                                  verificationId: verificationId,
-                                  smsCode: smsCode,
-                                );
-
-                                try {
-                                  await user.multiFactor.enroll(
-                                    PhoneMultiFactorGenerator.getAssertion(
-                                      credential,
-                                    ),
-                                  );
-                                } on FirebaseAuthException catch (e) {
-                                  print(e.message);
-                                }
-                              }
-                            },
-                            codeAutoRetrievalTimeout: print,
-                          );
-                        },
-                        child: const Text('Verify Number For MFA'),
                       ),
 
-                      TextButton(
-                        onPressed: () async {
-                          try {
-                            final enrolledFactors =
-                                await user.multiFactor.getEnrolledFactors();
 
-                            await user.multiFactor.unenroll(
-                              factorUid: enrolledFactors.first.uid,
-                            );
-                            // Show snackbar
-                            ScaffoldSnackbar.of(context).show('MFA unenrolled');
-                          } catch (e) {
-                            print(e);
-                          }
-                        },
-                        child: const Text('Unenroll MFA'),
-                      ),
                       const Divider(),
                       TextButton(
                         onPressed: _signOut,
-                        child: const Text('Sign out'),
+                        child:  Text('Выйти'.tr),
                       ),
                     ],
                   ),
