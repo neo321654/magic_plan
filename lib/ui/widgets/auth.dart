@@ -351,12 +351,23 @@ class _AuthGateState extends State<AuthGate> {
         }
       },
       codeAutoRetrievalTimeout: (e) {
-        setState(() {
-          error = e;
-        });
+        if(mounted){
+          setState(() {
+            error = e;
+          });
+        }
+
       },
     );
   }
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+  }
+
 }
 
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
