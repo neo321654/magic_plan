@@ -130,15 +130,6 @@ class _AuthGateState extends State<AuthGate> {
                                   ? const Icon(CupertinoIcons.plus)
                                   : const Icon(CupertinoIcons.minus),
                             ),
-                            // decoration: const InputDecoration(
-                            //   hintText: '+72345678910',
-                            //   labelText: 'Phone number',
-                            //   border: OutlineInputBorder(),
-                            // ),
-                            //   validator: (value) =>
-                            //   value != null && value.isNotEmpty
-                            //       ? null
-                            //       : 'Required',
                           ),
                           const SizedBox(height: 20),
                           SizedBox(
@@ -149,6 +140,8 @@ class _AuthGateState extends State<AuthGate> {
                                   ? null
                                   :  !isSendCode? (){
                                 print('dflkdfjkj');
+
+                                _sendCode(verId: verificationId,smsCode: passwordController.text);
                               }: () {
                                 setState(() {
                                   isSendCode=!isSendCode;
@@ -365,30 +358,12 @@ class _AuthGateState extends State<AuthGate> {
           error = '${e.message}';
         });
       },
-      codeSent: (String verificationId, int? resendToken) async {
-        final smsCode = await getSmsCodeFromUser(context);
+      codeSent: (String verificationIdloc, int? resendToken) async {
+        verificationId = verificationIdloc;
 
-        if (smsCode != null) {
-          // Create a PhoneAuthCredential with the code
-          final credential = PhoneAuthProvider.credential(
-            verificationId: verificationId,
-            smsCode: smsCode,
-          );
+        // final smsCode = await getSmsCodeFromUser(context);
 
-          try {
-            // Sign the user in (or link) with the credential
-            UserCredential userCredential =
-                await auth.signInWithCredential(credential);
-            // if (userCredential.user != null) {
-            //   Navigator.of(context)
-            //       .pushNamedAndRemoveUntil('greeting', (route) => false);
-            // }
-          } on FirebaseAuthException catch (e) {
-            setState(() {
-              error = e.message ?? '';
-            });
-          }
-        }
+
       },
       codeAutoRetrievalTimeout: (e) {
         if (mounted) {
@@ -405,6 +380,29 @@ class _AuthGateState extends State<AuthGate> {
     // TODO: implement dispose
     super.dispose();
   }
+
+  Future<void> _sendCode ({required String verId, required String smsCode}) async {
+      final credential = PhoneAuthProvider.credential(
+        verificationId: verId,
+        smsCode: smsCode,
+      );
+
+      try {
+        UserCredential userCredential =
+            await auth.signInWithCredential(credential);
+        if (userCredential.user != null) {
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil('greeting', (route) => false);
+        }
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          error = e.message ?? '';
+        });
+      }
+
+
+  }
+
 }
 
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
