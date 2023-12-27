@@ -115,7 +115,9 @@ class GreetingAuth extends StatelessWidget {
                                   'Apollonovasofia'.tr,
                                   style: AppTextStyles.callout,
                                 ),
-                                SizedBox(width: 10,),
+                                const SizedBox(
+                                  width: 10,
+                                ),
                                 Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
@@ -123,7 +125,11 @@ class GreetingAuth extends StatelessWidget {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(4.0),
-                                    child: Text('ВЛАДЕЛЕЦ'.tr,style: AppTextStyles.callout.copyWith(color: Colors.white),),
+                                    child: Text(
+                                      'ВЛАДЕЛЕЦ'.tr,
+                                      style: AppTextStyles.callout
+                                          .copyWith(color: Colors.white),
+                                    ),
                                   ),
                                 ),
                               ],
@@ -146,7 +152,9 @@ class GreetingAuth extends StatelessWidget {
                                   'Настоить'.tr,
                                   style: AppTextStyles.callout,
                                 ),
-                                SizedBox(width: 10,),
+                                const SizedBox(
+                                  width: 10,
+                                ),
                                 const RightArrowWidget(),
                               ],
                             ),
@@ -168,7 +176,6 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             leadingSize: 100,
-
                             title: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -189,9 +196,13 @@ class GreetingAuth extends StatelessWidget {
                             trailing: Row(
                               children: [
                                 CupertinoButton.filled(
-
                                   onPressed: () {},
-                                  child:  Text('ВЫБРАТЬ'.tr),
+                                  child: Text(
+                                    'ВЫБРАТЬ'.tr,
+                                    style: AppTextStyles.callout.copyWith(
+                                      color: Colors.white,
+                                    ),
+                                  ),
                                 ),
                                 const RightArrowWidget(),
                               ],
