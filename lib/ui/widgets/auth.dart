@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 
 class ScaffoldSnackbar {
   ScaffoldSnackbar(this._context);
+
   factory ScaffoldSnackbar.of(BuildContext context) {
     return ScaffoldSnackbar(context);
   }
@@ -33,12 +34,14 @@ enum AuthMode { phone }
 
 class AuthGate extends StatefulWidget {
   const AuthGate({Key? key}) : super(key: key);
+
   @override
   State<StatefulWidget> createState() => _AuthGateState();
 }
 
 class _AuthGateState extends State<AuthGate> {
-  TextEditingController phoneController = TextEditingController();
+  TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String error = '';
@@ -47,6 +50,12 @@ class _AuthGateState extends State<AuthGate> {
   AuthMode mode = AuthMode.phone;
 
   bool isLoading = false;
+  bool isHidePassword = true;
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   void setIsLoading() {
     setState(() {
@@ -100,16 +109,42 @@ class _AuthGateState extends State<AuthGate> {
                           const SizedBox(height: 20),
 
                           CupertinoTextField(
+                            placeholder: 'Ваш номер'.tr,
                             controller: phoneController,
+
                             // decoration: const InputDecoration(
                             //   hintText: '+72345678910',
                             //   labelText: 'Phone number',
                             //   border: OutlineInputBorder(),
                             // ),
-                          //   validator: (value) =>
-                          //   value != null && value.isNotEmpty
-                          //       ? null
-                          //       : 'Required',
+                            //   validator: (value) =>
+                            //   value != null && value.isNotEmpty
+                            //       ? null
+                            //       : 'Required',
+                          ),
+                          CupertinoTextField(
+                            obscureText: isHidePassword,
+                            placeholder: 'Пароль'.tr,
+                            controller: passwordController,
+                            suffix: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  isHidePassword=!isHidePassword;
+                                });
+                              },
+                              child: isHidePassword
+                                  ? Icon(CupertinoIcons.plus)
+                                  : Icon(CupertinoIcons.minus),
+                            ),
+                            // decoration: const InputDecoration(
+                            //   hintText: '+72345678910',
+                            //   labelText: 'Phone number',
+                            //   border: OutlineInputBorder(),
+                            // ),
+                            //   validator: (value) =>
+                            //   value != null && value.isNotEmpty
+                            //       ? null
+                            //       : 'Required',
                           ),
                           const SizedBox(height: 20),
                           SizedBox(
@@ -118,9 +153,11 @@ class _AuthGateState extends State<AuthGate> {
                             child: ElevatedButton(
                               onPressed: isLoading
                                   ? null
-                                  : () => _handleMultiFactorException(
+                                  : () {
+                                      _handleMultiFactorException(
                                         _emailAndPassword,
-                                      ),
+                                      );
+                                    },
                               child: isLoading
                                   ? const CircularProgressIndicator.adaptive()
                                   : const Text('войти'),
@@ -319,9 +356,8 @@ class _AuthGateState extends State<AuthGate> {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
-
-        Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
-
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('greeting', (route) => false);
       },
       verificationFailed: (e) {
         setState(() {
@@ -340,11 +376,12 @@ class _AuthGateState extends State<AuthGate> {
 
           try {
             // Sign the user in (or link) with the credential
-            UserCredential userCredential =    await auth.signInWithCredential(credential);
-           if (userCredential.user != null){
-             Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
-
-           }
+            UserCredential userCredential =
+                await auth.signInWithCredential(credential);
+            if (userCredential.user != null) {
+              Navigator.of(context)
+                  .pushNamedAndRemoveUntil('greeting', (route) => false);
+            }
           } on FirebaseAuthException catch (e) {
             setState(() {
               error = e.message ?? '';
@@ -353,23 +390,20 @@ class _AuthGateState extends State<AuthGate> {
         }
       },
       codeAutoRetrievalTimeout: (e) {
-        if(mounted){
+        if (mounted) {
           setState(() {
             error = e;
           });
         }
-
       },
     );
   }
-
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
   }
-
 }
 
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
@@ -421,17 +455,16 @@ void _showAlertDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) => CupertinoAlertDialog(
       // title: const Text('Alert'),
-      content:  Text('Введите код из смс в поле код для авторизации.'.tr),
+      content: Text('Введите код из смс в поле код для авторизации.'.tr),
       actions: <CupertinoDialogAction>[
         CupertinoDialogAction(
           isDestructiveAction: false,
           onPressed: () {
             Navigator.pop(context);
           },
-          child:  Text('Хорошо'.tr),
+          child: Text('Хорошо'.tr),
         ),
       ],
     ),
   );
 }
-
