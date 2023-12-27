@@ -89,7 +89,7 @@ class AuthWidget extends StatelessWidget {
       backgroundColor: AppColors.primaryMainBackground,
 
       child:
-     Center(),
+     const Center(),
     );
   }
 }
