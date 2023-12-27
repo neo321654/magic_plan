@@ -5,6 +5,7 @@
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:magic_plan/resources/resources.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
@@ -243,6 +244,7 @@ class _AuthGateState extends State<AuthGate> {
     Future<void> Function() authFunction,
   ) async {
     setIsLoading();
+    _showAlertDialog(context);
     try {
       await authFunction();
     } on FirebaseAuthMultiFactorException catch (e) {
@@ -412,5 +414,24 @@ Future<String?> getSmsCodeFromUser(BuildContext context) async {
   // );
 
   return '111111';
+}
+
+void _showAlertDialog(BuildContext context) {
+  showCupertinoModalPopup<void>(
+    context: context,
+    builder: (BuildContext context) => CupertinoAlertDialog(
+      // title: const Text('Alert'),
+      content:  Text('Введите код из смс в поле код для авторизации.'.tr),
+      actions: <CupertinoDialogAction>[
+        CupertinoDialogAction(
+          isDestructiveAction: false,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child:  Text('Хорошо'.tr),
+        ),
+      ],
+    ),
+  );
 }
 
