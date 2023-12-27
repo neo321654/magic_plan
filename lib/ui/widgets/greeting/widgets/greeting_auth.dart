@@ -40,7 +40,7 @@ class GreetingAuth extends StatelessWidget {
                         CupertinoIcons.arrow_up_arrow_down_circle_fill,
                         color: AppColors.primaryIcons,
                       ),
-                      //todo создать нужный стиль для текста и цвета проверить
+                      //todo создать нужный стиль для текста и цвета проверить на всём экране
                       Text(
                         'Синхронизация вашего аккаунта...'.tr,
                         style: AppTextStyles.callout,
@@ -99,20 +99,49 @@ class GreetingAuth extends StatelessWidget {
                               },
                               padding: AppDimensions.tilePadding,
                             ),
-
                           ]),
                       Text(
                         'Изменяйте ваш профиль, email, пароль'.tr,
                         style: AppTextStyles.callout,
                       ),
-                      Divider(
-                        height: 2,
-                        color: AppColors.primaryButtons,
-                      ),
                       CupertinoListSection.insetGrouped(
                         separatorColor: Colors.transparent,
                         margin: const EdgeInsets.all(0),
                         children: [
+                          CupertinoListTile(
+                            title: Row(
+                              children: [
+                                Text(
+                                  'Apollonovasofia'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                                Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: AppColors.accentsHover,
+                                  ),
+                                  child: Text('ВЛАДЕЛЕЦ'.tr),
+                                ),
+                              ],
+                            ),
+                            backgroundColor: AppColors.primaryBackgroundSearch,
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Профиль компании'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
                           CupertinoListTile(
                             title: Text(
                               'Профиль компании'.tr,
