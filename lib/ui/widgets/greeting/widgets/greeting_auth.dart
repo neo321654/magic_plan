@@ -178,6 +178,7 @@ class GreetingAuth extends StatelessWidget {
                             leadingSize: 100,
                             title:
                             Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -196,20 +197,16 @@ class GreetingAuth extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                Row(
-                                  children: [
-                                    CupertinoButton.filled(
-                                      onPressed: () {},
-                                      child:
-                                      Text(
-                                        'ВЫБРАТЬ'.tr,
-                                        style: AppTextStyles.callout.copyWith(
-                                          color: Colors.white,
-                                        ),
-                                      ),
+                                CupertinoButton.filled(
+                                  onPressed: () {},
+                                  padding: EdgeInsets.zero,
+                                  child:
+                                  Text(
+                                    'ВЫБРАТЬ'.tr,
+                                    style: AppTextStyles.callout.copyWith(
+                                      color: Colors.white,
                                     ),
-
-                                  ],
+                                  ),
                                 ),
                               ],
                             ),
