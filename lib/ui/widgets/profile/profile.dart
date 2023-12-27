@@ -1,27 +1,26 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import '../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
 
-/// Displayed as a profile image if the user doesn't have one.
 const placeholderImage =
     'https://upload.wikimedia.org/wikipedia/commons/c/cd/Portrait_Placeholder_Square.png';
 
-/// Profile page shows after sign in or registration.
 class ProfilePage extends StatefulWidget {
-  // ignore: public_member_api_docs
   const ProfilePage({Key? key}) : super(key: key);
 
+
+
   @override
-  // ignore: library_private_types_in_public_api
-  _ProfilePageState createState() => _ProfilePageState();
+  ProfilePageState createState() => ProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class ProfilePageState extends State<ProfilePage> {
   late User user;
   late TextEditingController controller;
   final phoneController = TextEditingController();
@@ -74,7 +73,6 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-  /// Map User provider data into a list of Provider Ids.
   List get userProviders => user.providerData.map((e) => e.providerId).toList();
 
   Future updateDisplayName() async {
@@ -89,123 +87,146 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: CupertinoPageScaffold(
-        child: Stack(
-          children: [
-            Center(
-              child: SizedBox(
-                width: 400,
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Stack(
-                        children: [
-                          CircleAvatar(
-                            maxRadius: 60,
-                            backgroundImage: NetworkImage(
-                              user.photoURL ?? placeholderImage,
-                            ),
-                          ),
-                          Positioned.directional(
-                            textDirection: Directionality.of(context),
-                            end: 0,
-                            bottom: 0,
-                            child:
-                            Material(
-                              clipBehavior: Clip.antiAlias,
-                              color: Theme.of(context).colorScheme.secondary,
-                              borderRadius: BorderRadius.circular(40),
-                              child: InkWell(
-                                onTap: () async {
-                                  final photoURL = await getPhotoURLFromUser();
+        child:
+      CustomScrollView(
+          slivers: <Widget>[
+            SliverPersistentHeader(
+              //todo решить проблемму с тайтлом предыдущей проблеммы
+              delegate: MyNavBar(title: 'Аккаунт'.tr,prevTitle:'Мой аккаунт'.tr,),
+              pinned: true,
+              floating: false,
 
-                                  if (photoURL != null) {
-                                    await user.updatePhotoURL(photoURL);
-                                    // await user.updateEmail('neo3224@ram.ru');
-                                    await user.updateDisplayName('NNNNAAMMMEmail');
-                                  }
-                                },
-                                radius: 50,
-                                child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(Icons.edit),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      CupertinoTextField(
-                        textAlign: TextAlign.center,
-                        controller: controller,
-                        placeholder: 'Click to add a display name'.tr,
-
-                      ),
-                      Text(user.email ?? user.phoneNumber ?? 'User'),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          if (userProviders.contains('phone'))
-                            const Icon(Icons.phone),
-                          if (userProviders.contains('password'))
-                            const Icon(Icons.mail),
-                          if (userProviders.contains('google.com'))
-                            SizedBox(
-                              width: 24,
-                              child: Image.network(
-                                'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
-                              ),
-                            ),
-                        ],
-                      ),
-                      const SizedBox(height: 20),
-                      // TextButton(
-                      //   onPressed: () {
-                      //     user.sendEmailVerification();
-                      //   },
-                      //   child: const Text('Verify Email'),
-                      // ),
-
-                      CupertinoTextField(
-                        controller: phoneController,
-                        suffix: const Icon(Icons.phone),
-                        placeholder: 'Phone number',
-                      ),
-
-
-                      const Divider(),
-                      TextButton(
-                        onPressed: _signOut,
-                        child:  Text('Выйти'.tr),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
             ),
-            Positioned.directional(
-              textDirection: Directionality.of(context),
-              end: 40,
-              top: 40,
-              child: AnimatedSwitcher(
-                duration: const Duration(milliseconds: 200),
-                child: !showSaveButton
-                    ? SizedBox(key: UniqueKey())
-                    : TextButton(
+            SliverToBoxAdapter(
+              child: Stack(
+                children: [
+                  Center(
+                    child: SizedBox(
+                      width: 400,
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Stack(
+                              children: [
+                                CircleAvatar(
+                                  maxRadius: 60,
+                                  backgroundImage: NetworkImage(
+                                    user.photoURL ?? placeholderImage,
+                                  ),
+                                ),
+                                Positioned.directional(
+                                  textDirection: Directionality.of(context),
+                                  end: 0,
+                                  bottom: 0,
+                                  child:
+                                  Material(
+                                    clipBehavior: Clip.antiAlias,
+                                    color: Theme.of(context).colorScheme.secondary,
+                                    borderRadius: BorderRadius.circular(40),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        final photoURL = await getPhotoURLFromUser();
+
+                                        if (photoURL != null) {
+                                          await user.updatePhotoURL(photoURL);
+                                          // await user.updateEmail('neo3224@ram.ru');
+                                          await user.updateDisplayName('NNNNAAMMMEmail');
+                                        }
+                                      },
+                                      radius: 50,
+                                      child: const SizedBox(
+                                        width: 35,
+                                        height: 35,
+                                        child: Icon(Icons.edit),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            CupertinoTextField(
+                              textAlign: TextAlign.center,
+                              controller: controller,
+                              placeholder: 'Click to add a display name'.tr,
+
+                            ),
+                            Text(user.email ?? user.phoneNumber ?? 'User'),
+                            const SizedBox(height: 10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                if (userProviders.contains('phone'))
+                                  const Icon(Icons.phone),
+                                if (userProviders.contains('password'))
+                                  const Icon(Icons.mail),
+                                if (userProviders.contains('google.com'))
+                                  SizedBox(
+                                    width: 24,
+                                    child: Image.network(
+                                      'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
+                                    ),
+                                  ),
+                              ],
+                            ),
+                            const SizedBox(height: 20),
+                            // TextButton(
+                            //   onPressed: () {
+                            //     user.sendEmailVerification();
+                            //   },
+                            //   child: const Text('Verify Email'),
+                            // ),
+
+                            CupertinoTextField(
+                              controller: phoneController,
+                              suffix: const Icon(Icons.phone),
+                              placeholder: 'Phone number',
+                            ),
+
+
+                            const Divider(),
+                            TextButton(
+                              onPressed: _signOut,
+                              child:  Text('Выйти'.tr),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned.directional(
+                    textDirection: Directionality.of(context),
+                    end: 40,
+                    top: 40,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: !showSaveButton
+                          ? SizedBox(key: UniqueKey())
+                          : TextButton(
                         onPressed: isLoading ? null : updateDisplayName,
                         child: const Text('Save changes'),
                       ),
+                    ),
+                  ),
+                ],
               ),
-            ),
+            )
+
           ],
-        ),
+      )
+
+
       ),
     );
   }
@@ -251,6 +272,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return photoURL;
   }
+
+
 
   Future<void> _signOut() async {
     await auth.signOut();

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
-import '../../greeting/greeting_widget.dart';
 
 class GreetingAuth extends StatelessWidget {
   const GreetingAuth({required  this.signOut, Key? key}) : super(key: key);
@@ -12,17 +12,19 @@ class GreetingAuth extends StatelessWidget {
   final Future<void> Function() signOut;
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
+    return
+      CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
-          delegate: MyNavBar(),
+          delegate: MyNavBar(title: 'Мой аккаунт'.tr),
           pinned: true,
           floating: false,
         ),
         SliverSafeArea(
           top: false,
           minimum: const EdgeInsets.only(top: 4),
-          sliver: SliverToBoxAdapter(
+          sliver:
+          SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.symmetric(
                 vertical: 30.0,

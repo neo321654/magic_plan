@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
@@ -14,7 +15,7 @@ class GreetingNotAuth extends StatelessWidget {
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
-          delegate: MyNavBar(),
+          delegate: MyNavBar(title:'Мой аккаунт'.tr),
           pinned: true,
           floating: false,
         ),

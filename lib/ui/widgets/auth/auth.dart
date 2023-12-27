@@ -40,8 +40,8 @@ class AuthGate extends StatefulWidget {
 }
 
 class _AuthGateState extends State<AuthGate> {
-  TextEditingController phoneController = TextEditingController(text: '+79853085859');
-  // TextEditingController phoneController = TextEditingController();
+  // TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
