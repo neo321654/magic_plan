@@ -176,37 +176,45 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             leadingSize: 100,
-                            title: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            title:
+                            Row(
                               children: [
-                                Text(
-                                  'Создавайте неограниченные'.tr,
-                                  style: AppTextStyles.callout,
-                                ),
-                                Text(
-                                  'проекты,работайте в командах!'.tr,
-                                  style: AppTextStyles.callout,
-                                ),
-                                Text(
-                                  '3 тарифа, начиная от 300₽/месяц'.tr,
-                                  style: AppTextStyles.callout,
-                                ),
-                              ],
-                            ),
-                            trailing: Row(
-                              children: [
-                                CupertinoButton.filled(
-                                  onPressed: () {},
-                                  child: Text(
-                                    'ВЫБРАТЬ'.tr,
-                                    style: AppTextStyles.callout.copyWith(
-                                      color: Colors.white,
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Создавайте неограниченные'.tr,
+                                      style: AppTextStyles.callout,
                                     ),
-                                  ),
+                                    Text(
+                                      'проекты,работайте в командах!'.tr,
+                                      style: AppTextStyles.callout,
+                                    ),
+                                    Text(
+                                      '3 тарифа, начиная от 300₽/месяц'.tr,
+                                      style: AppTextStyles.callout,
+                                    ),
+                                  ],
                                 ),
-                                const RightArrowWidget(),
+                                Row(
+                                  children: [
+                                    CupertinoButton.filled(
+                                      onPressed: () {},
+                                      child:
+                                      Text(
+                                        'ВЫБРАТЬ'.tr,
+                                        style: AppTextStyles.callout.copyWith(
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+
+                                  ],
+                                ),
                               ],
                             ),
+
+
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
