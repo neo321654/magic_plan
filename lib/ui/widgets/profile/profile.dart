@@ -180,13 +180,15 @@ class _ProfilePageState extends State<ProfilePage> {
                         child: const Text('Get enrolled factors'),
                       ),
 
-                      TextFormField(
+                      CupertinoTextField(
                         controller: phoneController,
-                        decoration: const InputDecoration(
-                          icon: Icon(Icons.phone),
-                          hintText: '+33612345678',
-                          labelText: 'Phone number',
-                        ),
+                        suffix: const Icon(Icons.phone),
+                        placeholder: 'Phone number',
+                        // decoration: const InputDecoration(
+                        //   icon: Icon(Icons.phone),
+                        //   hintText: '+33612345678',
+                        //   labelText: 'Phone number',
+                        // ),
                       ),
                       const SizedBox(height: 20),
                       TextButton(
@@ -318,5 +320,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> _signOut() async {
     await auth.signOut();
+    Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+
   }
 }
