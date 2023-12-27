@@ -4,6 +4,7 @@ import '/resources/resources.dart';
 import '/ui/widgets/auth_widget.dart';
 import '/ui/widgets/greeting_widget.dart';
 import '/ui/widgets/loader_widget.dart';
+import 'auth.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         if (settings.name == 'auth') {
           return PageRouteBuilder<dynamic>(
             pageBuilder: (context, animation1, animation2) =>
-                AuthWidget.create(),
+                const AuthGate(),
             transitionDuration: Duration.zero,
           );
         } else if (settings.name == 'greeting') {
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
       },
       theme: const CupertinoThemeData(brightness: Brightness.light),
       home: LoaderWidget.create(),
-      // home: GreetingScreen.create(),
+      //  home: AuthWidget.create(),
     );
   }
 }

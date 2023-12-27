@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import '../../resources/src/app_colors.dart';
 import '/ui/navigation/main_navigation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '/domain/data_providers/auth_api_provider.dart';
 import '/domain/services/auth_service.dart';
 
@@ -84,27 +85,19 @@ class AuthWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(20.0),
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              _ErrorTitleWidget(),
-              SizedBox(height: 10),
-              _LoginWidget(),
-              SizedBox(height: 10),
-              _PasswordWiget(),
-              SizedBox(height: 10),
-              AuthButtonWidget(),
-            ],
-          ),
-        ),
-      ),
+    return  CupertinoPageScaffold(
+      backgroundColor: AppColors.primaryMainBackground,
+
+      child:
+     Center(),
     );
   }
 }
+
+
+
+
+
 
 class _LoginWidget extends StatelessWidget {
   const _LoginWidget({Key? key}) : super(key: key);
