@@ -6,10 +6,9 @@ import '/resources/resources.dart';
 import '../../components/widgets.dart';
 import '../../greeting_widget.dart';
 
-class GreetingAuth extends StatelessWidget {
-  const GreetingAuth({required  this.signOut, Key? key}) : super(key: key);
+class GreetingNotAuth extends StatelessWidget {
+  const GreetingNotAuth({Key? key}) : super(key: key);
 
-  final Future<void> Function() signOut;
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -34,7 +33,7 @@ class GreetingAuth extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Text(
-                      "Приветствуем,".tr,
+                      "ПриветствуемAuth,".tr,
                       style: AppTextStyles.subheadline,
                     ),
                   ),
@@ -48,7 +47,7 @@ class GreetingAuth extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "apollonovasophia@gmail.com".tr,
+                          "Рады вас видеть!".tr,
                           style: AppTextStyles.t3Bold,
                         ),
                         SvgPicture.asset('assets/svg/person.svg'),
@@ -62,7 +61,7 @@ class GreetingAuth extends StatelessWidget {
                     children: [
                       CupertinoListTile(
                         title: Text(
-                          'Аккаунт'.tr,
+                          'Войти в аккаунт'.tr,
                           style: AppTextStyles.calloutBlue,
                         ),
                         trailing: const RightArrowWidget(),
@@ -77,18 +76,14 @@ class GreetingAuth extends StatelessWidget {
                         color: AppColors.primaryButtons,
                       ),
                       CupertinoListTile(
-                        title: Text('Профиль компании'.tr,style:AppTextStyles.callout,),
+                        title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                          Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
                       ),
                     ],
-                  ),
-                  TextButton(
-                    onPressed: signOut,
-                    child:  Text('Выйти'.tr),
                   ),
                   const SizedBox(
                     height: 1000,
