@@ -101,28 +101,4 @@ class GreetingScreen extends StatelessWidget {
 
 
 
-class MyNavBar extends SliverPersistentHeaderDelegate {
-  @override
-  Widget build(
-      BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return CupertinoNavigationBar(
-      border: Border.all(color: AppColors.primaryIcons),
-      backgroundColor: AppColors.primaryMainBackground,
-      middle: Text(
-        "Мой аккаунт".tr,
-        style: AppTextStyles.bodyBold,
-      ),
-    );
-  }
 
-  @override
-  double get maxExtent => 68.0;
-
-  @override
-  double get minExtent => 68.0;
-
-  @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return false;
-  }
-}
