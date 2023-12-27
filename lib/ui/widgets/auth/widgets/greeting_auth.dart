@@ -68,7 +68,7 @@ class GreetingAuth extends StatelessWidget {
                         trailing: const RightArrowWidget(),
                         onTap: () {
                           //todo изменить на вход в аккаунт
-                          Navigator.of(context).pushNamedAndRemoveUntil('auth', (route) => false);
+                         // Navigator.of(context).pushNamedAndRemoveUntil('auth', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
                       ),

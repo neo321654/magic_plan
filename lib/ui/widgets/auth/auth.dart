@@ -89,7 +89,7 @@ class _AuthGateState extends State<AuthGate> {
                             child: MaterialBanner(
                               backgroundColor:
                                   Theme.of(context).colorScheme.error,
-                              content: SelectableText(error),
+                              content: SelectableText('Ощибка для отладки : \n$error'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -97,9 +97,9 @@ class _AuthGateState extends State<AuthGate> {
                                       error = '';
                                     });
                                   },
-                                  child: const Text(
-                                    'dismiss',
-                                    style: TextStyle(color: Colors.white),
+                                  child:  Text(
+                                    'скрыть'.tr,
+                                    style: const TextStyle(color: Colors.white),
                                   ),
                                 ),
                               ],
@@ -163,64 +163,9 @@ class _AuthGateState extends State<AuthGate> {
                           ),
                           TextButton(
                             onPressed: _resetPassword,
-                            child: const Text('Forgot password?'),
+                            child:  Text('Забыли пароль?'.tr),
                           ),
 
-                          // SizedBox(
-                          //   width: double.infinity,
-                          //   height: 50,
-                          //   child: OutlinedButton(
-                          //     onPressed: isLoading
-                          //         ? null
-                          //         : () {
-                          //             if (mode != AuthMode.phone) {
-                          //               setState(() {
-                          //                 mode = AuthMode.phone;
-                          //               });
-                          //             } else {
-                          //               setState(() {
-                          //                 mode = AuthMode.login;
-                          //               });
-                          //             }
-                          //           },
-                          //     child: isLoading
-                          //         ? const CircularProgressIndicator.adaptive()
-                          //         : Text(
-                          //             mode != AuthMode.phone
-                          //                 ? 'Sign in with Phone Number'
-                          //                 : 'Sign in with Email and Password',
-                          //           ),
-                          //   ),
-                          // ),
-
-                          // const SizedBox(height: 20),
-                          // if (mode != AuthMode.phone)
-                          //   RichText(
-                          //     text: TextSpan(
-                          //       style: Theme.of(context).textTheme.bodyLarge,
-                          //       children: [
-                          //         TextSpan(
-                          //           text: mode == AuthMode.login
-                          //               ? "Don't have an account? "
-                          //               : 'You have an account? ',
-                          //         ),
-                          //         TextSpan(
-                          //           text: mode == AuthMode.login
-                          //               ? 'Register now'
-                          //               : 'Click to login',
-                          //           style: const TextStyle(color: Colors.blue),
-                          //           recognizer: TapGestureRecognizer()
-                          //             ..onTap = () {
-                          //               setState(() {
-                          //                 mode = mode == AuthMode.login
-                          //                     ? AuthMode.register
-                          //                     : AuthMode.login;
-                          //               });
-                          //             },
-                          //         ),
-                          //       ],
-                          //     ),
-                          //   ),
                         ],
                       ),
                     ),
