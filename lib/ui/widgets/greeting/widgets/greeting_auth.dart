@@ -217,7 +217,14 @@ class GreetingAuth extends StatelessWidget {
                             },
                             padding: AppDimensions.tilePadding,
                           ),
+
                         ],
+                      ),
+                      const SizedBox(height: 10,),
+                      //todo нужно подумать над общим отступом
+                      Text(
+                        'Изменяйте ваш профиль, email, пароль'.tr,
+                        style: AppTextStyles.callout,
                       ),
                       TextButton(
                         onPressed: signOut,
