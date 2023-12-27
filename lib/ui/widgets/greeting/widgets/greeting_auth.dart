@@ -238,10 +238,6 @@ class GreetingAuth extends StatelessWidget {
                             ),
                             trailing: Row(
                               children: [
-                                Text(
-                                  'Настоить'.tr,
-                                  style: AppTextStyles.callout,
-                                ),
                                 const SizedBox(
                                   width: 10,
                                 ),
