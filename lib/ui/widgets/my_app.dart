@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
                 AuthWidget.create(),
             transitionDuration: Duration.zero,
           );
-        } else if (settings.name == 'example') {
+        } else if (settings.name == 'greeting') {
           return PageRouteBuilder<dynamic>(
             pageBuilder: (context, animation1, animation2) =>
                 GreetingScreen.create(),
@@ -39,8 +39,8 @@ class MyApp extends StatelessWidget {
         return null;
       },
       theme: const CupertinoThemeData(brightness: Brightness.light),
-      // home: LoaderWidget.create(),
-      home: GreetingScreen.create(),
+      home: LoaderWidget.create(),
+      // home: GreetingScreen.create(),
     );
   }
 }

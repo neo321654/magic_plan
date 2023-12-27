@@ -19,12 +19,12 @@ class _ViewModel {
   }
 
   void _goToMainScreenNoAuth() {
-    Navigator.of(context).pushNamedAndRemoveUntil('example', (route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
   }
 
   //todo здесь подменить на другой скрин, когда мы зарегины
   void _goToMainScreenAuth() {
-    Navigator.of(context).pushNamedAndRemoveUntil('example', (route) => false);
+    Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
   }
 }
 

@@ -58,13 +58,13 @@ class _ViewModel extends ChangeNotifier {
   }
 }
 
-class GreetingScreen extends StatelessWidget {
-  const GreetingScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   static Widget create() {
     return ChangeNotifierProvider(
       create: (_) => _ViewModel(),
-      child: const GreetingScreen(),
+      child: const RegisterScreen(),
     );
   }
 
@@ -176,10 +176,10 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 68.0;
+  double get maxExtent => 100.0;
 
   @override
-  double get minExtent => 68.0;
+  double get minExtent => 100.0;
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
