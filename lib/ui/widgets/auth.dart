@@ -316,7 +316,11 @@ class _AuthGateState extends State<AuthGate> {
   Future<void> _phoneAuth() async {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
-      verificationCompleted: (_) {},
+      verificationCompleted: (credential) {
+
+        Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+
+      },
       verificationFailed: (e) {
         setState(() {
           error = '${e.message}';
@@ -334,7 +338,11 @@ class _AuthGateState extends State<AuthGate> {
 
           try {
             // Sign the user in (or link) with the credential
-            await auth.signInWithCredential(credential);
+            UserCredential userCredential =    await auth.signInWithCredential(credential);
+           if (userCredential.user != null){
+             Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+
+           }
           } on FirebaseAuthException catch (e) {
             setState(() {
               error = e.message ?? '';
