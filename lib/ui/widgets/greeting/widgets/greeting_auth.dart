@@ -230,42 +230,10 @@ class GreetingAuth extends StatelessWidget {
                         // separatorColor: Colors.transparent,
                         margin: const EdgeInsets.all(0),
                         children: [
-                          CupertinoListTile(
-                            title: Row(
-                              children: [
-                                Text(
-                                  'Apollonovasofia'.tr,
-                                  style: AppTextStyles.callout,
-                                ),
-                                const SizedBox(
-                                  width: 10,
-                                ),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: AppColors.primaryButtons,
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text(
-                                      'ВЛАДЕЛЕЦ'.tr,
-                                      style: AppTextStyles.callout
-                                          .copyWith(color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            backgroundColor: AppColors.primaryBackgroundSearch,
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
+
                           CupertinoListTile(
                             title: Text(
-                              'Профиль компании'.tr,
+                              'Помощь & Поддержка'.tr,
                               style: AppTextStyles.callout,
                             ),
                             trailing: Row(
