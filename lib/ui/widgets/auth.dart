@@ -51,6 +51,7 @@ class _AuthGateState extends State<AuthGate> {
 
   bool isLoading = false;
   bool isHidePassword = true;
+  bool isSendCode = true;
 
   @override
   void initState() {
@@ -107,24 +108,17 @@ class _AuthGateState extends State<AuthGate> {
                             ),
                           ),
                           const SizedBox(height: 20),
-
+                          !isSendCode?
+                          const SizedBox.shrink():
                           CupertinoTextField(
                             placeholder: 'Ваш номер'.tr,
                             controller: phoneController,
-
-                            // decoration: const InputDecoration(
-                            //   hintText: '+72345678910',
-                            //   labelText: 'Phone number',
-                            //   border: OutlineInputBorder(),
-                            // ),
-                            //   validator: (value) =>
-                            //   value != null && value.isNotEmpty
-                            //       ? null
-                            //       : 'Required',
                           ),
+                          isSendCode?
+                          const SizedBox.shrink():
                           CupertinoTextField(
                             obscureText: isHidePassword,
-                            placeholder: 'Пароль'.tr,
+                            placeholder: 'Код'.tr,
                             controller: passwordController,
                             suffix: GestureDetector(
                               onTap: () {
@@ -133,8 +127,8 @@ class _AuthGateState extends State<AuthGate> {
                                 });
                               },
                               child: isHidePassword
-                                  ? Icon(CupertinoIcons.plus)
-                                  : Icon(CupertinoIcons.minus),
+                                  ? const Icon(CupertinoIcons.plus)
+                                  : const Icon(CupertinoIcons.minus),
                             ),
                             // decoration: const InputDecoration(
                             //   hintText: '+72345678910',
@@ -153,14 +147,21 @@ class _AuthGateState extends State<AuthGate> {
                             child: ElevatedButton(
                               onPressed: isLoading
                                   ? null
-                                  : () {
+                                  :  !isSendCode? (){
+                                print('dflkdfjkj');
+                              }: () {
+                                setState(() {
+                                  isSendCode=!isSendCode;
+                                });
                                       _handleMultiFactorException(
                                         _emailAndPassword,
                                       );
                                     },
                               child: isLoading
                                   ? const CircularProgressIndicator.adaptive()
-                                  : const Text('войти'),
+                                  :  isSendCode?
+                              Text('получить код'.tr):
+                              Text('отправить код'.tr),
                             ),
                           ),
                           TextButton(
@@ -378,10 +379,10 @@ class _AuthGateState extends State<AuthGate> {
             // Sign the user in (or link) with the credential
             UserCredential userCredential =
                 await auth.signInWithCredential(credential);
-            if (userCredential.user != null) {
-              Navigator.of(context)
-                  .pushNamedAndRemoveUntil('greeting', (route) => false);
-            }
+            // if (userCredential.user != null) {
+            //   Navigator.of(context)
+            //       .pushNamedAndRemoveUntil('greeting', (route) => false);
+            // }
           } on FirebaseAuthException catch (e) {
             setState(() {
               error = e.message ?? '';
