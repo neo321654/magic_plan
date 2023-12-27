@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:magic_plan/ui/widgets/profile/profile.dart';
 import '/resources/resources.dart';
-import '/ui/widgets/greeting_widget.dart';
+import 'greeting/greeting_widget.dart';
 import '/ui/widgets/loader_widget.dart';
 import 'auth/auth.dart';
 
@@ -29,18 +30,26 @@ class MyApp extends StatelessWidget {
                 GreetingScreen.create(),
             transitionDuration: Duration.zero,
           );
-        } else if (settings.name == 'loader') {
+        }
+        else if (settings.name == 'loader') {
           return PageRouteBuilder<dynamic>(
             pageBuilder: (context, animation1, animation2) =>
                 LoaderWidget.create(),
             transitionDuration: Duration.zero,
           );
         }
+        else if (settings.name == 'profile') {
+          return PageRouteBuilder<dynamic>(
+            pageBuilder: (context, animation1, animation2) =>
+            const ProfilePage(),
+            transitionDuration: Duration.zero,
+          );
+        }
         return null;
       },
       theme: const CupertinoThemeData(brightness: Brightness.light),
-      home: LoaderWidget.create(),
-      //  home: AuthWidget.create(),
+      // home: LoaderWidget.create(),
+       home: const ProfilePage(),
     );
   }
 }

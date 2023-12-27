@@ -142,8 +142,6 @@ class _AuthGateState extends State<AuthGate> {
                               onPressed: isLoading
                                   ? null
                                   :  !isSendCode? (){
-                                print('dflkdfjkj');
-
                                //todo добавить проверку на поля
                                 _sendCode(verId: verificationId,smsCode: passwordController.text);
                               }: () {
@@ -162,7 +160,8 @@ class _AuthGateState extends State<AuthGate> {
                             ),
                           ),
                           TextButton(
-                            onPressed: _resetPassword,
+                            onPressed: (){},
+                            // onPressed: _resetPassword,
                             child:  Text('Забыли пароль?'.tr),
                           ),
 

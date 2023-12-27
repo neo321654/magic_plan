@@ -2,14 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../main.dart';
+import '/ui/widgets/greeting/widgets/greeting_auth.dart';
+import '../../../main.dart';
 import '/resources/resources.dart';
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
 import '/ui/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
-import 'auth/widgets/greeting_auth.dart';
-import 'components/widgets.dart';
+import '../components/widgets.dart';
 
 class _ViewModelState {
   final String ageTitle;

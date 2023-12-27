@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
-import '../../greeting_widget.dart';
+import '../../greeting/greeting_widget.dart';
 
 class GreetingAuth extends StatelessWidget {
   const GreetingAuth({required  this.signOut, Key? key}) : super(key: key);
@@ -68,7 +68,7 @@ class GreetingAuth extends StatelessWidget {
                         trailing: const RightArrowWidget(),
                         onTap: () {
                           //todo изменить на вход в аккаунт
-                         // Navigator.of(context).pushNamedAndRemoveUntil('auth', (route) => false);
+                          Navigator.of(context).pushNamedAndRemoveUntil('profile', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
                       ),

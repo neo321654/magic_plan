@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
-import '../../greeting_widget.dart';
+import '../../greeting/greeting_widget.dart';
 
 class GreetingNotAuth extends StatelessWidget {
   const GreetingNotAuth({Key? key}) : super(key: key);
