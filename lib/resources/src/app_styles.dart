@@ -8,7 +8,7 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
   );
   static TextStyle subheadline = TextStyle(
-    color: AppColors.primaryTexts,
+    color: AppColors.primaryButtons,
     fontSize: 15.toFigma,
     fontWeight: FontWeight.w500,
   );
@@ -35,5 +35,11 @@ abstract class AppTextStyles {
     fontSize: 13.toFigma,
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
+  );
+  static TextStyle caption1 = TextStyle(
+    color: AppColors.primaryButtons,
+    fontSize: 12.toFigma,
+    fontWeight: FontWeight.w500,
+    // letterSpacing: -0.8,
   );
 }

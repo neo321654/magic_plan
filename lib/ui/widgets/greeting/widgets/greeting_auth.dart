@@ -92,19 +92,22 @@ class GreetingAuth extends StatelessWidget {
                             CupertinoListTile(
                               title: Text(
                                 'Аккаунт'.tr,
-                                style: AppTextStyles.calloutBlue,
+                                style: AppTextStyles.callout,
                               ),
+
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                //todo изменить на вход в аккаунт
                                 Navigator.of(context).pushNamed('profile');
                               },
                               padding: AppDimensions.tilePadding,
                             ),
                           ]),
-                      Text(
-                        'Изменяйте ваш профиль, email, пароль'.tr,
-                        style: AppTextStyles.callout,
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16,bottom: 16,top: 10,),
+                        child: Text(
+                          'Изменяйте ваш профиль, email, пароль'.tr,
+                          style: AppTextStyles.caption1,
+                        ),
                       ),
                       CupertinoListSection.insetGrouped(
                         // separatorColor: Colors.transparent,
