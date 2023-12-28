@@ -13,7 +13,6 @@ class GreetingAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
@@ -110,7 +109,7 @@ class GreetingAuth extends StatelessWidget {
                         padding: const EdgeInsets.only(
                           left: 16,
                           bottom: 16,
-                          top: 10,
+                          top: 4,
                         ),
                         child: Text(
                           'Изменяйте ваш профиль, email, пароль'.tr,
@@ -137,8 +136,7 @@ class GreetingAuth extends StatelessWidget {
                                     color: AppColors.primaryButtons,
                                   ),
                                   child: Padding(
-                                    padding:
-                                    AppDimensions.edgeInsetsButtons,
+                                    padding: AppDimensions.edgeInsetsButtons,
                                     child: Text(
                                       'ВЛАДЕЛЕЦ'.tr,
                                       style: AppTextStyles.caption2bold
@@ -216,6 +214,7 @@ class GreetingAuth extends StatelessWidget {
                                   onPressed: () {},
                                   color: AppColors.accentsPrimary,
                                   padding: AppDimensions.edgeInsetsButtons,
+                                  minSize: 1,
                                   child: Text(
                                     'ВЫБРАТЬ'.tr,
                                     style: AppTextStyles.caption2bold.copyWith(
@@ -232,13 +231,17 @@ class GreetingAuth extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 10,
-                      ),
                       //todo нужно подумать над общим отступом
-                      Text(
-                        'Изменяйте ваш профиль, email, пароль'.tr,
-                        style: AppTextStyles.callout,
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          left: 16,
+                          bottom: 16,
+                          top: 4,
+                        ),
+                        child: Text(
+                          'Изменяйте ваш профиль, email, пароль'.tr,
+                          style: AppTextStyles.caption1,
+                        ),
                       ),
                       CupertinoListSection.insetGrouped(
                         // separatorColor: Colors.transparent,
