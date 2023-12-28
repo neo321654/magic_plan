@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 
 import '/domain/services/auth_service.dart';
@@ -28,8 +29,9 @@ class _ViewModel {
   }
 }
 
-class LoaderWidget extends StatelessWidget {
-  const LoaderWidget({Key? key}) : super(key: key);
+@RoutePage()
+class LoaderWidgetPage extends StatelessWidget {
+  const LoaderWidgetPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class LoaderWidget extends StatelessWidget {
     return Provider(
       create: (context) => _ViewModel(context),
       lazy: false,
-      child: const LoaderWidget(),
+      child: const LoaderWidgetPage(),
     );
   }
 }

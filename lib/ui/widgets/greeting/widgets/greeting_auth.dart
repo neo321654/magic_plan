@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,8 +7,9 @@ import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
 
-class GreetingAuth extends StatelessWidget {
-  const GreetingAuth({required this.signOut, Key? key}) : super(key: key);
+@RoutePage()
+class GreetingAuthPage extends StatelessWidget {
+  const GreetingAuthPage({required this.signOut, Key? key}) : super(key: key);
 
   final Future<void> Function() signOut;
 
@@ -449,7 +451,7 @@ class GreetingAuth extends StatelessWidget {
                               ],
                             ),
                             onTap: () {
-                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                              signOut();
                             },
                             padding: AppDimensions.tilePadding,
                           ),

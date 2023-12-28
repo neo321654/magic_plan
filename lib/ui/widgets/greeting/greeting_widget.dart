@@ -1,5 +1,8 @@
+import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import '../../navigation/app_router.dart';
 import '/ui/widgets/greeting/widgets/greeting_not_auth.dart';
 import '/ui/widgets/greeting/widgets/greeting_auth.dart';
 import '../../../main.dart';
@@ -59,36 +62,64 @@ class _ViewModel extends ChangeNotifier {
   }
 }
 
-class GreetingScreen extends StatelessWidget {
-  const GreetingScreen({Key? key}) : super(key: key);
+@RoutePage()
+class GreetingPage extends StatelessWidget {
+  const GreetingPage({Key? key}) : super(key: key);
 
   static Widget create() {
     return ChangeNotifierProvider(
       create: (_) => _ViewModel(),
-      child: const GreetingScreen(),
+      child: const GreetingPage(),
     );
   }
 
   @override
   Widget build(BuildContext context) {
     //final viewModel = context.read<_ViewModel>();
-    return CupertinoPageScaffold(
-      backgroundColor: AppColors.primaryMainBackground,
 
-
-     child: StreamBuilder<User?>(
-        stream: auth.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return GreetingAuth(signOut:_signOut);
-
-          }
-          return const GreetingNotAuth();
-        },
-      ),
-
-
-
+    return AutoTabsRouter(
+      routes: const [
+        GreetingNotAuthRoute(),
+        LoaderWidgetRoute(),
+      ],
+      builder: (context, child) {
+        final tabsRouter = AutoTabsRouter.of(context);
+        return CupertinoTabScaffold(
+          tabBar: CupertinoTabBar(
+            onTap: tabsRouter.setActiveIndex,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.star_fill),
+                label: 'Favorites',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(CupertinoIcons.clock_solid),
+                label: 'Recents',
+              ),
+            ],
+          ),
+          tabBuilder: (BuildContext context, int index) {
+            return child;
+          },
+        );
+        // CupertinoTabScaffold(
+        //  backgroundColor: AppColors.primaryMainBackground,
+        //  tabBuilder: (BuildContext context, int index) {
+        //    return CupertinoTabView(
+        //      builder: (BuildContext context) {
+        //        return StreamBuilder<User?>(
+        //          stream: auth.authStateChanges(),
+        //          builder: (context, snapshot) {
+        //            if (snapshot.hasData) {
+        //              return GreetingAuth(signOut: _signOut);
+        //            }
+        //            return const GreetingNotAuth();
+        //          },
+        //        );
+        //      },
+        //    );
+        //  },
+      },
     );
   }
 
@@ -96,9 +127,3 @@ class GreetingScreen extends StatelessWidget {
     await auth.signOut();
   }
 }
-
-
-
-
-
-

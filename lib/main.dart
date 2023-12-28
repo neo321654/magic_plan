@@ -22,6 +22,6 @@ void main() async{
 
   auth = FirebaseAuth.instanceFor(app: appFire);
 
-  const app = MyApp();
+  MyApp app = MyApp();
   runApp(app);
 }

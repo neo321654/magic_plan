@@ -2,6 +2,7 @@
 // for details. All rights reserved. Use of this source code is governed by a
 // BSD-style license that can be found in the LICENSE file.
 
+import 'package:auto_route/annotations.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -32,14 +33,15 @@ class ScaffoldSnackbar {
 
 enum AuthMode { phone }
 
-class AuthGate extends StatefulWidget {
-  const AuthGate({Key? key}) : super(key: key);
+@RoutePage()
+class AuthGatePage extends StatefulWidget {
+  const AuthGatePage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _AuthGateState();
+  State<StatefulWidget> createState() => _AuthGatePageState();
 }
 
-class _AuthGateState extends State<AuthGate> {
+class _AuthGatePageState extends State<AuthGatePage> {
   // TextEditingController phoneController = TextEditingController(text: '+79853085859');
   TextEditingController phoneController = TextEditingController();
   TextEditingController passwordController = TextEditingController();

@@ -1,3 +1,4 @@
+import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,8 +7,9 @@ import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
 
-class GreetingNotAuth extends StatelessWidget {
-  const GreetingNotAuth({Key? key}) : super(key: key);
+@RoutePage()
+class GreetingNotAuthPage extends StatelessWidget {
+  const GreetingNotAuthPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
