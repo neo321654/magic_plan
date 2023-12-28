@@ -13,6 +13,7 @@ class GreetingWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    CupertinoTabController controller = CupertinoTabController(initialIndex: 1);
     //final viewModel = context.read<_ViewModel>();
 
     // return Text('dfdf');
@@ -30,6 +31,7 @@ class GreetingWidgetPage extends StatelessWidget {
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
         return CupertinoTabScaffold(
+          controller: controller,
           tabBar: CupertinoTabBar(
             onTap: tabsRouter.setActiveIndex,
             items: const <BottomNavigationBarItem>[

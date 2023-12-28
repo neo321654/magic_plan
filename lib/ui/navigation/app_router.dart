@@ -36,6 +36,7 @@ class AppRouter extends _$AppRouter {
           AutoRoute(
             page: AuthInTabBarWidgetRoute.page,
             path: 'authInTabBar',
+            initial: true,
           ),
         ]),
       ];

@@ -1,6 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
+import '../navigation/app_router.dart';
+
 
 
 
@@ -20,7 +22,7 @@ class LoaderWidgetPage extends StatelessWidget {
               onPressed: () {
                 // context.read<_ViewModel>().checkAuth();
                 // context.router.pushNamed('auth');
-                context.router.pushNamed('/root');
+                context.router.replace(const GreetingWidgetRoute());
                 // context.router.navigateNamed('/greeting');
                 // AutoRouter.of(context).push(GreetingWidgetRoute());
 
