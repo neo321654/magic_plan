@@ -28,24 +28,26 @@ class GreetingAuth extends StatelessWidget {
               children: [
                 Container(
                   color: AppColors.primaryBackgroundSearch,
-                  height: 24,
                   width: double.infinity,
                   //todo заменить на настоящую иконку
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 24,
-                      ),
-                      Icon(
-                        CupertinoIcons.arrow_up_arrow_down_circle_fill,
-                        color: AppColors.primaryIcons,
-                      ),
-                      //todo создать нужный стиль для текста и цвета проверить на всём экране
-                      Text(
-                        'Синхронизация вашего аккаунта...'.tr,
-                        style: AppTextStyles.callout,
-                      ),
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 7.0,),
+                    child: Row(
+                      children: [
+                        const SizedBox(
+                          width: 24,
+                        ),
+                        Icon(
+                          Icons.history,
+                          color: AppColors.primaryButtons,
+                        ),
+                        const SizedBox(width: 6.0,),
+                        Text(
+                          'Синхронизация вашего аккаунта...'.tr,
+                          style: AppTextStyles.foontoneBold,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Padding(
@@ -236,12 +238,12 @@ class GreetingAuth extends StatelessWidget {
                               'Помощь & Поддержка'.tr,
                               style: AppTextStyles.callout,
                             ),
-                            trailing: Row(
+                            trailing: const Row(
                               children: [
-                                const SizedBox(
+                                SizedBox(
                                   width: 10,
                                 ),
-                                const RightArrowWidget(),
+                                RightArrowWidget(),
                               ],
                             ),
                             onTap: () {

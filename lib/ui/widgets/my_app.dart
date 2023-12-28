@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
         return null;
       },
       theme: const CupertinoThemeData(brightness: Brightness.light),
-      home: LoaderWidget.create(),
-       // home: const ProfilePage(),
+      // home: LoaderWidget.create(),
+      home: const GreetingScreen(),
     );
   }
 }

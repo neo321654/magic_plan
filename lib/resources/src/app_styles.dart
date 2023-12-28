@@ -30,4 +30,10 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );
+  static TextStyle foontoneBold = TextStyle(
+    color: AppColors.primaryTexts,
+    fontSize: 13.toFigma,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.8,
+  );
 }
