@@ -42,4 +42,10 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     // letterSpacing: -0.8,
   );
+  static TextStyle caption2bold = TextStyle(
+    color: AppColors.primaryButtons,
+    fontSize: 11.toFigma,
+    fontWeight: FontWeight.w600,
+    letterSpacing: 0.6,
+  );
 }

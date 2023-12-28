@@ -31,7 +31,9 @@ class GreetingAuth extends StatelessWidget {
                   width: double.infinity,
                   //todo заменить на настоящую иконку
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 7.0,),
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 7.0,
+                    ),
                     child: Row(
                       children: [
                         const SizedBox(
@@ -41,7 +43,9 @@ class GreetingAuth extends StatelessWidget {
                           Icons.history,
                           color: AppColors.primaryButtons,
                         ),
-                        const SizedBox(width: 6.0,),
+                        const SizedBox(
+                          width: 6.0,
+                        ),
                         Text(
                           'Синхронизация вашего аккаунта...'.tr,
                           style: AppTextStyles.foontoneBold,
@@ -94,7 +98,6 @@ class GreetingAuth extends StatelessWidget {
                                 'Аккаунт'.tr,
                                 style: AppTextStyles.callout,
                               ),
-
                               trailing: const RightArrowWidget(),
                               onTap: () {
                                 Navigator.of(context).pushNamed('profile');
@@ -103,7 +106,11 @@ class GreetingAuth extends StatelessWidget {
                             ),
                           ]),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16,bottom: 16,top: 10,),
+                        padding: const EdgeInsets.only(
+                          left: 16,
+                          bottom: 16,
+                          top: 10,
+                        ),
                         child: Text(
                           'Изменяйте ваш профиль, email, пароль'.tr,
                           style: AppTextStyles.caption1,
@@ -129,10 +136,13 @@ class GreetingAuth extends StatelessWidget {
                                     color: AppColors.primaryButtons,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.all(4.0),
+                                    padding: const EdgeInsets.symmetric(
+                                      vertical: 8.0,
+                                      horizontal: 12.0,
+                                    ),
                                     child: Text(
                                       'ВЛАДЕЛЕЦ'.tr,
-                                      style: AppTextStyles.callout
+                                      style: AppTextStyles.caption2bold
                                           .copyWith(color: Colors.white),
                                     ),
                                   ),
@@ -155,7 +165,9 @@ class GreetingAuth extends StatelessWidget {
                               children: [
                                 Text(
                                   'Настоить'.tr,
-                                  style: AppTextStyles.callout,
+                                  style: AppTextStyles.callout.copyWith(
+                                    color: AppColors.primaryBackgroundSearch,
+                                  ),
                                 ),
                                 const SizedBox(
                                   width: 10,
@@ -181,8 +193,7 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             leadingSize: 100,
-                            title:
-                            Row(
+                            title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
@@ -190,42 +201,40 @@ class GreetingAuth extends StatelessWidget {
                                   children: [
                                     Text(
                                       'Создавайте неограниченные'.tr,
-                                      style: AppTextStyles.callout,
+                                      style: AppTextStyles.foontoneBold,
                                     ),
                                     Text(
                                       'проекты,работайте в командах!'.tr,
-                                      style: AppTextStyles.callout,
+                                      style: AppTextStyles.foontoneBold,
                                     ),
                                     Text(
                                       '3 тарифа, начиная от 300₽/месяц'.tr,
-                                      style: AppTextStyles.callout,
+                                      style: AppTextStyles.foontoneBold,
                                     ),
                                   ],
                                 ),
                                 CupertinoButton.filled(
                                   onPressed: () {},
                                   padding: EdgeInsets.zero,
-                                  child:
-                                  Text(
+                                  child: Text(
                                     'ВЫБРАТЬ'.tr,
-                                    style: AppTextStyles.callout.copyWith(
+                                    style: AppTextStyles.caption2bold.copyWith(
                                       color: Colors.white,
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-
-
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
                             padding: AppDimensions.tilePadding,
                           ),
-
                         ],
                       ),
-                      const SizedBox(height: 10,),
+                      const SizedBox(
+                        height: 10,
+                      ),
                       //todo нужно подумать над общим отступом
                       Text(
                         'Изменяйте ваш профиль, email, пароль'.tr,
@@ -235,7 +244,6 @@ class GreetingAuth extends StatelessWidget {
                         // separatorColor: Colors.transparent,
                         margin: const EdgeInsets.all(0),
                         children: [
-
                           CupertinoListTile(
                             title: Text(
                               'Помощь & Поддержка'.tr,
@@ -267,8 +275,7 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             leadingSize: 100,
-                            title:
-                            Row(
+                            title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Column(
@@ -291,8 +298,7 @@ class GreetingAuth extends StatelessWidget {
                                 CupertinoButton.filled(
                                   onPressed: () {},
                                   padding: EdgeInsets.zero,
-                                  child:
-                                  Text(
+                                  child: Text(
                                     'ВЫБРАТЬ'.tr,
                                     style: AppTextStyles.callout.copyWith(
                                       color: Colors.white,
@@ -301,18 +307,13 @@ class GreetingAuth extends StatelessWidget {
                                 ),
                               ],
                             ),
-
-
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
                             padding: AppDimensions.tilePadding,
                           ),
-
                         ],
                       ),
-
-
 
                       TextButton(
                         onPressed: signOut,
