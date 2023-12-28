@@ -329,7 +329,9 @@ class GreetingAuth extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 24,),
+                      const SizedBox(
+                        height: 24,
+                      ),
 
                       Row(
                         children: [
@@ -366,7 +368,9 @@ class GreetingAuth extends StatelessWidget {
                               ),
                             ),
                           ),
-                          const SizedBox(width: 25,),
+                          const SizedBox(
+                            width: 25,
+                          ),
                           Expanded(
                             child: CupertinoButton(
                               onPressed: () {},
@@ -404,13 +408,52 @@ class GreetingAuth extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 24,),
+                      const SizedBox(
+                        height: 24,
+                      ),
 
-
-                      TextButton(
-                        style: AppTextStyles.,
-                        onPressed: signOut,
-                        child: Text('Выйти'.tr),
+                      CupertinoListSection.insetGrouped(
+                        // separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
+                        children: [
+                          CupertinoListTile(
+                            title: Row(
+                              children: [
+                                CupertinoButton(
+                                  onPressed: () {},
+                                  minSize: 1,
+                                  padding: const EdgeInsets.all(4),
+                                  color: Colors.red.shade50,
+                                  child: Icon(
+                                    Icons.logout,
+                                    size: 20,
+                                    textDirection: TextDirection.rtl,
+                                    color: AppColors.modalsSOS,
+                                  ),
+                                ),
+                                const SizedBox(width: 10,),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Выйти'.tr,
+                                      style: AppTextStyles.bodyBold
+                                          .copyWith(color: AppColors.modalsSOS),
+                                    ),
+                                    Text(
+                                      'apollonovasofia@gmail.com'.tr,
+                                      style: AppTextStyles.foontoneBold,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                        ],
                       ),
                     ],
                   ),
