@@ -1,7 +1,9 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../navigation/app_router.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
@@ -69,7 +71,8 @@ class GreetingNotAuthPage extends StatelessWidget {
                         trailing: const RightArrowWidget(),
                         onTap: () {
                           //todo изменить на вход в аккаунт
-                          Navigator.of(context).pushNamedAndRemoveUntil('auth', (route) => false);
+                          context.router.pushNamed('/auth');
+                        // context.router.push(AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
                       ),
@@ -81,7 +84,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                         title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                          Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
                       ),

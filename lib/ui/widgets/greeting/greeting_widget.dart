@@ -81,6 +81,7 @@ class GreetingPage extends StatelessWidget {
       routes: const [
         GreetingNotAuthRoute(),
         LoaderWidgetRoute(),
+        AuthGateRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);

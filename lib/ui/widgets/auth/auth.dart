@@ -3,6 +3,7 @@
 // BSD-style license that can be found in the LICENSE file.
 
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -42,9 +43,10 @@ class AuthGatePage extends StatefulWidget {
 }
 
 class _AuthGatePageState extends State<AuthGatePage> {
-  // TextEditingController phoneController = TextEditingController(text: '+79853085859');
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  // TextEditingController phoneController = TextEditingController();
+  TextEditingController passwordController = TextEditingController(text: '111111');
+  // TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String error = '';
@@ -300,8 +302,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('greeting', (route) => false);
+        context.router.pop();
       },
       verificationFailed: (e) {
         setState(() {
