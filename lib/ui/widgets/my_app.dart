@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
     return CupertinoApp(
+
       title: 'Magic plan'.tr,
       onGenerateRoute: (RouteSettings settings) {
         if (settings.name == 'auth') {
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
         }
         return null;
       },
-      theme: const CupertinoThemeData(brightness: Brightness.light),
+      theme:  CupertinoThemeData(brightness: Brightness.light,primaryColor: AppColors.accentsPrimary),
       // home: LoaderWidget.create(),
       home: const GreetingScreen(),
     );

@@ -267,8 +267,8 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             title: Text(
-                              'Подписка'.tr,
-                              style: AppTextStyles.callout,
+                              'Сообщить об ошибке'.tr,
+                              style: AppTextStyles.callout.copyWith(color: AppColors.accentsPrimary),
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
@@ -277,39 +277,22 @@ class GreetingAuth extends StatelessWidget {
                             padding: AppDimensions.tilePadding,
                           ),
                           CupertinoListTile(
-                            leadingSize: 100,
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Создавайте неограниченные'.tr,
-                                      style: AppTextStyles.callout,
-                                    ),
-                                    Text(
-                                      'проекты,работайте в командах!'.tr,
-                                      style: AppTextStyles.callout,
-                                    ),
-                                    Text(
-                                      '3 тарифа, начиная от 300₽/месяц'.tr,
-                                      style: AppTextStyles.callout,
-                                    ),
-                                  ],
-                                ),
-                                CupertinoButton.filled(
-                                  onPressed: () {},
-                                  padding: EdgeInsets.zero,
-                                  child: Text(
-                                    'ВЫБРАТЬ'.tr,
-                                    style: AppTextStyles.callout.copyWith(
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                            title: Text(
+                              'Предложить улучшение'.tr,
+                              style: AppTextStyles.callout.copyWith(color: AppColors.accentsPrimary),
                             ),
+                            trailing: const Icon(CupertinoIcons.link),
+                            onTap: () {
+                              // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Предложить улучшение'.tr,
+                              style: AppTextStyles.callout.copyWith(color: AppColors.accentsPrimary),
+                            ),
+                            trailing: const Icon(CupertinoIcons.link),
                             onTap: () {
                               // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                             },
@@ -321,9 +304,6 @@ class GreetingAuth extends StatelessWidget {
                       TextButton(
                         onPressed: signOut,
                         child: Text('Выйти'.tr),
-                      ),
-                      const SizedBox(
-                        height: 1000,
                       ),
                     ],
                   ),
