@@ -8,6 +8,7 @@ import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:magic_plan/resources/resources.dart';
+import '../../navigation/app_router.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
@@ -43,9 +44,13 @@ class AuthGatePage extends StatefulWidget {
 }
 
 class _AuthGatePageState extends State<AuthGatePage> {
-  TextEditingController phoneController = TextEditingController(text: '+79853085859');
+  TextEditingController phoneController =
+      TextEditingController(text: '+79853085859');
+
   // TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController = TextEditingController(text: '111111');
+  TextEditingController passwordController =
+      TextEditingController(text: '111111');
+
   // TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -93,7 +98,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
                             child: MaterialBanner(
                               backgroundColor:
                                   Theme.of(context).colorScheme.error,
-                              content: SelectableText('Ощибка для отладки : \n$error'),
+                              content: SelectableText(
+                                  'Ощибка для отладки : \n$error'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -101,7 +107,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
                                       error = '';
                                     });
                                   },
-                                  child:  Text(
+                                  child: Text(
                                     'скрыть'.tr,
                                     style: const TextStyle(color: Colors.white),
                                   ),
@@ -113,31 +119,31 @@ class _AuthGatePageState extends State<AuthGatePage> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          !isSendCode?
-                          const SizedBox.shrink():
-                          CupertinoTextField(
-                            keyboardType:TextInputType.phone,
-                            placeholder: 'Ваш номер'.tr,
-                            controller: phoneController,
-                          ),
-                          isSendCode?
-                          const SizedBox.shrink():
-                          CupertinoTextField(
-                            keyboardType:TextInputType.number,
-                            obscureText: isHidePassword,
-                            placeholder: 'Код'.tr,
-                            controller: passwordController,
-                            suffix: GestureDetector(
-                              onTap: () {
-                                setState(() {
-                                  isHidePassword=!isHidePassword;
-                                });
-                              },
-                              child: isHidePassword
-                                  ? const Icon(CupertinoIcons.plus)
-                                  : const Icon(CupertinoIcons.minus),
-                            ),
-                          ),
+                          !isSendCode
+                              ? const SizedBox.shrink()
+                              : CupertinoTextField(
+                                  keyboardType: TextInputType.phone,
+                                  placeholder: 'Ваш номер'.tr,
+                                  controller: phoneController,
+                                ),
+                          isSendCode
+                              ? const SizedBox.shrink()
+                              : CupertinoTextField(
+                                  keyboardType: TextInputType.number,
+                                  obscureText: isHidePassword,
+                                  placeholder: 'Код'.tr,
+                                  controller: passwordController,
+                                  suffix: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isHidePassword = !isHidePassword;
+                                      });
+                                    },
+                                    child: isHidePassword
+                                        ? const Icon(CupertinoIcons.plus)
+                                        : const Icon(CupertinoIcons.minus),
+                                  ),
+                                ),
                           const SizedBox(height: 20),
                           SizedBox(
                             width: double.infinity,
@@ -145,30 +151,40 @@ class _AuthGatePageState extends State<AuthGatePage> {
                             child: ElevatedButton(
                               onPressed: isLoading
                                   ? null
-                                  :  !isSendCode? (){
-                               //todo добавить проверку на поля
-                                _sendCode(verId: verificationId,smsCode: passwordController.text);
-                              }: () {
-                                setState(() {
-                                  isSendCode=!isSendCode;
-                                });
-                                      _handleMultiFactorException(
-                                        _emailAndPassword,
-                                      );
-                                    },
+                                  : !isSendCode
+                                      ? () {
+                                          //todo добавить проверку на поля
+                                          _sendCode(
+                                              verId: verificationId,
+                                              smsCode: passwordController.text);
+                                        }
+                                      : () {
+                                          setState(() {
+                                            isSendCode = !isSendCode;
+                                          });
+                                          _handleMultiFactorException(
+                                            _emailAndPassword,
+                                          );
+                                        },
                               child: isLoading
                                   ? const CircularProgressIndicator.adaptive()
-                                  :  isSendCode?
-                              Text('получить код'.tr):
-                              Text('отправить код'.tr),
+                                  : isSendCode
+                                      ? Text('получить код'.tr)
+                                      : Text('отправить код'.tr),
                             ),
                           ),
                           TextButton(
-                            onPressed: (){},
+                            onPressed: () {
+                              // context.router.pushNamed('/authIn');
+                              context.router
+                                  .push(GreetingAuthRoute(signOut: () async {
+                                await auth.signOut();
+                              }));
+                              auth.signOut();
+                            },
                             // onPressed: _resetPassword,
-                            child:  Text('Забыли пароль?'.tr),
+                            child: Text('Забыли пароль?'.tr),
                           ),
-
                         ],
                       ),
                     ),
@@ -313,8 +329,6 @@ class _AuthGatePageState extends State<AuthGatePage> {
         verificationId = verificationIdloc;
 
         // final smsCode = await getSmsCodeFromUser(context);
-
-
       },
       codeAutoRetrievalTimeout: (e) {
         if (mounted) {
@@ -332,28 +346,26 @@ class _AuthGatePageState extends State<AuthGatePage> {
     super.dispose();
   }
 
-  Future<void> _sendCode ({required String verId, required String smsCode}) async {
-      final credential = PhoneAuthProvider.credential(
-        verificationId: verId,
-        smsCode: smsCode,
-      );
+  Future<void> _sendCode(
+      {required String verId, required String smsCode}) async {
+    final credential = PhoneAuthProvider.credential(
+      verificationId: verId,
+      smsCode: smsCode,
+    );
 
-      try {
-        UserCredential userCredential =
-            await auth.signInWithCredential(credential);
-        if (userCredential.user != null) {
-          Navigator.of(context)
-              .pushNamedAndRemoveUntil('greeting', (route) => false);
-        }
-      } on FirebaseAuthException catch (e) {
-        setState(() {
-          error = e.message ?? '';
-        });
+    try {
+      UserCredential userCredential =
+          await auth.signInWithCredential(credential);
+      if (userCredential.user != null) {
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil('greeting', (route) => false);
       }
-
-
+    } on FirebaseAuthException catch (e) {
+      setState(() {
+        error = e.message ?? '';
+      });
+    }
   }
-
 }
 
 Future<String?> getSmsCodeFromUser(BuildContext context) async {

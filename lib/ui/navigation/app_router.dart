@@ -35,7 +35,7 @@ class AppRouter extends _$AppRouter {
               path: 'noAuth',
             ),
             AutoRoute(
-              page: GreetingNotAuthRoute.page,
+              page: GreetingAuthRoute.page,
               path: 'authIn',
             ),
           ],

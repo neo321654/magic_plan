@@ -78,10 +78,13 @@ class GreetingPage extends StatelessWidget {
     //final viewModel = context.read<_ViewModel>();
 
     return AutoTabsRouter(
-      routes: const [
+      routes: [
         GreetingNotAuthRoute(),
+
         LoaderWidgetRoute(),
         AuthGateRoute(),
+        ProfileRoute(),
+        GreetingAuthRoute(signOut: _signOut),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
