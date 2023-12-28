@@ -35,8 +35,13 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    user = auth.currentUser!;
-    controller = TextEditingController(text: user.displayName);
+    //todo сюда нельзя поподать из других экранов
+    if(auth.currentUser!=null){
+      user = auth.currentUser!;
+      controller = TextEditingController(text: user.displayName);
+    }
+
+
 
     controller.addListener(_onNameChanged);
 

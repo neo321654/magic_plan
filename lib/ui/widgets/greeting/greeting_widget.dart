@@ -19,13 +19,14 @@ class GreetingWidgetPage extends StatelessWidget {
     // return Text('dfdf');
     return AutoTabsRouter(
       routes: const [
-        // GreetingNotAuthRoute(),
-        AuthGateRoute(),
+
+        MainRouteWidgetRoute(),
         AuthInTabBarWidgetRoute(),
 
         // LoaderWidgetRoute(),
-
-        // ProfileRoute(),
+        GreetingNotAuthRoute(),
+        ProfileRoute(),
+        AuthGateRoute(),
         // GreetingAuthRoute(signOut: _signOut),
       ],
       builder: (context, child) {

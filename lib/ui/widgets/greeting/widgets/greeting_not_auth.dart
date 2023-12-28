@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../navigation/app_router.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
@@ -69,7 +70,11 @@ class GreetingNotAuthPage extends StatelessWidget {
                         trailing: const RightArrowWidget(),
                         onTap: () {
                           //todo изменить на вход в аккаунт
-                          context.router.pushNamed('/auth');
+                          // context.router.push(AuthGateRoute());
+                          // router.root
+                          // context.router.root.replace(const AuthGateRoute());
+                          // context.router.root.push(const AuthGateRoute());
+                          context.router.navigateNamed('/root/auth');
                         // context.router.push(AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,

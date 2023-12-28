@@ -6,6 +6,7 @@ import '../widgets/greeting/greeting_widget.dart';
 import '../widgets/greeting/widgets/greeting_auth.dart';
 import '../widgets/greeting/widgets/greeting_not_auth.dart';
 import '../widgets/loader_widget.dart';
+import '../widgets/main_screen.dart';
 import '../widgets/profile/profile.dart';
 import '../widgets/tab_bar_widget.dart';
 
@@ -37,6 +38,10 @@ class AppRouter extends _$AppRouter {
             page: AuthInTabBarWidgetRoute.page,
             path: 'authInTabBar',
             initial: true,
+          ),
+          AutoRoute(
+            page: MainRouteWidgetRoute.page,
+            path: 'mainRouteWidget',
           ),
         ]),
       ];
