@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -16,36 +15,28 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(
-          page: GreetingWidgetRoute.page,
-          path: '/',
-          children: [
-            AutoRoute(
-              page: AuthGateRoute.page,
-              path: 'auth',
-            ),
-            AutoRoute(
-              page: ProfileRoute.page,
-              path: 'profile',
-            ),
-            AutoRoute(
-              page: LoaderWidgetRoute.page,
-            ),
-            AutoRoute(
-              page: GreetingNotAuthRoute.page,
-              path: 'noAuth',
-            ),
-            AutoRoute(
-              page: GreetingAuthRoute.page,
-              path: 'authIn',
-            ),
-            AutoRoute(
-              page: AuthInTabBarWidgetRoute.page,
-              path: 'authInTabBar',
-            ),
-          ],
-        ),
-
-
+        AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
+        AutoRoute(page: GreetingWidgetRoute.page, path: '/root', children: [
+          AutoRoute(
+            page: AuthGateRoute.page,
+            path: 'auth',
+          ),
+          AutoRoute(
+            page: ProfileRoute.page,
+            path: 'profile',
+          ),
+          AutoRoute(
+            page: GreetingNotAuthRoute.page,
+            path: 'noAuth',
+          ),
+          AutoRoute(
+            page: GreetingAuthRoute.page,
+            path: 'authIn',
+          ),
+          AutoRoute(
+            page: AuthInTabBarWidgetRoute.page,
+            path: 'authInTabBar',
+          ),
+        ]),
       ];
 }

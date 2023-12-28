@@ -4,7 +4,6 @@ import 'package:flutter_svg/svg.dart';
 import '/resources/resources.dart';
 import '/domain/services/auth_service.dart';
 import '/domain/services/user_service.dart';
-import '/ui/navigation/main_navigation.dart';
 import 'package:provider/provider.dart';
 import 'components/widgets.dart';
 
@@ -43,10 +42,7 @@ class _ViewModel extends ChangeNotifier {
     _updateState();
   }
 
-  Future<void> onLogoutPressed(BuildContext context) async {
-    await _authService.logout();
-    MainNavigation.showLoader(context);
-  }
+
 
   void _updateState() {
     final user = _userService.user;

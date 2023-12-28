@@ -1,11 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import 'package:magic_plan/ui/widgets/profile/profile.dart';
 import '../navigation/app_router.dart';
 import '/resources/resources.dart';
-import 'greeting/greeting_widget.dart';
-import '/ui/widgets/loader_widget.dart';
-import 'auth/auth.dart';
 
 class MyApp extends StatelessWidget {
    MyApp({super.key}) : appRouter = AppRouter();
