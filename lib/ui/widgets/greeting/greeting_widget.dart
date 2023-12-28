@@ -63,13 +63,13 @@ class _ViewModel extends ChangeNotifier {
 }
 
 @RoutePage()
-class GreetingPage extends StatelessWidget {
-  const GreetingPage({Key? key}) : super(key: key);
+class GreetingWidgetPage extends StatelessWidget {
+  const GreetingWidgetPage({Key? key}) : super(key: key);
 
   static Widget create() {
     return ChangeNotifierProvider(
       create: (_) => _ViewModel(),
-      child: const GreetingPage(),
+      child: const GreetingWidgetPage(),
     );
   }
 
@@ -80,6 +80,7 @@ class GreetingPage extends StatelessWidget {
     return AutoTabsRouter(
       routes: [
         GreetingNotAuthRoute(),
+        AuthInTabBarWidgetRoute(),
 
         LoaderWidgetRoute(),
         AuthGateRoute(),
@@ -106,23 +107,7 @@ class GreetingPage extends StatelessWidget {
             return child;
           },
         );
-        // CupertinoTabScaffold(
-        //  backgroundColor: AppColors.primaryMainBackground,
-        //  tabBuilder: (BuildContext context, int index) {
-        //    return CupertinoTabView(
-        //      builder: (BuildContext context) {
-        //        return StreamBuilder<User?>(
-        //          stream: auth.authStateChanges(),
-        //          builder: (context, snapshot) {
-        //            if (snapshot.hasData) {
-        //              return GreetingAuth(signOut: _signOut);
-        //            }
-        //            return const GreetingNotAuth();
-        //          },
-        //        );
-        //      },
-        //    );
-        //  },
+
       },
     );
   }
