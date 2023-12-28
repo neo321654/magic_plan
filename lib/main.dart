@@ -10,7 +10,7 @@ import 'firebase_options.dart';
 late final FirebaseApp appFire;
 late final FirebaseAuth auth;
 
-//commit on drank a laptop
+//commit return to mac
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
