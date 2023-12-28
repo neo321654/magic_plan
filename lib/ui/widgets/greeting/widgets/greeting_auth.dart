@@ -13,6 +13,7 @@ class GreetingAuth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
@@ -136,10 +137,8 @@ class GreetingAuth extends StatelessWidget {
                                     color: AppColors.primaryButtons,
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                      vertical: 8.0,
-                                      horizontal: 12.0,
-                                    ),
+                                    padding:
+                                    AppDimensions.edgeInsetsButtons,
                                     child: Text(
                                       'ВЛАДЕЛЕЦ'.tr,
                                       style: AppTextStyles.caption2bold
@@ -158,7 +157,7 @@ class GreetingAuth extends StatelessWidget {
                           ),
                           CupertinoListTile(
                             title: Text(
-                              'Профиль компании'.tr,
+                              'Профиль Kомпании'.tr,
                               style: AppTextStyles.callout,
                             ),
                             trailing: Row(
@@ -192,7 +191,7 @@ class GreetingAuth extends StatelessWidget {
                             padding: AppDimensions.tilePadding,
                           ),
                           CupertinoListTile(
-                            leadingSize: 100,
+                            // leadingSize: 100,
                             title: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -213,9 +212,10 @@ class GreetingAuth extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                CupertinoButton.filled(
+                                CupertinoButton(
                                   onPressed: () {},
-                                  padding: EdgeInsets.zero,
+                                  color: AppColors.accentsPrimary,
+                                  padding: AppDimensions.edgeInsetsButtons,
                                   child: Text(
                                     'ВЫБРАТЬ'.tr,
                                     style: AppTextStyles.caption2bold.copyWith(

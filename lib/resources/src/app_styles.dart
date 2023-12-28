@@ -28,7 +28,7 @@ abstract class AppTextStyles {
     color: AppColors.primaryTexts,
     fontSize: 16.toFigma,
     fontWeight: FontWeight.w400,
-    letterSpacing: -0.8,
+    letterSpacing: 0.02,
   );
   static TextStyle foontoneBold = TextStyle(
     color: AppColors.primaryTexts,
