@@ -201,7 +201,8 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                '+7(444)9494949'.tr,
+
+                                user.phoneNumber??'+7(111)1111111',
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
