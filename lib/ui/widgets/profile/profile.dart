@@ -3,6 +3,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import '../components/my_custom_nav_bar.dart';
+import '../components/widgets.dart';
 import '/resources/resources.dart';
 import '../auth/auth.dart';
 import '/main.dart';
@@ -116,118 +117,141 @@ return GestureDetector(
 
             ),
             SliverToBoxAdapter(
-              child: Stack(
-                children: [
-                  Center(
-                    child: SizedBox(
-                      width: 400,
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Stack(
-                              children: [
-                                CircleAvatar(
-                                  maxRadius: 60,
-                                  backgroundImage: NetworkImage(
-                                    user.photoURL ?? placeholderImage,
-                                  ),
-                                ),
-                                Positioned.directional(
-                                  textDirection: Directionality.of(context),
-                                  end: 0,
-                                  bottom: 0,
-                                  child:
-                                  Material(
-                                    clipBehavior: Clip.antiAlias,
-                                    color: Theme.of(context).colorScheme.secondary,
-                                    borderRadius: BorderRadius.circular(40),
-                                    child: InkWell(
-                                      onTap: () async {
-                                        final photoURL = await getPhotoURLFromUser();
-
-                                        if (photoURL != null) {
-                                          await user.updatePhotoURL(photoURL);
-                                          // await user.updateEmail('neo3224@ram.ru');
-                                          await user.updateDisplayName('NNNNAAMMMEmail');
-                                        }
-                                      },
-                                      radius: 50,
-                                      child: const SizedBox(
-                                        width: 35,
-                                        height: 35,
-                                        child: Icon(Icons.edit),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            CupertinoTextField(
-                              textAlign: TextAlign.center,
-                              controller: controller,
-                              placeholder: 'Click to add a display name'.tr,
-
-                            ),
-                            Text(user.email ?? user.phoneNumber ?? 'User'),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                if (userProviders.contains('phone'))
-                                  const Icon(Icons.phone),
-                                if (userProviders.contains('password'))
-                                  const Icon(Icons.mail),
-                                if (userProviders.contains('google.com'))
-                                  SizedBox(
-                                    width: 24,
-                                    child: Image.network(
-                                      'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
-                                    ),
-                                  ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            // TextButton(
-                            //   onPressed: () {
-                            //     user.sendEmailVerification();
-                            //   },
-                            //   child: const Text('Verify Email'),
-                            // ),
-
-                            CupertinoTextField(
-                              controller: phoneController,
-                              suffix: const Icon(Icons.phone),
-                              placeholder: 'Phone number',
-                            ),
-
-
-                            const Divider(),
-                            TextButton(
-                              onPressed: _signOut,
-                              child:  Text('Выйти'.tr),
-                            ),
-                          ],
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          maxRadius: 60,
+                          backgroundImage: NetworkImage(
+                            user.photoURL ?? placeholderImage,
+                          ),
                         ),
-                      ),
+                        Positioned.directional(
+                          textDirection: Directionality.of(context),
+                          end: 0,
+                          bottom: 0,
+                          child:
+                          Material(
+                            clipBehavior: Clip.antiAlias,
+                            color: Theme.of(context).colorScheme.secondary,
+                            borderRadius: BorderRadius.circular(40),
+                            child: InkWell(
+                              onTap: () async {
+                                final photoURL = await getPhotoURLFromUser();
+
+                                if (photoURL != null) {
+                                  await user.updatePhotoURL(photoURL);
+                                  // await user.updateEmail('neo3224@ram.ru');
+                                  await user.updateDisplayName('NNNNAAMMMEmail');
+                                }
+                              },
+                              radius: 50,
+                              child: const SizedBox(
+                                width: 35,
+                                height: 35,
+                                child: Icon(Icons.edit),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                  Positioned.directional(
-                    textDirection: Directionality.of(context),
-                    end: 40,
-                    top: 40,
-                    child: AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      child: !showSaveButton
-                          ? SizedBox(key: UniqueKey())
-                          : TextButton(
-                        onPressed: isLoading ? null : updateDisplayName,
-                        child: const Text('Save changes'),
-                      ),
+                    const SizedBox(height: 10),
+                    Text(
+                        'apollonovasofia@gmail.com'.tr,
+                      style: AppTextStyles.caption1,
                     ),
-                  ),
-                ],
+
+                    CupertinoListSection.insetGrouped(
+                        separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
+                        children: [
+                          CupertinoListTile(
+
+                            title: Text(
+                              'Аккаунт'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Аккаунт'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Аккаунт'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                        ]),
+
+
+                    CupertinoTextField(
+                      textAlign: TextAlign.center,
+                      controller: controller,
+                      placeholder: 'Click to add a display name'.tr,
+
+                    ),
+                    Text(user.email ?? user.phoneNumber ?? 'User'),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        if (userProviders.contains('phone'))
+                          const Icon(Icons.phone),
+                        if (userProviders.contains('password'))
+                          const Icon(Icons.mail),
+                        if (userProviders.contains('google.com'))
+                          SizedBox(
+                            width: 24,
+                            child: Image.network(
+                              'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
+                            ),
+                          ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     user.sendEmailVerification();
+                    //   },
+                    //   child: const Text('Verify Email'),
+                    // ),
+
+                    CupertinoTextField(
+                      controller: phoneController,
+                      suffix: const Icon(Icons.phone),
+                      placeholder: 'Phone number',
+                    ),
+
+
+                    const Divider(),
+                    TextButton(
+                      onPressed: _signOut,
+                      child:  Text('Выйти'.tr),
+                    ),
+                  ],
+                ),
               ),
             )
 

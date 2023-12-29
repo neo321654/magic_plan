@@ -97,16 +97,16 @@ class _AuthGatePageState extends State<AuthGatePage> {
                       ),
                     ),
                   ),
-                  CupertinoButton(
-                    color: AppColors.accentsPrimary,
-                    onPressed: () {
-                      print('dfdfdd');
-                      // context.router.navigateNamed('/root');
-                      context.router.navigate(AuthInTabBarWidgetRoute());
-
-                    },
-                    child: const Text('test'),
-                  ),
+                  // CupertinoButton(
+                  //   color: AppColors.accentsPrimary,
+                  //   onPressed: () {
+                  //     print('dfdfdd');
+                  //     // context.router.navigateNamed('/root');
+                  //     context.router.navigate(AuthInTabBarWidgetRoute());
+                  //
+                  //   },
+                  //   child: const Text('test'),
+                  // ),
                   const SizedBox(
                     height: 35.0,
                   ),

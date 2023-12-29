@@ -7,7 +7,7 @@ import '../ui/widgets/greeting/tab_bar_widget.dart';
 import '../ui/widgets/greeting/widgets/greeting_auth.dart';
 import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
 import '../ui/widgets/loader_widget.dart';
-import '../ui/widgets/main_screen.dart';
+import '../ui/widgets/maintab/main_screen.dart';
 import '../ui/widgets/profile/profile.dart';
 
 part 'app_router.gr.dart';
@@ -16,8 +16,13 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
-        // AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
+        // AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
+        AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
+
+    AutoRoute(
+      page: ProfileRoute.page,
+      path: '/',
+    ),
         AutoRoute(
           page: GreetingWidgetRoute.page,
           path: '/root',
