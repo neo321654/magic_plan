@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../widgets/auth/auth.dart';
-import '../widgets/greeting/greeting_widget.dart';
-import '../widgets/greeting/widgets/greeting_auth.dart';
-import '../widgets/greeting/widgets/greeting_not_auth.dart';
-import '../widgets/loader_widget.dart';
-import '../widgets/main_screen.dart';
-import '../widgets/profile/profile.dart';
-import '../widgets/tab_bar_widget.dart';
+import '../ui/tab_bar_start_widget.dart';
+import '../ui/widgets/auth/auth.dart';
+import '../ui/widgets/greeting/tab_bar_widget.dart';
+import '../ui/widgets/greeting/widgets/greeting_auth.dart';
+import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
+import '../ui/widgets/loader_widget.dart';
+import '../ui/widgets/main_screen.dart';
+import '../ui/widgets/profile/profile.dart';
 
 part 'app_router.gr.dart';
 

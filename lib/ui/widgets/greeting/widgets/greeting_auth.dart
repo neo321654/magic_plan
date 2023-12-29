@@ -2,6 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:magic_plan/main.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
@@ -9,9 +10,9 @@ import '../../components/widgets.dart';
 
 @RoutePage()
 class GreetingAuthPage extends StatelessWidget {
-  const GreetingAuthPage({required this.signOut, Key? key}) : super(key: key);
+   GreetingAuthPage({Key? key}) : super(key: key);
 
-  final Future<void> Function() signOut;
+  final  Future<void> Function() signOut =auth.signOut;
 
   @override
   Widget build(BuildContext context) {

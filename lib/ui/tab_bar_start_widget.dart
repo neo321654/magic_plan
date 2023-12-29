@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
-import '../../navigation/app_router.dart';
-import '../../../main.dart';
+import '../navigation/app_router.dart';
+import '../main.dart';
 
 
 
@@ -24,7 +24,7 @@ class GreetingWidgetPage extends StatelessWidget {
         AuthInTabBarWidgetRoute(),
 
         // LoaderWidgetRoute(),
-        GreetingNotAuthRoute(),
+        // GreetingNotAuthRoute(),
         ProfileRoute(),
         AuthGateRoute(),
         // GreetingAuthRoute(signOut: _signOut),

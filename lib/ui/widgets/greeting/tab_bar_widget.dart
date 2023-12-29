@@ -2,8 +2,8 @@ import 'package:auto_route/annotations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import '/ui/widgets/greeting/widgets/greeting_auth.dart';
-import '../../main.dart';
-import 'greeting/widgets/greeting_not_auth.dart';
+import '../../../main.dart';
+import 'widgets/greeting_not_auth.dart';
 
 @RoutePage()
 class AuthInTabBarWidgetPage extends StatelessWidget {
@@ -16,7 +16,7 @@ class AuthInTabBarWidgetPage extends StatelessWidget {
         stream: auth.authStateChanges(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            return GreetingAuthPage(signOut: _signOut);
+            return GreetingAuthPage();
           }
           return const GreetingNotAuthPage();
         },

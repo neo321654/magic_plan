@@ -7,7 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:magic_plan/resources/resources.dart';
-import '../../navigation/app_router.dart';
+import '../../../navigation/app_router.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
@@ -97,7 +97,18 @@ class _AuthGatePageState extends State<AuthGatePage> {
                       ),
                     ),
                   ),
-                  const SizedBox(height: 35.0,),
+                  CupertinoButton(
+                    color: AppColors.accentsPrimary,
+                    onPressed: () {
+                      print('dfdfdd');
+                      context.router.navigateNamed('/root');
+
+                    },
+                    child: const Text('test'),
+                  ),
+                  const SizedBox(
+                    height: 35.0,
+                  ),
                   Align(
                     alignment: Alignment.center,
                     child: Text(
@@ -142,9 +153,9 @@ class _AuthGatePageState extends State<AuthGatePage> {
                           !isSendCode
                               ? const SizedBox.shrink()
                               : CupertinoTextField(
-                            padding: AppDimensions.edgeInsetsSearch,
-
-                                  decoration: AppBoxDecorations.editTextDecoration,
+                                  padding: AppDimensions.edgeInsetsSearch,
+                                  decoration:
+                                      AppBoxDecorations.editTextDecoration,
                                   placeholderStyle: AppTextStyles.callout,
                                   keyboardType: TextInputType.phone,
                                   placeholder: '+71234567899'.tr,
@@ -153,9 +164,9 @@ class _AuthGatePageState extends State<AuthGatePage> {
                           isSendCode
                               ? const SizedBox.shrink()
                               : CupertinoTextField(
-                            padding: AppDimensions.edgeInsetsSearch,
-                            decoration: AppBoxDecorations.editTextDecoration,
-
+                                  padding: AppDimensions.edgeInsetsSearch,
+                                  decoration:
+                                      AppBoxDecorations.editTextDecoration,
                                   keyboardType: TextInputType.number,
                                   obscureText: isHidePassword,
                                   placeholder: 'Код из смс'.tr,
@@ -334,7 +345,9 @@ class _AuthGatePageState extends State<AuthGatePage> {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
-        context.router.pop();
+        print('!!!!!dfdf');
+        context.router.navigateNamed('/root');
+
       },
       verificationFailed: (e) {
         setState(() {
@@ -373,8 +386,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
       UserCredential userCredential =
           await auth.signInWithCredential(credential);
       if (userCredential.user != null) {
-        Navigator.of(context)
-            .pushNamedAndRemoveUntil('greeting', (route) => false);
+        context.router.replace(const MainRouteWidgetRoute());
       }
     } on FirebaseAuthException catch (e) {
       setState(() {

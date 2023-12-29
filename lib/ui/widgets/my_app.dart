@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
-import '../navigation/app_router.dart';
+import '../../navigation/app_router.dart';
 import '/resources/resources.dart';
 
 class MyApp extends StatelessWidget {
