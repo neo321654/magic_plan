@@ -28,6 +28,7 @@ class GreetingWidgetPage extends StatelessWidget {
         ProfileRoute(),
         AuthGateRoute(),
         // GreetingAuthRoute(),
+        // GreetingAuthRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);

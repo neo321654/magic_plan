@@ -1,8 +1,10 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:magic_plan/main.dart';
+import 'package:magic_plan/navigation/app_router.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
@@ -103,7 +105,7 @@ class GreetingAuthPage extends StatelessWidget {
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                Navigator.of(context).pushNamed('profile');
+                               context.router.push(ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
                             ),

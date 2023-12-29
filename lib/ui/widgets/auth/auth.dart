@@ -101,7 +101,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
                     color: AppColors.accentsPrimary,
                     onPressed: () {
                       print('dfdfdd');
-                      context.router.navigateNamed('/root');
+                      // context.router.navigateNamed('/root');
+                      context.router.navigate(AuthInTabBarWidgetRoute());
 
                     },
                     child: const Text('test'),
@@ -346,7 +347,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
         print('!!!!!dfdf');
-        context.router.navigateNamed('/root');
+       // context.router.navigateNamed('/root');
+       // context.router.navigate(AuthInTabBarWidgetRoute());
 
       },
       verificationFailed: (e) {
@@ -386,7 +388,13 @@ class _AuthGatePageState extends State<AuthGatePage> {
       UserCredential userCredential =
           await auth.signInWithCredential(credential);
       if (userCredential.user != null) {
-        context.router.replace(const MainRouteWidgetRoute());
+
+
+        context.router.popUntilRoot();
+        context.router.popAndPush(AuthInTabBarWidgetRoute());
+        // context.router.push(AuthInTabBarWidgetRoute());
+        //todo replace не работает
+        // context.router.replace(AuthInTabBarWidgetRoute());
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
