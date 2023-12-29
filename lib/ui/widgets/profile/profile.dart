@@ -256,7 +256,7 @@ class ProfilePageState extends State<ProfilePage> {
                               'Информация об Обновлениях'.tr,
                               style: AppTextStyles.callout,
                             ),
-                            trailing:CupertinoSwitch(
+                            trailing: CupertinoSwitch(
                               // This bool value toggles the switch.
                               value: true,
                               activeColor: AppColors.accentsPrimary,
@@ -279,11 +279,22 @@ class ProfilePageState extends State<ProfilePage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 17.0),
-                        child: Text(
-
-                          'Сейчас вы получаете информацию об обновлениях платформы на ваш email. Условия политики конф.'.tr,
+                        child: RichText(
                           textAlign: TextAlign.center,
-                          style: AppTextStyles.caption1,
+                          text: TextSpan(
+                            text:
+                                'Сейчас вы получаете информацию об обновлениях платформы на ваш email.'
+                                    .tr,
+                            style: AppTextStyles.caption1,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: ' Условия политики конф.'.tr,
+                                style: AppTextStyles.caption1.copyWith(
+                                  color: AppColors.accentsPrimary,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                       CupertinoTextField(
