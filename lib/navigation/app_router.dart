@@ -18,36 +18,36 @@ class AppRouter extends _$AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
         // AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
-        AutoRoute(page: GreetingWidgetRoute.page, path: '/root', children: [
-          AutoRoute(
-            page: AuthGateRoute.page,
-            path: 'auth',
-          ),
-          AutoRoute(
-            page: ProfileRoute.page,
-            path: 'profile',
-          ),
-          AutoRoute(
-            page: GreetingNotAuthRoute.page,
-            path: 'noAuth',
-          ),
-          AutoRoute(
-            page: GreetingAuthRoute.page,
-            path: 'authIn',
-          ),
-          AutoRoute(
-            page: AuthInTabBarWidgetRoute.page,
-            path: 'authInTabBar',
-            initial: true,
-          ),
-          AutoRoute(
-            page: MainRouteWidgetRoute.page,
-            path: 'mainRouteWidget',
-          ),
-        ]),
-    // AutoRoute(
-    //   page: AuthGateRoute.page,
-    //   path: '/',
-    // ),
+        AutoRoute(
+          page: GreetingWidgetRoute.page,
+          path: '/root',
+          children: [
+            AutoRoute(
+              page: AuthInTabBarWidgetRoute.page,
+              path: 'authInTabBar',
+              initial: true,
+            ),
+            AutoRoute(
+              page: AuthGateRoute.page,
+              path: 'auth',
+            ),
+            AutoRoute(
+              page: ProfileRoute.page,
+              path: 'profile',
+            ),
+            AutoRoute(
+              page: GreetingNotAuthRoute.page,
+              path: 'noAuth',
+            ),
+            AutoRoute(
+              page: GreetingAuthRoute.page,
+              path: 'authIn',
+            ),
+            AutoRoute(
+              page: MainRouteWidgetRoute.page,
+              path: 'mainRouteWidget',
+            ),
+          ],
+        ),
       ];
 }

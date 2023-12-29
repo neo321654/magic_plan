@@ -24,10 +24,10 @@ class GreetingWidgetPage extends StatelessWidget {
         AuthInTabBarWidgetRoute(),
 
         // LoaderWidgetRoute(),
-        // GreetingNotAuthRoute(),
+        GreetingNotAuthRoute(),
         ProfileRoute(),
         AuthGateRoute(),
-        // GreetingAuthRoute(signOut: _signOut),
+        // GreetingAuthRoute(),
       ],
       builder: (context, child) {
         final tabsRouter = AutoTabsRouter.of(context);
