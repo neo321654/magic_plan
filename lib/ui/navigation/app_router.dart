@@ -16,8 +16,8 @@ part 'app_router.gr.dart';
 class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
-        // AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
-        AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
+        AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
+        // AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
         AutoRoute(page: GreetingWidgetRoute.page, path: '/root', children: [
           AutoRoute(
             page: AuthGateRoute.page,
@@ -45,9 +45,9 @@ class AppRouter extends _$AppRouter {
             path: 'mainRouteWidget',
           ),
         ]),
-    AutoRoute(
-      page: AuthGateRoute.page,
-      path: '/',
-    ),
+    // AutoRoute(
+    //   page: AuthGateRoute.page,
+    //   path: '/',
+    // ),
       ];
 }

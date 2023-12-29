@@ -144,21 +144,21 @@ class _AuthGatePageState extends State<AuthGatePage> {
                               : CupertinoTextField(
                             padding: AppDimensions.edgeInsetsSearch,
 
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(13),
-                                    color: AppColors.primaryMainBackground,
-                                  ),
+                                  decoration: AppBoxDecorations.editTextDecoration,
                                   placeholderStyle: AppTextStyles.callout,
                                   keyboardType: TextInputType.phone,
-                                  placeholder: 'Ваш номер'.tr,
+                                  placeholder: '+71234567899'.tr,
                                   controller: phoneController,
                                 ),
                           isSendCode
                               ? const SizedBox.shrink()
                               : CupertinoTextField(
+                            padding: AppDimensions.edgeInsetsSearch,
+                            decoration: AppBoxDecorations.editTextDecoration,
+
                                   keyboardType: TextInputType.number,
                                   obscureText: isHidePassword,
-                                  placeholder: 'Код'.tr,
+                                  placeholder: 'Код из смс'.tr,
                                   controller: passwordController,
                                   suffix: GestureDetector(
                                     onTap: () {

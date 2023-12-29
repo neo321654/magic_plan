@@ -55,3 +55,10 @@ abstract class AppTextStyles {
     letterSpacing: 0.6,
   );
 }
+
+abstract class AppBoxDecorations {
+  static BoxDecoration editTextDecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(13),
+    color: AppColors.primaryMainBackground,
+  );
+}
