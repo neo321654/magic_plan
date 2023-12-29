@@ -76,7 +76,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                           // context.router.navigate(const ProfileRoute());
                           print(context.router.current.path);
                           // context.router.replaceNamed('/root/authInTabBar/auth');
-                        context.router.push(AuthGateRoute());
+                        context.router.push(const AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
                       ),

@@ -1,4 +1,3 @@
-import 'package:auto_route/annotations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -105,7 +104,7 @@ class GreetingAuthPage extends StatelessWidget {
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                               context.router.push(ProfileRoute());
+                               context.router.push(const ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
                             ),

@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import '/resources/resources.dart';
 import '../navigation/app_router.dart';
 import '../main.dart';
 
@@ -36,14 +38,14 @@ class GreetingWidgetPage extends StatelessWidget {
           controller: controller,
           tabBar: CupertinoTabBar(
             onTap: tabsRouter.setActiveIndex,
-            items: const <BottomNavigationBarItem>[
+            items:  <BottomNavigationBarItem>[
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.star_fill),
-                label: 'Favorites',
+                icon: const Icon(Icons.dashboard_rounded),
+                label: 'Мои проекты'.tr,
               ),
               BottomNavigationBarItem(
-                icon: Icon(CupertinoIcons.clock_solid),
-                label: 'Recents',
+                icon: const Icon(CupertinoIcons.person_solid),
+                label: 'Мой аккаунт'.tr,
               ),
             ],
           ),

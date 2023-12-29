@@ -297,48 +297,28 @@ class ProfilePageState extends State<ProfilePage> {
                           ),
                         ),
                       ),
-                      CupertinoTextField(
-                        textAlign: TextAlign.center,
-                        controller: controller,
-                        placeholder: 'Click to add a display name'.tr,
+                      const SizedBox(
+                        height: 16.0,
                       ),
-                      Text(user.email ?? user.phoneNumber ?? 'User'),
-                      const SizedBox(height: 10),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      CupertinoListSection.insetGrouped(
+                        // separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
                         children: [
-                          if (userProviders.contains('phone'))
-                            const Icon(Icons.phone),
-                          if (userProviders.contains('password'))
-                            const Icon(Icons.mail),
-                          if (userProviders.contains('google.com'))
-                            SizedBox(
-                              width: 24,
-                              child: Image.network(
-                                'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
-                              ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Удалить Аккаунт'.tr,
+                              style: AppTextStyles.callout,
                             ),
+                            trailing:
+                            const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
                         ],
                       ),
-                      const SizedBox(height: 20),
-                      // TextButton(
-                      //   onPressed: () {
-                      //     user.sendEmailVerification();
-                      //   },
-                      //   child: const Text('Verify Email'),
-                      // ),
 
-                      CupertinoTextField(
-                        controller: phoneController,
-                        suffix: const Icon(Icons.phone),
-                        placeholder: 'Phone number',
-                      ),
-
-                      const Divider(),
-                      TextButton(
-                        onPressed: _signOut,
-                        child: Text('Выйти'.tr),
-                      ),
                     ],
                   ),
                 ),
