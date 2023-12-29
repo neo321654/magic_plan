@@ -111,6 +111,7 @@ class ProfilePageState extends State<ProfilePage> {
                     horizontal: 8.0,
                   ),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Stack(
@@ -180,8 +181,13 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             CupertinoListTile(
                               title: Text(
-                                'Аккаунт'.tr,
+                                'Фамилия'.tr,
                                 style: AppTextStyles.callout,
+                              ),
+                              additionalInfo: Text(
+                                'Аполлонова'.tr,
+                                style: AppTextStyles.callout
+                                    .copyWith(color: AppColors.primaryButtons),
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
@@ -191,8 +197,13 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             CupertinoListTile(
                               title: Text(
-                                'Аккаунт'.tr,
+                                'Телефон'.tr,
                                 style: AppTextStyles.callout,
+                              ),
+                              additionalInfo: Text(
+                                '+7(444)9494949'.tr,
+                                style: AppTextStyles.callout
+                                    .copyWith(color: AppColors.primaryButtons),
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
@@ -202,6 +213,79 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                           ]),
 
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      CupertinoListSection.insetGrouped(
+                        // separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
+                        children: [
+                          CupertinoListTile(
+                            title: Text(
+                              'Изменить Email'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                          CupertinoListTile(
+                            title: Text(
+                              'Обновить пароль'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing: const RightArrowWidget(),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      CupertinoListSection.insetGrouped(
+                        // separatorColor: Colors.transparent,
+                        margin: const EdgeInsets.all(0),
+                        children: [
+                          CupertinoListTile(
+                            title: Text(
+                              'Информация об Обновлениях'.tr,
+                              style: AppTextStyles.callout,
+                            ),
+                            trailing:CupertinoSwitch(
+                              // This bool value toggles the switch.
+                              value: true,
+                              activeColor: AppColors.accentsPrimary,
+                              onChanged: (bool? value) {
+                                // This is called when the user toggles the switch.
+                                // setState(() {
+                                //   switchValue = value ?? false;
+                                // });
+                              },
+                            ),
+                            onTap: () {
+                              // context.router.push(ProfileRoute());
+                            },
+                            padding: AppDimensions.tilePadding,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 17.0),
+                        child: Text(
+
+                          'Сейчас вы получаете информацию об обновлениях платформы на ваш email. Условия политики конф.'.tr,
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.caption1,
+                        ),
+                      ),
                       CupertinoTextField(
                         textAlign: TextAlign.center,
                         controller: controller,
