@@ -9,16 +9,12 @@ import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
-
 const placeholderImage =
     'https://upload.wikimedia.org/wikipedia/commons/c/cd/Portrait_Placeholder_Square.png';
-
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
-
-
 
   @override
   ProfilePageState createState() => ProfilePageState();
@@ -37,12 +33,10 @@ class ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     //todo сюда нельзя поподать из других экранов
-    if(auth.currentUser!=null){
+    if (auth.currentUser != null) {
       user = auth.currentUser!;
       controller = TextEditingController(text: user.displayName);
     }
-
-
 
     controller.addListener(_onNameChanged);
 
@@ -96,171 +90,167 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-  }
-
-  @override
   Widget build(BuildContext context) {
-return GestureDetector(
-      onTap: FocusScope.of(context).unfocus,
-      child: CupertinoPageScaffold(
-        child:
-      CustomScrollView(
+    return CupertinoPageScaffold(
+        backgroundColor: AppColors.primaryMainBackground,
+        child: CustomScrollView(
           slivers: <Widget>[
             SliverPersistentHeader(
               //todo решить проблемму с тайтлом предыдущей проблеммы
-              delegate: MyNavBar(title: 'Аккаунт'.tr,prevTitle:'Мой аккаунт'.tr,),
+              delegate: MyNavBar(
+                title: 'Аккаунт'.tr,
+                prevTitle: 'Мой аккаунт'.tr,
+              ),
               pinned: true,
               floating: false,
-
             ),
             SliverToBoxAdapter(
               child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          maxRadius: 60,
-                          backgroundImage: NetworkImage(
-                            user.photoURL ?? placeholderImage,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8.0,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Stack(
+                        children: [
+                          CircleAvatar(
+                            maxRadius: 60,
+                            backgroundImage: NetworkImage(
+                              user.photoURL ?? placeholderImage,
+                            ),
                           ),
-                        ),
-                        Positioned.directional(
-                          textDirection: Directionality.of(context),
-                          end: 0,
-                          bottom: 0,
-                          child:
-                          Material(
-                            clipBehavior: Clip.antiAlias,
-                            color: Theme.of(context).colorScheme.secondary,
-                            borderRadius: BorderRadius.circular(40),
-                            child: InkWell(
-                              onTap: () async {
-                                final photoURL = await getPhotoURLFromUser();
+                          Positioned.directional(
+                            textDirection: Directionality.of(context),
+                            end: 0,
+                            bottom: 0,
+                            child: Material(
+                              clipBehavior: Clip.antiAlias,
+                              color: Theme.of(context).colorScheme.secondary,
+                              borderRadius: BorderRadius.circular(40),
+                              child: InkWell(
+                                onTap: () async {
+                                  final photoURL = await getPhotoURLFromUser();
 
-                                if (photoURL != null) {
-                                  await user.updatePhotoURL(photoURL);
-                                  // await user.updateEmail('neo3224@ram.ru');
-                                  await user.updateDisplayName('NNNNAAMMMEmail');
-                                }
-                              },
-                              radius: 50,
-                              child: const SizedBox(
-                                width: 35,
-                                height: 35,
-                                child: Icon(Icons.edit),
+                                  if (photoURL != null) {
+                                    await user.updatePhotoURL(photoURL);
+                                    // await user.updateEmail('neo3224@ram.ru');
+                                    await user
+                                        .updateDisplayName('NNNNAAMMMEmail');
+                                  }
+                                },
+                                radius: 50,
+                                child: const SizedBox(
+                                  width: 35,
+                                  height: 35,
+                                  child: Icon(Icons.edit),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
+                        ],
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
                         'apollonovasofia@gmail.com'.tr,
-                      style: AppTextStyles.caption1,
-                    ),
+                        style: AppTextStyles.caption1,
+                      ),
 
-                    CupertinoListSection.insetGrouped(
-                        separatorColor: Colors.transparent,
-                        margin: const EdgeInsets.all(0),
+                      CupertinoListSection.insetGrouped(
+
+                          // separatorColor: Colors.transparent,
+                          margin: const EdgeInsets.all(0),
+                          children: [
+                            CupertinoListTile(
+                              title: Text(
+                                'Имя'.tr,
+                                style: AppTextStyles.callout,
+                              ),
+                              additionalInfo: Text(
+                                'Coфья'.tr,
+                                style: AppTextStyles.callout
+                                    .copyWith(color: AppColors.primaryButtons),
+                              ),
+                              trailing: const RightArrowWidget(),
+                              onTap: () {
+                                // context.router.push(ProfileRoute());
+                              },
+                              padding: AppDimensions.tilePadding,
+                            ),
+                            CupertinoListTile(
+                              title: Text(
+                                'Аккаунт'.tr,
+                                style: AppTextStyles.callout,
+                              ),
+                              trailing: const RightArrowWidget(),
+                              onTap: () {
+                                // context.router.push(ProfileRoute());
+                              },
+                              padding: AppDimensions.tilePadding,
+                            ),
+                            CupertinoListTile(
+                              title: Text(
+                                'Аккаунт'.tr,
+                                style: AppTextStyles.callout,
+                              ),
+                              trailing: const RightArrowWidget(),
+                              onTap: () {
+                                // context.router.push(ProfileRoute());
+                              },
+                              padding: AppDimensions.tilePadding,
+                            ),
+                          ]),
+
+                      CupertinoTextField(
+                        textAlign: TextAlign.center,
+                        controller: controller,
+                        placeholder: 'Click to add a display name'.tr,
+                      ),
+                      Text(user.email ?? user.phoneNumber ?? 'User'),
+                      const SizedBox(height: 10),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CupertinoListTile(
-
-                            title: Text(
-                              'Аккаунт'.tr,
-                              style: AppTextStyles.callout,
+                          if (userProviders.contains('phone'))
+                            const Icon(Icons.phone),
+                          if (userProviders.contains('password'))
+                            const Icon(Icons.mail),
+                          if (userProviders.contains('google.com'))
+                            SizedBox(
+                              width: 24,
+                              child: Image.network(
+                                'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
+                              ),
                             ),
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                          CupertinoListTile(
-                            title: Text(
-                              'Аккаунт'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                          CupertinoListTile(
-                            title: Text(
-                              'Аккаунт'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                        ]),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      // TextButton(
+                      //   onPressed: () {
+                      //     user.sendEmailVerification();
+                      //   },
+                      //   child: const Text('Verify Email'),
+                      // ),
 
+                      CupertinoTextField(
+                        controller: phoneController,
+                        suffix: const Icon(Icons.phone),
+                        placeholder: 'Phone number',
+                      ),
 
-                    CupertinoTextField(
-                      textAlign: TextAlign.center,
-                      controller: controller,
-                      placeholder: 'Click to add a display name'.tr,
-
-                    ),
-                    Text(user.email ?? user.phoneNumber ?? 'User'),
-                    const SizedBox(height: 10),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        if (userProviders.contains('phone'))
-                          const Icon(Icons.phone),
-                        if (userProviders.contains('password'))
-                          const Icon(Icons.mail),
-                        if (userProviders.contains('google.com'))
-                          SizedBox(
-                            width: 24,
-                            child: Image.network(
-                              'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
-                            ),
-                          ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    // TextButton(
-                    //   onPressed: () {
-                    //     user.sendEmailVerification();
-                    //   },
-                    //   child: const Text('Verify Email'),
-                    // ),
-
-                    CupertinoTextField(
-                      controller: phoneController,
-                      suffix: const Icon(Icons.phone),
-                      placeholder: 'Phone number',
-                    ),
-
-
-                    const Divider(),
-                    TextButton(
-                      onPressed: _signOut,
-                      child:  Text('Выйти'.tr),
-                    ),
-                  ],
+                      const Divider(),
+                      TextButton(
+                        onPressed: _signOut,
+                        child: Text('Выйти'.tr),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             )
-
           ],
-      )
-
-
-      ),
-    );
+        ));
   }
 
   Future<String?> getPhotoURLFromUser() async {
@@ -305,11 +295,8 @@ return GestureDetector(
     return photoURL;
   }
 
-
-
   Future<void> _signOut() async {
     await auth.signOut();
     Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
-
   }
 }
