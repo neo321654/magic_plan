@@ -7,4 +7,8 @@ abstract class AppDimensions {
     vertical: 8.0,
     horizontal: 12.0,
   );
+  static const EdgeInsets edgeInsetsSearch = EdgeInsets.symmetric(
+    vertical: 12.0,
+    horizontal: 16.0,
+  );
 }

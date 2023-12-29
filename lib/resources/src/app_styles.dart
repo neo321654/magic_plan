@@ -48,4 +48,10 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     letterSpacing: 0.6,
   );
+  static TextStyle proDisplay = TextStyle(
+    color: AppColors.primaryTexts,
+    fontSize: 28.toFigma,
+    fontWeight: FontWeight.w700,
+    letterSpacing: 0.6,
+  );
 }

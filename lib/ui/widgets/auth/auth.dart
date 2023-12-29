@@ -78,131 +78,135 @@ class _AuthGatePageState extends State<AuthGatePage> {
     return GestureDetector(
       onTap: FocusScope.of(context).unfocus,
       child: CupertinoPageScaffold(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  "Закрыть".tr,
-                  style: AppTextStyles.callout.copyWith(
-                    color: AppColors.accentsPrimary,
-                  ),
-                ),
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: SafeArea(
-                      child: Form(
-                        key: formKey,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(maxWidth: 400),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Visibility(
-                                visible: error.isNotEmpty,
-                                child: MaterialBanner(
-                                  backgroundColor:
-                                      Theme.of(context).colorScheme.error,
-                                  content: SelectableText(
-                                      'Ощибка для отладки : \n$error'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        setState(() {
-                                          error = '';
-                                        });
-                                      },
-                                      child: Text(
-                                        'скрыть'.tr,
-                                        style: const TextStyle(
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                  contentTextStyle:
-                                      const TextStyle(color: Colors.white),
-                                  padding: const EdgeInsets.all(10),
-                                ),
-                              ),
-                              const SizedBox(height: 20),
-                              !isSendCode
-                                  ? const SizedBox.shrink()
-                                  : CupertinoTextField(
-                                      keyboardType: TextInputType.phone,
-                                      placeholder: 'Ваш номер'.tr,
-                                      controller: phoneController,
-                                    ),
-                              isSendCode
-                                  ? const SizedBox.shrink()
-                                  : CupertinoTextField(
-                                      keyboardType: TextInputType.number,
-                                      obscureText: isHidePassword,
-                                      placeholder: 'Код'.tr,
-                                      controller: passwordController,
-                                      suffix: GestureDetector(
-                                        onTap: () {
-                                          setState(() {
-                                            isHidePassword = !isHidePassword;
-                                          });
-                                        },
-                                        child: isHidePassword
-                                            ? const Icon(CupertinoIcons.plus)
-                                            : const Icon(CupertinoIcons.minus),
-                                      ),
-                                    ),
-                              const SizedBox(height: 20),
-                              SizedBox(
-                                width: double.infinity,
-                                height: 50,
-                                child: ElevatedButton(
-                                  onPressed: isLoading
-                                      ? null
-                                      : !isSendCode
-                                          ? () {
-                                              //todo добавить проверку на поля
-                                              _sendCode(
-                                                  verId: verificationId,
-                                                  smsCode:
-                                                      passwordController.text);
-                                            }
-                                          : () {
-                                              setState(() {
-                                                isSendCode = !isSendCode;
-                                              });
-                                              _handleMultiFactorException(
-                                                _emailAndPassword,
-                                              );
-                                            },
-                                  child: isLoading
-                                      ? const CircularProgressIndicator
-                                          .adaptive()
-                                      : isSendCode
-                                          ? Text('получить код'.tr)
-                                          : Text('отправить код'.tr),
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {
-                                  // context.router.pushNamed('/authIn');
-                                  context.router.push(
-                                      GreetingAuthRoute(signOut: () async {
-                                    await auth.signOut();
-                                  }));
-                                  auth.signOut();
-                                },
-                                // onPressed: _resetPassword,
-                                child: Text('Забыли пароль?'.tr),
-                              ),
-                            ],
-                          ),
-                        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: 24.0,
+              horizontal: 8.0,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Закрыть".tr,
+                      style: AppTextStyles.callout.copyWith(
+                        color: AppColors.accentsPrimary,
                       ),
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 35.0,),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Text(
+                      "Вход в Аккаунт".tr,
+                      style: AppTextStyles.proDisplay,
+                    ),
+                  ),
+                  Form(
+                    key: formKey,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    child: ConstrainedBox(
+                      constraints: const BoxConstraints(maxWidth: 400),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Visibility(
+                            visible: error.isNotEmpty,
+                            child: MaterialBanner(
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.error,
+                              content: SelectableText(
+                                  'Ощибка для отладки : \n$error'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      error = '';
+                                    });
+                                  },
+                                  child: Text(
+                                    'скрыть'.tr,
+                                    style: const TextStyle(color: Colors.white),
+                                  ),
+                                ),
+                              ],
+                              contentTextStyle:
+                                  const TextStyle(color: Colors.white),
+                              padding: const EdgeInsets.all(10),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          !isSendCode
+                              ? const SizedBox.shrink()
+                              : CupertinoTextField(
+                            padding: AppDimensions.edgeInsetsSearch,
+
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(13),
+                                    color: AppColors.primaryMainBackground,
+                                  ),
+                                  placeholderStyle: AppTextStyles.callout,
+                                  keyboardType: TextInputType.phone,
+                                  placeholder: 'Ваш номер'.tr,
+                                  controller: phoneController,
+                                ),
+                          isSendCode
+                              ? const SizedBox.shrink()
+                              : CupertinoTextField(
+                                  keyboardType: TextInputType.number,
+                                  obscureText: isHidePassword,
+                                  placeholder: 'Код'.tr,
+                                  controller: passwordController,
+                                  suffix: GestureDetector(
+                                    onTap: () {
+                                      setState(() {
+                                        isHidePassword = !isHidePassword;
+                                      });
+                                    },
+                                    child: isHidePassword
+                                        ? const Icon(CupertinoIcons.plus)
+                                        : const Icon(CupertinoIcons.minus),
+                                  ),
+                                ),
+                          const SizedBox(height: 20),
+                          SizedBox(
+                            width: double.infinity,
+                            // height: 50,
+                            child: CupertinoButton(
+                              color: AppColors.accentsPrimary,
+                              onPressed: isLoading
+                                  ? null
+                                  : !isSendCode
+                                      ? () {
+                                          //todo добавить проверку на поля
+                                          _sendCode(
+                                              verId: verificationId,
+                                              smsCode: passwordController.text);
+                                        }
+                                      : () {
+                                          setState(() {
+                                            isSendCode = !isSendCode;
+                                          });
+                                          _handleMultiFactorException(
+                                            _emailAndPassword,
+                                          );
+                                        },
+                              child: isLoading
+                                  ? const CircularProgressIndicator.adaptive()
+                                  : isSendCode
+                                      ? Text('Получить код'.tr)
+                                      : Text('Отправить код'.tr),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
