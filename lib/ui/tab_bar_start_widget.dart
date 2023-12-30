@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 import '/resources/resources.dart';
 import '../navigation/app_router.dart';
 import '../main.dart';
@@ -17,6 +18,7 @@ class GreetingWidgetPage extends StatelessWidget {
     return Stack(
       children: [
         AutoTabsRouter(
+
           routes: const [
             MainRouteWidgetRoute(),
             AuthInTabBarWidgetRoute(),
@@ -31,7 +33,9 @@ class GreetingWidgetPage extends StatelessWidget {
           builder: (context, child) {
             final tabsRouter = AutoTabsRouter.of(context);
             return CupertinoTabScaffold(
+
               controller: controller,
+
               tabBar: CupertinoTabBar(
                 onTap: tabsRouter.setActiveIndex,
                 items: <BottomNavigationBarItem>[
@@ -53,10 +57,16 @@ class GreetingWidgetPage extends StatelessWidget {
         ),
         //todo убрать когда буду удалять талкер
         Positioned(
+          top: 20.0,
+          right: 20.0,
           child:
           CupertinoButton(
             onPressed: () {
-
+              Navigator.of(context).push(
+                CupertinoPageRoute(
+                  builder: (context) => MaterialApp(home: TalkerScreen(talker: talker,appBarTitle: '',appBarLeading: null,)),
+                ),
+              );
             }, child: const Icon(Icons.info),
           ),
         ),

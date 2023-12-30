@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
     // );
 
     return CupertinoApp.router(
+      debugShowCheckedModeBanner: false,
       title: 'Magic plan'.tr,
       theme:  CupertinoThemeData(brightness: Brightness.light,primaryColor: AppColors.accentsPrimary),
       // routerConfig: appRouter.config(),
