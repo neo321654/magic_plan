@@ -19,29 +19,26 @@ late final Talker talker;
 
 //commit return to mac
 
-void main() async{
+void main() async {
   talker = TalkerFlutter.init();
 
   FlutterError.onError = (details) => talker.handle(
-    details.exception,
-    details.stack,
-  );
-  PlatformDispatcher.instance.onError=(er,stack) {
+        details.exception,
+        details.stack,
+      );
+  PlatformDispatcher.instance.onError = (er, stack) {
     talker.handle(er, stack);
     return true;
   };
   runZonedGuarded(() async {
-  WidgetsFlutterBinding.ensureInitialized();
+    WidgetsFlutterBinding.ensureInitialized();
 
-  // We store the app and auth to make testing with a named instance easier.
-  appFire = await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+    // We store the app and auth to make testing with a named instance easier.
+    appFire = await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
 
-  auth = FirebaseAuth.instanceFor(app: appFire);
-
-
-
+    auth = FirebaseAuth.instanceFor(app: appFire);
 
     runApp(MyApp());
   }, (error, stack) {

@@ -5,56 +5,63 @@ import '/resources/resources.dart';
 import '../navigation/app_router.dart';
 import '../main.dart';
 
-
-
 @RoutePage()
 class GreetingWidgetPage extends StatelessWidget {
   const GreetingWidgetPage({Key? key}) : super(key: key);
 
-
-
   @override
   Widget build(BuildContext context) {
     CupertinoTabController controller = CupertinoTabController(initialIndex: 1);
-    //final viewModel = context.read<_ViewModel>();
 
-    // return Text('dfdf');
-    return AutoTabsRouter(
-      routes: const [
+    //todo убрать когда буду удалять талкер
+    return Stack(
+      children: [
+        AutoTabsRouter(
+          routes: const [
+            MainRouteWidgetRoute(),
+            AuthInTabBarWidgetRoute(),
 
-        MainRouteWidgetRoute(),
-        AuthInTabBarWidgetRoute(),
-
-        // LoaderWidgetRoute(),
-        GreetingNotAuthRoute(),
-        ProfileRoute(),
-        AuthGateRoute(),
-        // GreetingAuthRoute(),
-        // GreetingAuthRoute(),
-      ],
-      builder: (context, child) {
-        final tabsRouter = AutoTabsRouter.of(context);
-        return CupertinoTabScaffold(
-          controller: controller,
-          tabBar: CupertinoTabBar(
-            onTap: tabsRouter.setActiveIndex,
-            items:  <BottomNavigationBarItem>[
-              BottomNavigationBarItem(
-                icon: const Icon(Icons.dashboard_rounded),
-                label: 'Мои проекты'.tr,
+            // LoaderWidgetRoute(),
+            GreetingNotAuthRoute(),
+            ProfileRoute(),
+            AuthGateRoute(),
+            // GreetingAuthRoute(),
+            // GreetingAuthRoute(),
+          ],
+          builder: (context, child) {
+            final tabsRouter = AutoTabsRouter.of(context);
+            return CupertinoTabScaffold(
+              controller: controller,
+              tabBar: CupertinoTabBar(
+                onTap: tabsRouter.setActiveIndex,
+                items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.dashboard_rounded),
+                    label: 'Мои проекты'.tr,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(CupertinoIcons.person_solid),
+                    label: 'Мой аккаунт'.tr,
+                  ),
+                ],
               ),
-              BottomNavigationBarItem(
-                icon: const Icon(CupertinoIcons.person_solid),
-                label: 'Мой аккаунт'.tr,
-              ),
-            ],
-          ),
-          tabBuilder: (BuildContext context, int index) {
-            return child;
+              tabBuilder: (BuildContext context, int index) {
+                return child;
+              },
+            );
           },
-        );
+        ),
+        //todo убрать когда буду удалять талкер
+        Positioned(
+          child:
+          CupertinoButton(
+            onPressed: () {
 
-      },
+            }, child: const Icon(Icons.info),
+          ),
+        ),
+
+      ],
     );
   }
 
