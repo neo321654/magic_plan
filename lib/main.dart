@@ -30,7 +30,7 @@ void main() async{
     talker.handle(er, stack);
     return true;
   };
-
+  runZonedGuarded(() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // We store the app and auth to make testing with a named instance easier.
@@ -42,7 +42,9 @@ void main() async{
 
 
 
-  runZonedGuarded(() => runApp(MyApp()), (error, stack) {
+
+    runApp(MyApp());
+  }, (error, stack) {
     talker.handle(error, stack);
   });
 }
