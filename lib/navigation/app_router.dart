@@ -30,6 +30,7 @@ class AppRouter extends _$AppRouter {
           children: [
             AutoRoute(
               page: ListWrapperRoute.page,
+              initial: true,
               children: [
                 AutoRoute(
                   page: AuthInTabBarWidgetRoute.page,

@@ -391,7 +391,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
 
 
         context.router.popUntilRoot();
-        context.router.popAndPush(const AuthInTabBarWidgetRoute());
+        // context.router.popUntilRoot();
+        // context.router.popAndPush(const AuthInTabBarWidgetRoute());
         // context.router.push(AuthInTabBarWidgetRoute());
         //todo replace не работает
         // context.router.replace(AuthInTabBarWidgetRoute());
