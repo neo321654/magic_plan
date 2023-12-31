@@ -54,8 +54,6 @@ class AppRouter extends _$AppRouter {
                 ),
               ],
             ),
-
-
             AutoRoute(
               page: MainRouteWidgetRoute.page,
               path: 'mainRouteWidget',
