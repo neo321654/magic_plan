@@ -19,10 +19,10 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
         // AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
 
-    // AutoRoute(
-    //   page: ProfileRoute.page,
-    //   path: '/',
-    // ),
+        // AutoRoute(
+        //   page: ProfileRoute.page,
+        //   path: '/',
+        // ),
         AutoRoute(
           page: GreetingWidgetRoute.page,
           path: '/root',
@@ -54,5 +54,15 @@ class AppRouter extends _$AppRouter {
             ),
           ],
         ),
+
+        AutoRoute(
+          page: MainRouteWidgetRoute.page,
+          path: '/root/mainRouteWidget',
+        ),
+
+    // AutoRoute(
+    //   page: ProfileRoute.page,
+    //   path: '/root/profile',
+    // ),
       ];
 }
