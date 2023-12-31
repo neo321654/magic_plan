@@ -105,8 +105,8 @@ class GreetingAuthPage extends StatelessWidget {
                               trailing: const RightArrowWidget(),
                               onTap: () {
                                // context.router.navigateNamed('/root/profile');
-                               context.router.popAndPush(ProfileRoute());
-                               // context.router.push(const ProfileRoute());
+                               // context.router.popAndPush(ProfileRoute());
+                               context.router.push(const ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
                             ),

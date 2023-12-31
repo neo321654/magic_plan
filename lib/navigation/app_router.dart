@@ -9,6 +9,7 @@ import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
 import '../ui/widgets/loader_widget.dart';
 import '../ui/widgets/maintab/main_screen.dart';
 import '../ui/widgets/profile/profile.dart';
+import '../ui/widgets/wrapper_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -28,26 +29,33 @@ class AppRouter extends _$AppRouter {
           path: '/root',
           children: [
             AutoRoute(
-              page: AuthInTabBarWidgetRoute.page,
-              path: 'authInTabBar',
-              initial: true,
+              page: ListWrapperRoute.page,
+              children: [
+                AutoRoute(
+                  page: AuthInTabBarWidgetRoute.page,
+                  path: 'authInTabBar',
+                  initial: true,
+                ),
+                AutoRoute(
+                  page: AuthGateRoute.page,
+                  path: 'auth',
+                ),
+                AutoRoute(
+                  page: ProfileRoute.page,
+                  path: 'profile',
+                ),
+                AutoRoute(
+                  page: GreetingNotAuthRoute.page,
+                  path: 'noAuth',
+                ),
+                AutoRoute(
+                  page: GreetingAuthRoute.page,
+                  path: 'authIn',
+                ),
+              ],
             ),
-            AutoRoute(
-              page: AuthGateRoute.page,
-              path: 'auth',
-            ),
-            AutoRoute(
-              page: ProfileRoute.page,
-              path: 'profile',
-            ),
-            AutoRoute(
-              page: GreetingNotAuthRoute.page,
-              path: 'noAuth',
-            ),
-            AutoRoute(
-              page: GreetingAuthRoute.page,
-              path: 'authIn',
-            ),
+
+
             AutoRoute(
               page: MainRouteWidgetRoute.page,
               path: 'mainRouteWidget',
@@ -55,10 +63,7 @@ class AppRouter extends _$AppRouter {
           ],
         ),
 
-        AutoRoute(
-          page: MainRouteWidgetRoute.page,
-          path: '/root/mainRouteWidget',
-        ),
+
 
     // AutoRoute(
     //   page: ProfileRoute.page,

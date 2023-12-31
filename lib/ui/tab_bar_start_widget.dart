@@ -17,60 +17,56 @@ class GreetingWidgetPage extends StatelessWidget {
     //todo убрать когда буду удалять талкер
     return Stack(
       children: [
-        AutoTabsRouter(
-
+        AutoTabsScaffold(
           routes: const [
             MainRouteWidgetRoute(),
             AuthInTabBarWidgetRoute(),
 
             // LoaderWidgetRoute(),
-            GreetingNotAuthRoute(),
-            ProfileRoute(),
-            AuthGateRoute(),
+            // GreetingNotAuthRoute(),
+            // ProfileRoute(),
+            // AuthGateRoute(),
             // GreetingAuthRoute(),
             // GreetingAuthRoute(),
           ],
-          builder: (context, child) {
-            final tabsRouter = AutoTabsRouter.of(context);
-            return CupertinoTabScaffold(
-
-              controller: controller,
-
-              tabBar: CupertinoTabBar(
-                onTap: tabsRouter.setActiveIndex,
-                items: <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: const Icon(Icons.dashboard_rounded),
-                    label: 'Мои проекты'.tr,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: const Icon(CupertinoIcons.person_solid),
-                    label: 'Мой аккаунт'.tr,
-                  ),
-                ],
-              ),
-              tabBuilder: (BuildContext context, int index) {
-                return child;
-              },
+          bottomNavigationBuilder: (_, tabsRouter) {
+            return CupertinoTabBar(
+              currentIndex: tabsRouter.activeIndex,
+              onTap: tabsRouter.setActiveIndex,
+              items: <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                  icon: const Icon(Icons.dashboard_rounded),
+                  label: 'Мои проекты'.tr,
+                ),
+                BottomNavigationBarItem(
+                  icon: const Icon(CupertinoIcons.person_solid),
+                  label: 'Мой аккаунт'.tr,
+                ),
+              ],
             );
+
           },
         ),
         //todo убрать когда буду удалять талкер
         Positioned(
           top: 20.0,
           right: 20.0,
-          child:
-          CupertinoButton(
+          child: CupertinoButton(
             onPressed: () {
               Navigator.of(context).push(
                 CupertinoPageRoute(
-                  builder: (context) => MaterialApp(home: TalkerScreen(talker: talker,appBarTitle: '',appBarLeading: null,)),
+                  builder: (context) => MaterialApp(
+                      home: TalkerScreen(
+                    talker: talker,
+                    appBarTitle: '',
+                    appBarLeading: null,
+                  )),
                 ),
               );
-            }, child: const Icon(Icons.info),
+            },
+            child: const Icon(Icons.info),
           ),
         ),
-
       ],
     );
   }
