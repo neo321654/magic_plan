@@ -131,7 +131,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
                               backgroundColor:
                                   Theme.of(context).colorScheme.error,
                               content: SelectableText(
-                                  'Ощибка для отладки : \n$error'),
+                                  'Ошибка для отладки : \n$error'),
                               actions: [
                                 TextButton(
                                   onPressed: () {
@@ -276,6 +276,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
       await authFunction();
     } on FirebaseAuthMultiFactorException catch (e) {
       setState(() {
+        talker.debug(e.message);
         error = '${e.message}';
       });
       final firstTotpHint = e.resolver.hints
@@ -326,6 +327,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
       );
     } on FirebaseAuthException catch (e) {
       setState(() {
+        talker.debug(e.message);
         error = '${e.message}';
       });
     } catch (e) {
@@ -353,6 +355,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
       },
       verificationFailed: (e) {
         setState(() {
+          talker.debug(e.message);
           error = '${e.message}';
         });
       },
@@ -364,6 +367,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
       codeAutoRetrievalTimeout: (e) {
         if (mounted) {
           setState(() {
+            talker.debug(e);
             error = e;
           });
         }
