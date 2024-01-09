@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import '../../../../main.dart';
 import '../../../../navigation/app_router.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
@@ -88,7 +89,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                         title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                          auth.signInWithEmailAndPassword(email: 'neo321654@rambler.ru', password: '111111');
                         },
                         padding: AppDimensions.tilePadding,
                       ),

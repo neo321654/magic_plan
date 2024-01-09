@@ -44,6 +44,7 @@ class EditEmailPageState extends State<EditEmailPage> {
     }
 
     controller.addListener(_onNameChanged);
+    
 
     auth.userChanges().listen((event) {
       if (event != null && mounted) {
@@ -183,6 +184,7 @@ class EditEmailPageState extends State<EditEmailPage> {
                             ],
                           ),
                           onTap: () {
+                            // auth.currentUser.
                           },
                           padding: AppDimensions.tilePadding,
                         ),
@@ -248,14 +250,23 @@ class EditEmailPageState extends State<EditEmailPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  List<String> namesList = userName.split(',');
+                                
+                                  // auth.signInWithEmailAndPassword(email: email, password: password)
+                                  // auth.createUserWithEmailAndPassword(email: email, password: password)
+                                  // auth.currentUser.linkWithCredential(provider)
 
-                                  user
-                                      .updateDisplayName(
-                                          '${namesList[0]},${controller.text}')
-                                      .then((value) => context.router.pop());
-                                  // user.updateDisplayName('')
-                                  //     .then((value) => context.router.pop());
+
+                                  final credential =
+                                  EmailAuthProvider.credential(email: 'neo321654@rambler.ru', password: '111111');
+                                  auth.currentUser?.linkWithCredential(credential);
+
+                                  //
+                                  // auth.currentUser?.sendEmailVerification()
+                                  // auth.currentUser?.verifyBeforeUpdateEmail('neo321654@rambler.ru');
+                                  // auth.currentUser?.updateEmail('neo321654@rambler.ru');
+
+                                  // auth.currentUser?.updatePassword('111111');
+
                                 },
                               )
                             : const SizedBox.shrink();
