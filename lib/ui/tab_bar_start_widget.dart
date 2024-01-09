@@ -12,7 +12,6 @@ class GreetingWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CupertinoTabController controller = CupertinoTabController(initialIndex: 1);
 
     //todo убрать когда буду удалять талкер
     return Stack(

@@ -228,19 +228,32 @@ class EditEmailPageState extends State<EditEmailPage> {
                                   // auth.createUserWithEmailAndPassword(email: email, password: password)
                                   // auth.currentUser.linkWithCredential(provider)
 
-                                  showAlertDialog(
-                                      context: context,
-                                      message:
-                                          'Введите код из смс в поле код для авторизации.'
-                                              .tr,
-                                      confirmMessage: 'Хорошо'.tr);
+                                  if (emailConfirmController.text !=
+                                          emailController.text ||
+                                      emailConfirmController.text == '' ||
+                                      emailController.text == '') {
+                                    showAlertDialog(
+                                        context: context,
+                                        message: 'Email не совпадает'.tr,
+                                        confirmMessage: 'Хорошо'.tr);
+                                  } else if (passwordController.text != '') {
+                                    try {
+                                      final credential =
+                                          EmailAuthProvider.credential(
+                                              email: emailController.text,
+                                              password:
+                                                  passwordController.text);
 
-                                  final credential =
-                                      EmailAuthProvider.credential(
-                                          email: 'neo321654@rambler.ru',
-                                          password: '111111');
-                                  auth.currentUser
-                                      ?.linkWithCredential(credential);
+                                      auth.currentUser
+                                          ?.linkWithCredential(credential);
+                                    } catch (e) {
+                                      auth.currentUser
+                                          ?.updateEmail('neo321654@rambler.ru');
+
+                                      auth.currentUser
+                                          ?.updatePassword('111111');
+                                    }
+                                  }
 
                                   //
                                   // auth.currentUser?.sendEmailVerification()
