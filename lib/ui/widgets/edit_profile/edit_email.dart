@@ -252,6 +252,11 @@ class EditEmailPageState extends State<EditEmailPage> {
                                         'nnnneo321654@rambler.ru');
 
                                     auth.currentUser?.updatePassword('111111');
+                                  }else{
+                                    showAlertDialog(
+                                        context: context,
+                                        message: 'Подтвердите email , прежде чем обновлять'.tr,
+                                        confirmMessage: 'Хорошо'.tr);
                                   }
 
                                   //
