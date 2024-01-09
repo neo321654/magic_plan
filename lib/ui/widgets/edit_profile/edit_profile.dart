@@ -3,11 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import '../components/my_custom_nav_bar.dart';
-import '../components/widgets.dart';
 import '/resources/resources.dart';
 import '../auth/auth.dart';
 import '/main.dart';
-import 'package:flutter/material.dart';
 
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
@@ -119,17 +117,26 @@ class EditProfilePageState extends State<EditProfilePage> {
                       placeholder: widget.title,
                       // controller: passwordController,
                     ),
-                    Expanded(
-                        child: Container(
-                      color: Colors.yellow,
-                      height: 30,
-                      width: 200,
+                    const Expanded(
+                        child: SizedBox(
+
                     )),
                     KeyboardVisibilityBuilder(
                       builder: (context, isKeyboardVisible) {
-                        return Text(
-                          'The keyboard is: ${isKeyboardVisible ? 'VISIBLE' : 'NOT VISIBLE'}',
-                        );
+                        return isKeyboardVisible
+                            ? CupertinoButton(
+                          padding: const EdgeInsets.only(right: 16,),
+                          color: AppColors.primaryContainersBackground,
+                              child: Align(
+                                alignment: Alignment.centerRight,
+                                child: Text(
+                                  'Сохранить'.tr,
+                                  style: AppTextStyles.bodyBold.copyWith(color: AppColors.accentsPrimary,),
+                                ),
+                              ),
+                              onPressed: () {},
+                            )
+                            : const SizedBox.shrink();
                       },
                     ),
                   ],
