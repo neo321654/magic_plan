@@ -119,162 +119,19 @@ class EditProfilePageState extends State<EditProfilePage> {
                           // separatorColor: Colors.transparent,
                           margin: const EdgeInsets.all(0),
                           children: [
-                            CupertinoListTile(
-                              title: Text(
-                                'Имя'.tr,
-                                style: AppTextStyles.callout,
-                              ),
-                              additionalInfo: Text(
-                                'Настроить'.tr,
-                                style: AppTextStyles.callout
-                                    .copyWith(color: AppColors.primaryButtons),
-                              ),
-                              trailing: const RightArrowWidget(),
-                              onTap: () {
-                                // context.router.push(ProfileRoute());
-                              },
-                              padding: AppDimensions.tilePadding,
-                            ),
-                            CupertinoListTile(
-                              title: Text(
-                                'Фамилия'.tr,
-                                style: AppTextStyles.callout,
-                              ),
-                              additionalInfo: Text(
-                                  'Настроить'.tr,
-                                style: AppTextStyles.callout
-                                    .copyWith(color: AppColors.primaryButtons),
-                              ),
-                              trailing: const RightArrowWidget(),
-                              onTap: () {
-                                // context.router.push(ProfileRoute());
-                              },
-                              padding: AppDimensions.tilePadding,
-                            ),
-                            CupertinoListTile(
-                              title: Text(
-                                'Телефон'.tr,
-                                style: AppTextStyles.callout,
-                              ),
-                              additionalInfo: Text(
 
-                                user.phoneNumber??'+7(111)1111111',
-                                style: AppTextStyles.callout
-                                    .copyWith(color: AppColors.primaryButtons),
-                              ),
-                              trailing: const RightArrowWidget(),
-                              onTap: () {
-                                // context.router.push(ProfileRoute());
-                              },
-                              padding: AppDimensions.tilePadding,
-                            ),
+                            CupertinoTextField(
+                              padding: AppDimensions.edgeInsetsSearch,
+                              decoration:
+                              AppBoxDecorations.editTextDecoration,
+                              keyboardType: TextInputType.number,
+                              // obscureText: isHidePassword,
+                              placeholder: widget.title,
+                              // controller: passwordController,
+
+                            )
                           ]),
 
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      CupertinoListSection.insetGrouped(
-                        // separatorColor: Colors.transparent,
-                        margin: const EdgeInsets.all(0),
-                        children: [
-                          CupertinoListTile(
-                            title: Text(
-                              'Изменить Email'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                          CupertinoListTile(
-                            title: Text(
-                              'Обновить пароль'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing: const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      CupertinoListSection.insetGrouped(
-                        // separatorColor: Colors.transparent,
-                        margin: const EdgeInsets.all(0),
-                        children: [
-                          CupertinoListTile(
-                            title: Text(
-                              'Информация об Обновлениях'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing: CupertinoSwitch(
-                              // This bool value toggles the switch.
-                              value: true,
-                              activeColor: AppColors.accentsPrimary,
-                              onChanged: (bool? value) {
-                                // This is called when the user toggles the switch.
-                                // setState(() {
-                                //   switchValue = value ?? false;
-                                // });
-                              },
-                            ),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 17.0),
-                        child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text:
-                                'Сейчас вы получаете информацию об обновлениях платформы на ваш email.'
-                                    .tr,
-                            style: AppTextStyles.caption1,
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: ' Условия политики конф.'.tr,
-                                style: AppTextStyles.caption1.copyWith(
-                                  color: AppColors.accentsPrimary,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 16.0,
-                      ),
-                      CupertinoListSection.insetGrouped(
-                        // separatorColor: Colors.transparent,
-                        margin: const EdgeInsets.all(0),
-                        children: [
-                          CupertinoListTile(
-                            title: Text(
-                              'Удалить Аккаунт'.tr,
-                              style: AppTextStyles.callout,
-                            ),
-                            trailing:
-                            const RightArrowWidget(),
-                            onTap: () {
-                              // context.router.push(ProfileRoute());
-                            },
-                            padding: AppDimensions.tilePadding,
-                          ),
-                        ],
-                      ),
 
                     ],
                   ),
@@ -285,50 +142,5 @@ class EditProfilePageState extends State<EditProfilePage> {
         ));
   }
 
-  Future<String?> getPhotoURLFromUser() async {
-    String? photoURL;
 
-    // Update the UI - wait for the user to enter the SMS code
-    await showDialog<String>(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        return AlertDialog(
-          title: const Text('New image Url:'),
-          actions: [
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Update'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                photoURL = null;
-                Navigator.of(context).pop();
-              },
-              child: const Text('Cancel'),
-            ),
-          ],
-          content: Container(
-            padding: const EdgeInsets.all(20),
-            child: TextField(
-              onChanged: (value) {
-                photoURL = value;
-              },
-              textAlign: TextAlign.center,
-              autofocus: true,
-            ),
-          ),
-        );
-      },
-    );
-
-    return photoURL;
-  }
-
-  Future<void> _signOut() async {
-    await auth.signOut();
-    Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
-  }
 }

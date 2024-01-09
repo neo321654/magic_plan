@@ -412,43 +412,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
   String? smsCode;
 
-  // await showDialog<String>
-  //   (
-  //   context: context,
-  //   barrierDismissible: false,
-  //   builder: (context)
-  //   {
-  //
-  //     return AlertDialog(
-  //       title: const Text('SMS code:'),
-  //       actions: [
-  //         ElevatedButton(
-  //           onPressed: () {
-  //             Navigator.of(context).pop();
-  //           },
-  //           child: const Text('Sign in'),
-  //         ),
-  //         OutlinedButton(
-  //           onPressed: () {
-  //             smsCode = null;
-  //             Navigator.of(context).pop();
-  //           },
-  //           child: const Text('Cancel'),
-  //         ),
-  //       ],
-  //       content: Container(
-  //         padding: const EdgeInsets.all(20),
-  //         child: TextField(
-  //           onChanged: (value) {
-  //             smsCode = value;
-  //           },
-  //           textAlign: TextAlign.center,
-  //           autofocus: true,
-  //         ),
-  //       ),
-  //     );
-  //   },
-  // );
+
 
   return '111111';
 }
