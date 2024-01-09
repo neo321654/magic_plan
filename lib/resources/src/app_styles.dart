@@ -54,6 +54,12 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w700,
     letterSpacing: 0.6,
   );
+  static TextStyle proText = TextStyle(
+    color: AppColors.primaryButtons,
+    fontSize: 13.toFigma,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.8,
+  );
 }
 
 abstract class AppBoxDecorations {

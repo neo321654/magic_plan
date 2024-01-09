@@ -217,7 +217,12 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-                              // context.router.push(ProfileRoute());
+                              context.router.push(
+                                  EditEmailRoute(title: 'Смена email'.tr)).then((value){
+                                setState(() {
+                                  updateData();
+                                });
+                              });
                             },
                             padding: AppDimensions.tilePadding,
                           ),
