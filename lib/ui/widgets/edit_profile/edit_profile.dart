@@ -100,30 +100,34 @@ class EditProfilePageState extends State<EditProfilePage> {
               pinned: true,
               floating: false,
             ),
-            SliverToBoxAdapter(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8.0,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 24.0,),
-                      CupertinoTextField(
-                        padding: AppDimensions.edgeInsetsSearch,
-                        decoration: AppBoxDecorations.editProfileTextDecoration,
-                        // keyboardType: TextInputType.number,
-                        // obscureText: isHidePassword,
-                        placeholder: widget.title,
-                        // controller: passwordController,
-                      ),
-                    ],
-                  ),
+            SliverFillRemaining(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 8.0,
+                ),
+                child: Column(
+                  children: [
+                    const SizedBox(
+                      height: 24.0,
+                    ),
+                    CupertinoTextField(
+                      padding: AppDimensions.edgeInsetsSearch,
+                      decoration: AppBoxDecorations.editProfileTextDecoration,
+                      // keyboardType: TextInputType.number,
+                      // obscureText: isHidePassword,
+                      placeholder: widget.title,
+                      // controller: passwordController,
+                    ),
+                    Expanded(child: Container(color: Colors.yellow,height: 30,width: 200,)),
+                    Container(
+                      color: Colors.red,
+                      height: 120,
+                    )
+                  ],
                 ),
               ),
-            )
+            ),
+
           ],
         ));
   }

@@ -117,40 +117,40 @@ class ProfilePageState extends State<ProfilePage> {
                     children: [
                       Stack(
                         children: [
-                          CircleAvatar(
-                            maxRadius: 60,
-                            backgroundImage: NetworkImage(
-                              user.photoURL ?? placeholderImage,
-                            ),
-                          ),
-                          Positioned.directional(
-                            textDirection: Directionality.of(context),
-                            end: 0,
-                            bottom: 0,
-                            child: Material(
-                              clipBehavior: Clip.antiAlias,
-                              color: Theme.of(context).colorScheme.secondary,
-                              borderRadius: BorderRadius.circular(40),
-                              child: InkWell(
-                                onTap: () async {
-                                  final photoURL = await getPhotoURLFromUser();
-
-                                  if (photoURL != null) {
-                                    await user.updatePhotoURL(photoURL);
-                                    // await user.updateEmail('neo3224@ram.ru');
-                                    await user
-                                        .updateDisplayName('NNNNAAMMMEmail');
-                                  }
-                                },
-                                radius: 50,
-                                child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(Icons.edit),
-                                ),
-                              ),
-                            ),
-                          ),
+                          // CircleAvatar(
+                          //   maxRadius: 60,
+                          //   backgroundImage: NetworkImage(
+                          //     user.photoURL ?? placeholderImage,
+                          //   ),
+                          // ),
+                          // Positioned.directional(
+                          //   textDirection: Directionality.of(context),
+                          //   end: 0,
+                          //   bottom: 0,
+                          //   child: Material(
+                          //     clipBehavior: Clip.antiAlias,
+                          //     color: Theme.of(context).colorScheme.secondary,
+                          //     borderRadius: BorderRadius.circular(40),
+                          //     child: InkWell(
+                          //       onTap: () async {
+                          //         final photoURL = await getPhotoURLFromUser();
+                          //
+                          //         if (photoURL != null) {
+                          //           await user.updatePhotoURL(photoURL);
+                          //           // await user.updateEmail('neo3224@ram.ru');
+                          //           await user
+                          //               .updateDisplayName('NNNNAAMMMEmail');
+                          //         }
+                          //       },
+                          //       radius: 50,
+                          //       child: const SizedBox(
+                          //         width: 35,
+                          //         height: 35,
+                          //         child: Icon(Icons.edit),
+                          //       ),
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       ),
                       const SizedBox(height: 10),
