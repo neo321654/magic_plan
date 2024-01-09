@@ -30,11 +30,22 @@ class ProfilePageState extends State<ProfilePage> {
   bool showSaveButton = false;
   bool isLoading = false;
 
+  String userName = ',';
+  String name = '';
+  String surname = '';
+
   @override
   void initState() {
     //todo сюда нельзя
     if (auth.currentUser != null) {
       user = auth.currentUser!;
+
+      userName = user.displayName??',';
+      List<String> namesList = userName.split(',');
+      name = namesList[0];
+      surname = namesList[1];
+
+
       controller = TextEditingController(text: user.displayName);
     }
 
@@ -168,10 +179,9 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                (auth.currentUser?.displayName == '')
+                                (name == '')
                                     ? 'Настроить'.tr
-                                    : auth.currentUser?.displayName ??
-                                        'Настроить'.tr,
+                                    : name,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
@@ -189,10 +199,9 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                (auth.currentUser?.displayName == '')
+                                (surname == '')
                                     ? 'Настроить'.tr
-                                    : auth.currentUser?.displayName ??
-                                    'Настроить'.tr,
+                                    : surname,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
