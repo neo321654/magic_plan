@@ -90,69 +90,92 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
+                              const SizedBox(width: 10.0,),
                               Text(
                                 'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
                                 style: AppTextStyles.foontoneText,
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
-                              Text(
-                                'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
-                                style: AppTextStyles.foontoneText,
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
-                              Text(
-                                'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
-                                style: AppTextStyles.foontoneText,
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
-                              Text(
-                                'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
-                                style: AppTextStyles.foontoneText,
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
-                              Text(
-                                'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
-                                style: AppTextStyles.foontoneText,
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
                           Row(
                             children: [
                               Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              SizedBox(width: 10.0,),
-                              Text(
-                                'Все ваши данные будут сразу же удалены'.tr,
-                                textAlign: TextAlign.center,
-                                style: AppTextStyles.foontoneText,
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 6.0,),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              const SizedBox(width: 10.0,),
+                              Expanded(
+                                child: Text(
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  style: AppTextStyles.foontoneText,
+                                ),
+                              ),
+                            ],
+                          ),
+
                         ],
                       ),
                     ),
