@@ -9,16 +9,16 @@ import '../auth/auth.dart';
 import '/main.dart';
 
 @RoutePage()
-class EditProfilePage extends StatefulWidget {
-  const EditProfilePage({Key? key, required this.title}) : super(key: key);
+class EditNamePage extends StatefulWidget {
+  const EditNamePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  EditProfilePageState createState() => EditProfilePageState();
+  EditNamePageState createState() => EditNamePageState();
 }
 
-class EditProfilePageState extends State<EditProfilePage> {
+class EditNamePageState extends State<EditNamePage> {
   late User user;
   late TextEditingController controller;
   final phoneController = TextEditingController();
@@ -28,11 +28,18 @@ class EditProfilePageState extends State<EditProfilePage> {
   bool showSaveButton = false;
   bool isLoading = false;
 
+  String userName = ',';
+
   @override
   void initState() {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
       controller = TextEditingController(text: user.displayName);
+      if(user.displayName !=''){
+        // List<String> nameLastFirst = user.displayName!.split(',');
+        userName = user.displayName??',';
+      }
+
     }
 
     controller.addListener(_onNameChanged);
@@ -46,6 +53,8 @@ class EditProfilePageState extends State<EditProfilePage> {
     });
 
     talker.debug(user.toString());
+
+
 
     super.initState();
   }
@@ -139,9 +148,13 @@ class EditProfilePageState extends State<EditProfilePage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  auth.currentUser
-                                      ?.updateDisplayName(controller.text)
+
+                                 List<String> namesList = userName.split(',');
+
+                                  user.updateDisplayName('${controller.text},${namesList[1]}')
                                       .then((value) => context.router.pop());
+                                  // user.updateDisplayName('')
+                                  //     .then((value) => context.router.pop());
                                 },
                               )
                             : const SizedBox.shrink();

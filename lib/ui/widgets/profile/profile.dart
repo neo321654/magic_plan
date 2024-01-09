@@ -157,7 +157,6 @@ class ProfilePageState extends State<ProfilePage> {
                         'apollonovasofia@gmail.com'.tr,
                         style: AppTextStyles.caption1,
                       ),
-
                       CupertinoListSection.insetGrouped(
 
                           // separatorColor: Colors.transparent,
@@ -169,13 +168,17 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                'Настроить'.tr,
+                                (auth.currentUser?.displayName == '')
+                                    ? 'Настроить'.tr
+                                    : auth.currentUser?.displayName ??
+                                        'Настроить'.tr,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                context.router.push( EditProfileRoute(title: 'Ваше Имя'.tr));
+                                context.router.push(
+                                    EditNameRoute(title: 'Ваше Имя'.tr));
                                 // context.router.push(ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
@@ -186,13 +189,17 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                  'Настроить'.tr,
+                                (auth.currentUser?.displayName == '')
+                                    ? 'Настроить'.tr
+                                    : auth.currentUser?.displayName ??
+                                    'Настроить'.tr,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                // context.router.push(ProfileRoute());
+                                context.router.push(
+                                    EditSurnameRoute(title: 'Ваша Фамилия'.tr));
                               },
                               padding: AppDimensions.tilePadding,
                             ),
@@ -202,8 +209,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-
-                                user.phoneNumber??'+7(111)1111111',
+                                user.phoneNumber ?? '+7(111)1111111',
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
@@ -214,7 +220,6 @@ class ProfilePageState extends State<ProfilePage> {
                               padding: AppDimensions.tilePadding,
                             ),
                           ]),
-
                       const SizedBox(
                         height: 16.0,
                       ),
@@ -311,8 +316,7 @@ class ProfilePageState extends State<ProfilePage> {
                               'Удалить Аккаунт'.tr,
                               style: AppTextStyles.callout,
                             ),
-                            trailing:
-                            const RightArrowWidget(),
+                            trailing: const RightArrowWidget(),
                             onTap: () {
                               // context.router.push(ProfileRoute());
                             },
@@ -320,7 +324,6 @@ class ProfilePageState extends State<ProfilePage> {
                           ),
                         ],
                       ),
-
                     ],
                   ),
                 ),
