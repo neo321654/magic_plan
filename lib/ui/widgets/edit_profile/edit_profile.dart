@@ -1,4 +1,5 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
@@ -114,30 +115,35 @@ class EditProfilePageState extends State<EditProfilePage> {
                       decoration: AppBoxDecorations.editProfileTextDecoration,
                       // keyboardType: TextInputType.number,
                       // obscureText: isHidePassword,
-                      placeholder: (controller.text=='')?widget.title:controller.text,
+                      placeholder: (controller.text == '')
+                          ? widget.title
+                          : controller.text,
                       controller: controller,
                     ),
-                    const Expanded(
-                        child: SizedBox(
-
-                    )),
+                    const Expanded(child: SizedBox()),
                     KeyboardVisibilityBuilder(
                       builder: (context, isKeyboardVisible) {
                         return isKeyboardVisible
                             ? CupertinoButton(
-                          padding: const EdgeInsets.only(right: 16,),
-                          color: AppColors.primaryContainersBackground,
-                              child: Align(
-                                alignment: Alignment.centerRight,
-                                child: Text(
-                                  'Сохранить'.tr,
-                                  style: AppTextStyles.bodyBold.copyWith(color: AppColors.accentsPrimary,),
+                                padding: const EdgeInsets.only(
+                                  right: 16,
                                 ),
-                              ),
-                              onPressed: () {
-                                auth.currentUser?.updateDisplayName('displayName');
-                              },
-                            )
+                                color: AppColors.primaryContainersBackground,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    'Сохранить'.tr,
+                                    style: AppTextStyles.bodyBold.copyWith(
+                                      color: AppColors.accentsPrimary,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  auth.currentUser
+                                      ?.updateDisplayName(controller.text)
+                                      .then((value) => context.router.pop());
+                                },
+                              )
                             : const SizedBox.shrink();
                       },
                     ),
