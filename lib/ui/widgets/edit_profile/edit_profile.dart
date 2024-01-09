@@ -114,8 +114,8 @@ class EditProfilePageState extends State<EditProfilePage> {
                       decoration: AppBoxDecorations.editProfileTextDecoration,
                       // keyboardType: TextInputType.number,
                       // obscureText: isHidePassword,
-                      placeholder: widget.title,
-                      // controller: passwordController,
+                      placeholder: (controller.text=='')?widget.title:controller.text,
+                      controller: controller,
                     ),
                     const Expanded(
                         child: SizedBox(
@@ -134,7 +134,9 @@ class EditProfilePageState extends State<EditProfilePage> {
                                   style: AppTextStyles.bodyBold.copyWith(color: AppColors.accentsPrimary,),
                                 ),
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                auth.currentUser?.updateDisplayName('displayName');
+                              },
                             )
                             : const SizedBox.shrink();
                       },
