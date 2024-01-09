@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import '../components/my_custom_nav_bar.dart';
 import '../components/widgets.dart';
 import '/resources/resources.dart';
@@ -118,16 +119,23 @@ class EditProfilePageState extends State<EditProfilePage> {
                       placeholder: widget.title,
                       // controller: passwordController,
                     ),
-                    Expanded(child: Container(color: Colors.yellow,height: 30,width: 200,)),
-                    Container(
-                      color: Colors.red,
-                      height: 120,
-                    )
+                    Expanded(
+                        child: Container(
+                      color: Colors.yellow,
+                      height: 30,
+                      width: 200,
+                    )),
+                    KeyboardVisibilityBuilder(
+                      builder: (context, isKeyboardVisible) {
+                        return Text(
+                          'The keyboard is: ${isKeyboardVisible ? 'VISIBLE' : 'NOT VISIBLE'}',
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
             ),
-
           ],
         ));
   }
