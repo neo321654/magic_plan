@@ -22,7 +22,6 @@ class ProfilePage extends StatefulWidget {
 
 class ProfilePageState extends State<ProfilePage> {
   late User user;
-  late TextEditingController controller;
   final phoneController = TextEditingController();
 
   String? photoURL;
@@ -40,16 +39,11 @@ class ProfilePageState extends State<ProfilePage> {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
 
-      userName = user.displayName??',';
+      userName = user.displayName ?? ',';
       List<String> namesList = userName.split(',');
       name = namesList[0];
       surname = namesList[1];
-
-
-      controller = TextEditingController(text: user.displayName);
     }
-
-    controller.addListener(_onNameChanged);
 
     auth.userChanges().listen((event) {
       if (event != null && mounted) {
@@ -64,41 +58,13 @@ class ProfilePageState extends State<ProfilePage> {
     super.initState();
   }
 
-  @override
-  void dispose() {
-    controller.removeListener(_onNameChanged);
-
-    super.dispose();
-  }
-
   void setIsLoading() {
     setState(() {
       isLoading = !isLoading;
     });
   }
 
-  void _onNameChanged() {
-    setState(() {
-      if (controller.text == user.displayName || controller.text.isEmpty) {
-        showSaveButton = false;
-      } else {
-        showSaveButton = true;
-      }
-    });
-  }
-
   List get userProviders => user.providerData.map((e) => e.providerId).toList();
-
-  Future updateDisplayName() async {
-    await user.updateDisplayName(controller.text);
-
-    setState(() {
-      showSaveButton = false;
-    });
-
-    // ignore: use_build_context_synchronously
-    ScaffoldSnackbar.of(context).show('Name updated');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,16 +145,15 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                (name == '')
-                                    ? 'Настроить'.tr
-                                    : name,
+                                (name == '') ? 'Настроить'.tr : name,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                context.router.push(
-                                    EditNameRoute(title: 'Ваше Имя'.tr));
+                                context.router
+                                    .push(EditNameRoute(title: 'Ваше Имя'.tr))
+                                    .then((value) => null);
                                 // context.router.push(ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
@@ -199,9 +164,7 @@ class ProfilePageState extends State<ProfilePage> {
                                 style: AppTextStyles.callout,
                               ),
                               additionalInfo: Text(
-                                (surname == '')
-                                    ? 'Настроить'.tr
-                                    : surname,
+                                (surname == '') ? 'Настроить'.tr : surname,
                                 style: AppTextStyles.callout
                                     .copyWith(color: AppColors.primaryButtons),
                               ),
