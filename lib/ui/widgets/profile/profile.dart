@@ -31,7 +31,7 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    //todo сюда нельзя поподать из других экранов
+    //todo сюда нельзя
     if (auth.currentUser != null) {
       user = auth.currentUser!;
       controller = TextEditingController(text: user.displayName);
