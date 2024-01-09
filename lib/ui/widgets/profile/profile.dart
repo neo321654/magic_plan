@@ -5,7 +5,6 @@ import '../../../navigation/app_router.dart';
 import '../components/my_custom_nav_bar.dart';
 import '../components/widgets.dart';
 import '/resources/resources.dart';
-import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 

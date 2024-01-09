@@ -3,9 +3,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
-import '../auth/auth.dart';
 import '/main.dart';
 
 @RoutePage()
@@ -20,26 +20,20 @@ class EditEmailPage extends StatefulWidget {
 
 class EditEmailPageState extends State<EditEmailPage> {
   late User user;
-  late TextEditingController controller;
-  final phoneController = TextEditingController();
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController emailConfirmController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   String? photoURL;
-
-  bool showSaveButton = false;
-  bool isLoading = false;
-
-  String userName = ',';
   String currentEmail = 'example@gmail.com';
 
   @override
   void initState() {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
-      currentEmail = user.email??'example@gmail.com';
-
+      currentEmail = user.email ?? 'example@gmail.com';
     }
-
-
 
     auth.userChanges().listen((event) {
       if (event != null && mounted) {
@@ -56,16 +50,12 @@ class EditEmailPageState extends State<EditEmailPage> {
 
   @override
   void dispose() {
-   //todo remove all controllers
+    emailController.dispose();
+    emailConfirmController.dispose();
+    passwordController.dispose();
 
     super.dispose();
   }
-
-
-
-
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -145,11 +135,11 @@ class EditEmailPageState extends State<EditEmailPage> {
                               ),
                               Expanded(
                                 child: CupertinoTextField(
+                                  controller: emailController,
                                   textAlign: TextAlign.end,
                                   padding: AppDimensions.edgeInsetsSearch,
-                                  decoration: AppBoxDecorations.editProfileTextDecoration,
-                                  // keyboardType: TextInputType.number,
-                                  // obscureText: isHidePassword,
+                                  decoration: AppBoxDecorations
+                                      .editProfileTextDecoration,
                                   placeholder: 'Ввести email'.tr,
                                 ),
                               ),
@@ -161,48 +151,60 @@ class EditEmailPageState extends State<EditEmailPage> {
                           padding: AppDimensions.tilePadding,
                         ),
                         CupertinoListTile(
-                          title: Text(
-                            'Подтвердите Email'.tr,
-                            style: AppTextStyles.callout,
-                          ),
-                          additionalInfo: Text(
-                            'Ввести email'.tr,
-                            style: AppTextStyles.callout
-                                .copyWith(color: AppColors.primaryIcons),
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Подтвердите Email'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                              ),
+                              Expanded(
+                                child: CupertinoTextField(
+                                  controller: emailConfirmController,
+                                  textAlign: TextAlign.end,
+                                  padding: AppDimensions.edgeInsetsSearch,
+                                  decoration: AppBoxDecorations
+                                      .editProfileTextDecoration,
+                                  placeholder: 'Ввести email'.tr,
+                                ),
+                              ),
+                            ],
                           ),
                           onTap: () {
-                            // context.router.push(
-                            //     EditEmailRoute(title: 'Смена email'.tr)).then((value){
-                            //   setState(() {
-                            //     updateData();
-                            //   });
-                            // });
+                            // auth.currentUser.
                           },
                           padding: AppDimensions.tilePadding,
                         ),
                         CupertinoListTile(
-                          title: Text(
-                            'Пароль'.tr,
-                            style: AppTextStyles.callout,
-                          ),
-                          additionalInfo: Text(
-                            'Ввести пароль'.tr,
-                            style: AppTextStyles.callout
-                                .copyWith(color: AppColors.primaryIcons),
+                          title: Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  'Пароль'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
+                              ),
+                              Expanded(
+                                child: CupertinoTextField(
+                                  controller: passwordController,
+                                  obscureText: true,
+                                  textAlign: TextAlign.end,
+                                  padding: AppDimensions.edgeInsetsSearch,
+                                  decoration: AppBoxDecorations
+                                      .editProfileTextDecoration,
+                                  placeholder: 'Ввести пароль'.tr,
+                                ),
+                              ),
+                            ],
                           ),
                           onTap: () {
-                            // context.router.push(
-                            //     EditEmailRoute(title: 'Смена email'.tr)).then((value){
-                            //   setState(() {
-                            //     updateData();
-                            //   });
-                            // });
+                            // auth.currentUser.
                           },
                           padding: AppDimensions.tilePadding,
                         ),
                       ],
                     ),
-
                     const Expanded(child: SizedBox()),
                     KeyboardVisibilityBuilder(
                       builder: (context, isKeyboardVisible) {
@@ -222,15 +224,23 @@ class EditEmailPageState extends State<EditEmailPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                
                                   // auth.signInWithEmailAndPassword(email: email, password: password)
                                   // auth.createUserWithEmailAndPassword(email: email, password: password)
                                   // auth.currentUser.linkWithCredential(provider)
 
+                                  showAlertDialog(
+                                      context: context,
+                                      message:
+                                          'Введите код из смс в поле код для авторизации.'
+                                              .tr,
+                                      confirmMessage: 'Хорошо'.tr);
 
                                   final credential =
-                                  EmailAuthProvider.credential(email: 'neo321654@rambler.ru', password: '111111');
-                                  auth.currentUser?.linkWithCredential(credential);
+                                      EmailAuthProvider.credential(
+                                          email: 'neo321654@rambler.ru',
+                                          password: '111111');
+                                  auth.currentUser
+                                      ?.linkWithCredential(credential);
 
                                   //
                                   // auth.currentUser?.sendEmailVerification()
@@ -238,7 +248,6 @@ class EditEmailPageState extends State<EditEmailPage> {
                                   // auth.currentUser?.updateEmail('neo321654@rambler.ru');
 
                                   // auth.currentUser?.updatePassword('111111');
-
                                 },
                               )
                             : const SizedBox.shrink();

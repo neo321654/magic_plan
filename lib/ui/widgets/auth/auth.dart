@@ -7,6 +7,7 @@ import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:magic_plan/resources/resources.dart';
+import '../components/functions.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
@@ -270,7 +271,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
     Future<void> Function() authFunction,
   ) async {
     setIsLoading();
-    _showAlertDialog(context);
+    showAlertDialog(context: context,message:'Введите код из смс в поле код для авторизации.'.tr,confirmMessage:'Хорошо'.tr);
+
     try {
       await authFunction();
     } on FirebaseAuthMultiFactorException catch (e) {
@@ -416,21 +418,25 @@ Future<String?> getSmsCodeFromUser(BuildContext context) async {
   return '111111';
 }
 
-void _showAlertDialog(BuildContext context) {
-  showCupertinoModalPopup<void>(
-    context: context,
-    builder: (BuildContext context) => CupertinoAlertDialog(
-      // title: const Text('Alert'),
-      content: Text('Введите код из смс в поле код для авторизации.'.tr),
-      actions: <CupertinoDialogAction>[
-        CupertinoDialogAction(
-          isDestructiveAction: false,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: Text('Хорошо'.tr),
-        ),
-      ],
-    ),
-  );
-}
+
+
+
+
+// void _showAlertDialog(BuildContext context) {
+//   showCupertinoModalPopup<void>(
+//     context: context,
+//     builder: (BuildContext context) => CupertinoAlertDialog(
+//       // title: const Text('Alert'),
+//       content: Text('Введите код из смс в поле код для авторизации.'.tr),
+//       actions: <CupertinoDialogAction>[
+//         CupertinoDialogAction(
+//           isDestructiveAction: false,
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           child: Text('Хорошо'.tr),
+//         ),
+//       ],
+//     ),
+//   );
+// }
