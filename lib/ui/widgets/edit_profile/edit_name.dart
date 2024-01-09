@@ -34,11 +34,14 @@ class EditNamePageState extends State<EditNamePage> {
   void initState() {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
-      controller = TextEditingController(text: user.displayName);
+
       if(user.displayName !=''){
         // List<String> nameLastFirst = user.displayName!.split(',');
         userName = user.displayName??',';
+
       }
+      List<String> nameLastFirst = userName.split(',');
+      controller = TextEditingController(text:nameLastFirst[0]);
 
     }
 
