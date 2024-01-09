@@ -89,95 +89,95 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
+                              Icon(
+                                Icons.lens,
+                                color: AppColors.modalsSOS,
+                                size: 6,
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
                               Text(
                                 'Все ваши данные будут сразу же удалены'.tr,
                                 style: AppTextStyles.foontoneText,
                               ),
                             ],
                           ),
-                          const SizedBox(height: 6.0,),
+                          const SizedBox(
+                            height: 6.0,
+                          ),
                           Row(
                             children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
+                              Icon(
+                                Icons.lens,
+                                color: AppColors.modalsSOS,
+                                size: 6,
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
                               Expanded(
                                 child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'
+                                      .tr,
                                   style: AppTextStyles.foontoneText,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 6.0,),
+                          const SizedBox(
+                            height: 6.0,
+                          ),
                           Row(
                             children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
+                              Icon(
+                                Icons.lens,
+                                color: AppColors.modalsSOS,
+                                size: 6,
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
                               Expanded(
                                 child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  'Вы сможете использовать ваш email и регистрировать на него новые аккаунты '
+                                      .tr,
                                   style: AppTextStyles.foontoneText,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 6.0,),
+                          const SizedBox(
+                            height: 6.0,
+                          ),
                           Row(
                             children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
+                              Icon(
+                                Icons.lens,
+                                color: AppColors.modalsSOS,
+                                size: 6,
+                              ),
+                              const SizedBox(
+                                width: 10.0,
+                              ),
                               Expanded(
                                 child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
+                                  'Если у вас есть какие-либо вопросы - свяжитесь с нашей Поддержкой '
+                                      .tr,
                                   style: AppTextStyles.foontoneText,
                                 ),
                               ),
                             ],
                           ),
-                          const SizedBox(height: 6.0,),
-                          Row(
-                            children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
-                              Expanded(
-                                child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
-                                  style: AppTextStyles.foontoneText,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 6.0,),
-                          Row(
-                            children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
-                              Expanded(
-                                child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
-                                  style: AppTextStyles.foontoneText,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 6.0,),
-                          Row(
-                            children: [
-                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
-                              const SizedBox(width: 10.0,),
-                              Expanded(
-                                child: Text(
-                                  'Ваш аккаунт будет удален и вы не сможете его восстановить'.tr,
-                                  style: AppTextStyles.foontoneText,
-                                ),
-                              ),
-                            ],
-                          ),
-
                         ],
                       ),
+                    ),
+                    const SizedBox(height: 26.0,),
+
+                    Text(
+                      'Связаться с Поддержкой'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1.copyWith(color: AppColors.accentsPrimary,),
                     ),
                   ],
                 ),
