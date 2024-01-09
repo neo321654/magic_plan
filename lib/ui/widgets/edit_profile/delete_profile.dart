@@ -3,8 +3,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 import '/main.dart';
@@ -73,6 +71,90 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                     ),
                     const SizedBox(
                       height: 24.0,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0,
+                        vertical: 13.0,
+                      ),
+                      decoration: BoxDecoration(
+                        color: AppColors.modalsBackgroundSOS,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            13.0,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Icon(Icons.lens,color: AppColors.modalsSOS,size: 6,),
+                              SizedBox(width: 10.0,),
+                              Text(
+                                'Все ваши данные будут сразу же удалены'.tr,
+                                textAlign: TextAlign.center,
+                                style: AppTextStyles.foontoneText,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
