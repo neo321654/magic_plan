@@ -136,7 +136,8 @@ class ProfilePageState extends State<ProfilePage> {
                       ),
                       const SizedBox(height: 10),
                       Text(
-                        'apollonovasofia@gmail.com'.tr,
+
+                        auth.currentUser?.email??'',
                         style: AppTextStyles.caption1,
                       ),
                       CupertinoListSection.insetGrouped(
@@ -308,7 +309,13 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-                              // context.router.push(ProfileRoute());
+
+                              context.router.push(
+                                  DeleteProfileRoute(title: 'Удаление'.tr)).then((value){
+                                setState(() {
+                                  updateData();
+                                });
+                              });
                             },
                             padding: AppDimensions.tilePadding,
                           ),

@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../ui/tab_bar_start_widget.dart';
 import '../ui/widgets/auth/auth.dart';
+import '../ui/widgets/edit_profile/delete_profile.dart';
 import '../ui/widgets/edit_profile/edit_email.dart';
 import '../ui/widgets/edit_profile/edit_name.dart';
 import '../ui/widgets/edit_profile/edit_surname.dart';
@@ -59,6 +60,10 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: EditEmailRoute.page,
                   path: 'editEmail',
+                ),
+                AutoRoute(
+                  page: DeleteProfileRoute.page,
+                  path: 'deleteProfile',
                 ),
                 AutoRoute(
                   page: GreetingNotAuthRoute.page,
