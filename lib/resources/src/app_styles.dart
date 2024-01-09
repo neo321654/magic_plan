@@ -61,4 +61,8 @@ abstract class AppBoxDecorations {
     borderRadius: BorderRadius.circular(13),
     color: AppColors.primaryMainBackground,
   );
+  static BoxDecoration editProfileTextDecoration = BoxDecoration(
+    borderRadius: BorderRadius.circular(13),
+    color: AppColors.primaryContainersBackground,
+  );
 }

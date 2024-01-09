@@ -8,7 +8,6 @@ import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
-
 @RoutePage()
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key? key, required this.title}) : super(key: key);
@@ -111,28 +110,15 @@ class EditProfilePageState extends State<EditProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
-
-
-                      CupertinoListSection.insetGrouped(
-
-                          // separatorColor: Colors.transparent,
-                          margin: const EdgeInsets.all(0),
-                          children: [
-
-                            CupertinoTextField(
-                              padding: AppDimensions.edgeInsetsSearch,
-                              decoration:
-                              AppBoxDecorations.editTextDecoration,
-                              keyboardType: TextInputType.number,
-                              // obscureText: isHidePassword,
-                              placeholder: widget.title,
-                              // controller: passwordController,
-
-                            )
-                          ]),
-
-
+                      const SizedBox(height: 24.0,),
+                      CupertinoTextField(
+                        padding: AppDimensions.edgeInsetsSearch,
+                        decoration: AppBoxDecorations.editProfileTextDecoration,
+                        // keyboardType: TextInputType.number,
+                        // obscureText: isHidePassword,
+                        placeholder: widget.title,
+                        // controller: passwordController,
+                      ),
                     ],
                   ),
                 ),
@@ -141,6 +127,4 @@ class EditProfilePageState extends State<EditProfilePage> {
           ],
         ));
   }
-
-
 }
