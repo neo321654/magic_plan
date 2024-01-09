@@ -162,22 +162,24 @@ class EditEmailPageState extends State<EditEmailPage> {
                       margin: const EdgeInsets.all(0),
                       children: [
                         CupertinoListTile(
-                          title: Text(
-                            'Email'.tr,
-                            style: AppTextStyles.callout,
-                          ),
-                          additionalInfo: Text(
-                            'Ввести email'.tr,
-                            style: AppTextStyles.callout
-                                .copyWith(color: AppColors.primaryIcons),
+                          title: Row(
+                            children: [
+                              Text(
+                                'Email'.tr,
+                                style: AppTextStyles.callout,
+                              ),
+                              Expanded(
+                                child: CupertinoTextField(
+                                  padding: AppDimensions.edgeInsetsSearch,
+                                  decoration: AppBoxDecorations.editProfileTextDecoration,
+                                  // keyboardType: TextInputType.number,
+                                  // obscureText: isHidePassword,
+                                  placeholder: 'Ввести email'.tr,
+                                ),
+                              ),
+                            ],
                           ),
                           onTap: () {
-                            // context.router.push(
-                            //     EditEmailRoute(title: 'Смена email'.tr)).then((value){
-                            //   setState(() {
-                            //     updateData();
-                            //   });
-                            // });
                           },
                           padding: AppDimensions.tilePadding,
                         ),
@@ -224,6 +226,38 @@ class EditEmailPageState extends State<EditEmailPage> {
                       ],
                     ),
 
+                    const Expanded(child: SizedBox()),
+                    KeyboardVisibilityBuilder(
+                      builder: (context, isKeyboardVisible) {
+                        return isKeyboardVisible
+                            ? CupertinoButton(
+                                padding: const EdgeInsets.only(
+                                  right: 16,
+                                ),
+                                color: AppColors.primaryContainersBackground,
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                    'Сохранить'.tr,
+                                    style: AppTextStyles.bodyBold.copyWith(
+                                      color: AppColors.accentsPrimary,
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  List<String> namesList = userName.split(',');
+
+                                  user
+                                      .updateDisplayName(
+                                          '${namesList[0]},${controller.text}')
+                                      .then((value) => context.router.pop());
+                                  // user.updateDisplayName('')
+                                  //     .then((value) => context.router.pop());
+                                },
+                              )
+                            : const SizedBox.shrink();
+                      },
+                    ),
                   ],
                 ),
               ),
