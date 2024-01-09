@@ -55,8 +55,11 @@ class ProfilePageState extends State<ProfilePage> {
       user = auth.currentUser!;
       userName = user.displayName ?? ',';
       List<String> namesList = userName.split(',');
-      name = namesList[0];
-      surname = namesList[1];
+      if(namesList.length == 2){
+        name = namesList[0];
+        surname = namesList[1];
+      }
+
     }
   }
 

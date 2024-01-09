@@ -224,10 +224,6 @@ class EditEmailPageState extends State<EditEmailPage> {
                                   ),
                                 ),
                                 onPressed: () {
-                                  // auth.signInWithEmailAndPassword(email: email, password: password)
-                                  // auth.createUserWithEmailAndPassword(email: email, password: password)
-                                  // auth.currentUser.linkWithCredential(provider)
-
                                   if (emailConfirmController.text !=
                                           emailController.text ||
                                       emailConfirmController.text == '' ||
@@ -236,26 +232,26 @@ class EditEmailPageState extends State<EditEmailPage> {
                                         context: context,
                                         message: 'Email не совпадает'.tr,
                                         confirmMessage: 'Хорошо'.tr);
-                                  } else if (passwordController.text != '') {
-                                    try {
+                                  } else if (passwordController.text == '') {
+                                    showAlertDialog(
+                                        context: context,
+                                        message: 'Введите пароль'.tr,
+                                        confirmMessage: 'Хорошо'.tr);
+                                  } else if (auth.currentUser?.email == '') {
+                                    final credential =
+                                        EmailAuthProvider.credential(
+                                            email: emailController.text,
+                                            password: passwordController.text);
 
-                                      final credential =
-                                          EmailAuthProvider.credential(
-                                              email: emailController.text,
-                                              password:
-                                                  passwordController.text);
+                                    auth.currentUser
+                                        ?.linkWithCredential(credential);
+                                  } else if (auth.currentUser?.emailVerified ??
+                                      false) {
+                                    // auth.currentUser?.unlink(providerId)
+                                    auth.currentUser?.updateEmail(
+                                        'nnnneo321654@rambler.ru');
 
-                                      auth.currentUser
-                                          ?.linkWithCredential(credential).catchError((){
-                                            talker.log('valera');
-                                      });
-                                    } catch (e) {
-                                      auth.currentUser
-                                          ?.updateEmail('nnnneo321654@rambler.ru');
-
-                                      auth.currentUser
-                                          ?.updatePassword('111111');
-                                    }
+                                    auth.currentUser?.updatePassword('111111');
                                   }
 
                                   //
