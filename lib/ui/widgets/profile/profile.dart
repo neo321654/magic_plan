@@ -35,15 +35,8 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    //todo сюда нельзя
-    if (auth.currentUser != null) {
-      user = auth.currentUser!;
 
-      userName = user.displayName ?? ',';
-      List<String> namesList = userName.split(',');
-      name = namesList[0];
-      surname = namesList[1];
-    }
+    updateData();
 
     auth.userChanges().listen((event) {
       if (event != null && mounted) {
@@ -56,6 +49,16 @@ class ProfilePageState extends State<ProfilePage> {
     talker.debug(user.toString());
 
     super.initState();
+  }
+
+  void updateData() {
+     if (auth.currentUser != null) {
+      user = auth.currentUser!;
+      userName = user.displayName ?? ',';
+      List<String> namesList = userName.split(',');
+      name = namesList[0];
+      surname = namesList[1];
+    }
   }
 
   void setIsLoading() {
@@ -153,7 +156,11 @@ class ProfilePageState extends State<ProfilePage> {
                               onTap: () {
                                 context.router
                                     .push(EditNameRoute(title: 'Ваше Имя'.tr))
-                                    .then((value) => null);
+                                    .then((value){
+                                      setState(() {
+                                        updateData();
+                                      });
+                                });
                                 // context.router.push(ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,
@@ -171,7 +178,11 @@ class ProfilePageState extends State<ProfilePage> {
                               trailing: const RightArrowWidget(),
                               onTap: () {
                                 context.router.push(
-                                    EditSurnameRoute(title: 'Ваша Фамилия'.tr));
+                                    EditSurnameRoute(title: 'Ваша Фамилия'.tr)).then((value){
+                                  setState(() {
+                                    updateData();
+                                  });
+                                });
                               },
                               padding: AppDimensions.tilePadding,
                             ),
