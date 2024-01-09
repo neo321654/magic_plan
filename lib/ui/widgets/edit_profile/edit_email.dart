@@ -238,6 +238,7 @@ class EditEmailPageState extends State<EditEmailPage> {
                                         confirmMessage: 'Хорошо'.tr);
                                   } else if (passwordController.text != '') {
                                     try {
+
                                       final credential =
                                           EmailAuthProvider.credential(
                                               email: emailController.text,
@@ -245,10 +246,12 @@ class EditEmailPageState extends State<EditEmailPage> {
                                                   passwordController.text);
 
                                       auth.currentUser
-                                          ?.linkWithCredential(credential);
+                                          ?.linkWithCredential(credential).catchError((){
+                                            talker.log('valera');
+                                      });
                                     } catch (e) {
                                       auth.currentUser
-                                          ?.updateEmail('neo321654@rambler.ru');
+                                          ?.updateEmail('nnnneo321654@rambler.ru');
 
                                       auth.currentUser
                                           ?.updatePassword('111111');
