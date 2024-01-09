@@ -164,12 +164,15 @@ class EditEmailPageState extends State<EditEmailPage> {
                         CupertinoListTile(
                           title: Row(
                             children: [
-                              Text(
-                                'Email'.tr,
-                                style: AppTextStyles.callout,
+                              Expanded(
+                                child: Text(
+                                  'Email'.tr,
+                                  style: AppTextStyles.callout,
+                                ),
                               ),
                               Expanded(
                                 child: CupertinoTextField(
+                                  textAlign: TextAlign.end,
                                   padding: AppDimensions.edgeInsetsSearch,
                                   decoration: AppBoxDecorations.editProfileTextDecoration,
                                   // keyboardType: TextInputType.number,
