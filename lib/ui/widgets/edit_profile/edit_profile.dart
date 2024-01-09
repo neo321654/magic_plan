@@ -1,8 +1,6 @@
 import 'package:auto_route/annotations.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
-import '../../../navigation/app_router.dart';
 import '../components/my_custom_nav_bar.dart';
 import '../components/widgets.dart';
 import '/resources/resources.dart';
@@ -10,18 +8,18 @@ import '../auth/auth.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
-const placeholderImage =
-    'https://upload.wikimedia.org/wikipedia/commons/c/cd/Portrait_Placeholder_Square.png';
 
 @RoutePage()
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class EditProfilePage extends StatefulWidget {
+  const EditProfilePage({Key? key, required this.title}) : super(key: key);
+
+  final String title;
 
   @override
-  ProfilePageState createState() => ProfilePageState();
+  EditProfilePageState createState() => EditProfilePageState();
 }
 
-class ProfilePageState extends State<ProfilePage> {
+class EditProfilePageState extends State<EditProfilePage> {
   late User user;
   late TextEditingController controller;
   final phoneController = TextEditingController();
@@ -33,7 +31,6 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-    //todo сюда нельзя
     if (auth.currentUser != null) {
       user = auth.currentUser!;
       controller = TextEditingController(text: user.displayName);
@@ -97,10 +94,9 @@ class ProfilePageState extends State<ProfilePage> {
         child: CustomScrollView(
           slivers: <Widget>[
             SliverPersistentHeader(
-              //todo решить проблемму с тайтлом предыдущей проблеммы
               delegate: MyNavBar(
-                title: 'Аккаунт'.tr,
-                prevTitle: 'Мой аккаунт'.tr,
+                title: widget.title,
+                prevTitle: 'Аккаунт'.tr,
               ),
               pinned: true,
               floating: false,
@@ -115,49 +111,8 @@ class ProfilePageState extends State<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Stack(
-                        children: [
-                          CircleAvatar(
-                            maxRadius: 60,
-                            backgroundImage: NetworkImage(
-                              user.photoURL ?? placeholderImage,
-                            ),
-                          ),
-                          Positioned.directional(
-                            textDirection: Directionality.of(context),
-                            end: 0,
-                            bottom: 0,
-                            child: Material(
-                              clipBehavior: Clip.antiAlias,
-                              color: Theme.of(context).colorScheme.secondary,
-                              borderRadius: BorderRadius.circular(40),
-                              child: InkWell(
-                                onTap: () async {
-                                  final photoURL = await getPhotoURLFromUser();
 
-                                  if (photoURL != null) {
-                                    await user.updatePhotoURL(photoURL);
-                                    // await user.updateEmail('neo3224@ram.ru');
-                                    await user
-                                        .updateDisplayName('NNNNAAMMMEmail');
-                                  }
-                                },
-                                radius: 50,
-                                child: const SizedBox(
-                                  width: 35,
-                                  height: 35,
-                                  child: Icon(Icons.edit),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'apollonovasofia@gmail.com'.tr,
-                        style: AppTextStyles.caption1,
-                      ),
+
 
                       CupertinoListSection.insetGrouped(
 
@@ -176,7 +131,6 @@ class ProfilePageState extends State<ProfilePage> {
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                context.router.push( EditProfileRoute(title: 'Ваше Имя'.tr));
                                 // context.router.push(ProfileRoute());
                               },
                               padding: AppDimensions.tilePadding,

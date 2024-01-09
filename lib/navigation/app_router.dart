@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../ui/tab_bar_start_widget.dart';
 import '../ui/widgets/auth/auth.dart';
+import '../ui/widgets/edit_profile/edit_profile.dart';
 import '../ui/widgets/greeting/tab_bar_widget.dart';
 import '../ui/widgets/greeting/widgets/greeting_auth.dart';
 import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
@@ -44,6 +45,10 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: ProfileRoute.page,
                   path: 'profile',
+                ),
+                AutoRoute(
+                  page: EditProfileRoute.page,
+                  path: 'editProfile',
                 ),
                 AutoRoute(
                   page: GreetingNotAuthRoute.page,
