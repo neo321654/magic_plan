@@ -89,7 +89,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                         title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                          auth.signInWithEmailAndPassword(email: 'neo321654@rambler.ru', password: '111111');
+                          // auth.signInWithEmailAndPassword(email: 'neo321654@rambler.ru', password: '111111');
                         },
                         padding: AppDimensions.tilePadding,
                       ),

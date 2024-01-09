@@ -29,22 +29,17 @@ class EditEmailPageState extends State<EditEmailPage> {
   bool isLoading = false;
 
   String userName = ',';
+  String currentEmail = 'example@gmail.com';
 
   @override
   void initState() {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
+      currentEmail = user.email??'example@gmail.com';
 
-      if (user.displayName != '') {
-        // List<String> nameLastFirst = user.displayName!.split(',');
-        userName = user.displayName ?? ',';
-      }
-      List<String> nameLastFirst = userName.split(',');
-      controller = TextEditingController(text: nameLastFirst[1]);
     }
 
-    controller.addListener(_onNameChanged);
-    
+
 
     auth.userChanges().listen((event) {
       if (event != null && mounted) {
@@ -61,39 +56,16 @@ class EditEmailPageState extends State<EditEmailPage> {
 
   @override
   void dispose() {
-    controller.removeListener(_onNameChanged);
+   //todo remove all controllers
 
     super.dispose();
   }
 
-  void setIsLoading() {
-    setState(() {
-      isLoading = !isLoading;
-    });
-  }
 
-  void _onNameChanged() {
-    setState(() {
-      if (controller.text == user.displayName || controller.text.isEmpty) {
-        showSaveButton = false;
-      } else {
-        showSaveButton = true;
-      }
-    });
-  }
 
-  List get userProviders => user.providerData.map((e) => e.providerId).toList();
 
-  Future updateDisplayName() async {
-    await user.updateDisplayName(controller.text);
 
-    setState(() {
-      showSaveButton = false;
-    });
 
-    // ignore: use_build_context_synchronously
-    ScaffoldSnackbar.of(context).show('Name updated');
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -136,7 +108,7 @@ class EditEmailPageState extends State<EditEmailPage> {
                       children: [
                         CupertinoListTile(
                           title: Text(
-                            'apollonovasofia@gmail.com'.tr,
+                            currentEmail,
                             style: AppTextStyles.callout.copyWith(
                               color: AppColors.primaryButtons,
                             ),
