@@ -172,12 +172,34 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 26.0,),
-
+                    const SizedBox(
+                      height: 26.0,
+                    ),
                     Text(
                       'Связаться с Поддержкой'.tr,
                       textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1.copyWith(color: AppColors.accentsPrimary,),
+                      style: AppTextStyles.caption1.copyWith(
+                        color: AppColors.accentsPrimary,
+                      ),
+                    ),
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          CupertinoButton(
+                            onPressed: () {},
+                            color: AppColors.modalsSOS,
+                            borderRadius: BorderRadius.circular(
+                              13.0,
+                            ),
+                            child: Text(
+                              'Удалить Аккаунт'.tr,
+                              style: AppTextStyles.sfProText,
+                            ),
+                          ),
+                          const SizedBox(height: 53.0,),
+                        ],
+                      ),
                     ),
                   ],
                 ),

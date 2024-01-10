@@ -66,6 +66,12 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );
+  static TextStyle sfProText = TextStyle(
+    color: AppColors.primaryContainersBackground,
+    fontSize: 17.toFigma,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.41,
+  );
 }
 
 abstract class AppBoxDecorations {
