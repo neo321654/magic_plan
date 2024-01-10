@@ -13,8 +13,7 @@ import '/resources/resources.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
-const placeholderImage =
-    'https://upload.wikimedia.org/wikipedia/commons/c/cd/Portrait_Placeholder_Square.png';
+
 
 @RoutePage()
 class ProfilePage extends StatefulWidget {
@@ -51,7 +50,7 @@ class ProfilePageState extends State<ProfilePage> {
   void selectImage() async {
     Uint8List img = await pickImage(ImageSource.gallery);
 
-    String imageUrl = await uploadImageToStorage('profileImage', img);
+    String imageUrl = await uploadImageToStorage(auth.currentUser?.uid??'imgProfile', img);
     auth.currentUser?.updatePhotoURL(imageUrl);
 
     setState(() {
@@ -133,10 +132,10 @@ class ProfilePageState extends State<ProfilePage> {
                                   radius: 64,
                                   backgroundImage: MemoryImage(_image!),
                                 )
-                              : const CircleAvatar(
+                              :  CircleAvatar(
                                   radius: 64,
                                   backgroundImage: NetworkImage(
-                                      'https://png.pngitem.com/pimgs/s/421-4212266_transparent-default-avatar-png-default-avatar-images-png.png'),
+                                      auth.currentUser?.photoURL??''),
                                 ),
                           Positioned(
                             bottom: -10,
