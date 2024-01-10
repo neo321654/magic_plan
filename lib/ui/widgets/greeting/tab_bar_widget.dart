@@ -11,20 +11,17 @@ class AuthInTabBarWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: StreamBuilder<User?>(
-        stream: auth.authStateChanges(),
-        builder: (context, snapshot) {
-          if (snapshot.hasData) {
-            return GreetingAuthPage();
-          }
-          return const GreetingNotAuthPage();
-        },
-      ),
+    return StreamBuilder<User?>(
+      stream: auth.authStateChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return GreetingAuthPage();
+        }
+        return  GreetingAuthPage();
+        // return const GreetingNotAuthPage();
+      },
     );
   }
 
-  Future<void> _signOut() async {
-    await auth.signOut();
-  }
+
 }

@@ -14,59 +14,61 @@ class GreetingWidgetPage extends StatelessWidget {
   Widget build(BuildContext context) {
 
     //todo убрать когда буду удалять талкер
-    return Stack(
-      children: [
-        AutoTabsScaffold(
-          routes: const [
-            MainRouteWidgetRoute(),
-            AuthInTabBarWidgetRoute(),
+    return SafeArea(
+      child: Stack(
+        children: [
+          AutoTabsScaffold(
+            routes: const [
+              MainRouteWidgetRoute(),
+              AuthInTabBarWidgetRoute(),
 
-            // LoaderWidgetRoute(),
-            // GreetingNotAuthRoute(),
-            // ProfileRoute(),
-            // AuthGateRoute(),
-            // GreetingAuthRoute(),
-            // GreetingAuthRoute(),
-          ],
-          bottomNavigationBuilder: (_, tabsRouter) {
-            return CupertinoTabBar(
-              currentIndex: tabsRouter.activeIndex,
-              onTap: tabsRouter.setActiveIndex,
-              items: <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: const Icon(Icons.dashboard_rounded),
-                  label: 'Мои проекты'.tr,
-                ),
-                BottomNavigationBarItem(
-                  icon: const Icon(CupertinoIcons.person_solid),
-                  label: 'Мой аккаунт'.tr,
-                ),
-              ],
-            );
-
-          },
-        ),
-        //todo убрать когда буду удалять талкер
-        Positioned(
-          top: 20.0,
-          right: 20.0,
-          child: CupertinoButton(
-            onPressed: () {
-              Navigator.of(context).push(
-                CupertinoPageRoute(
-                  builder: (context) => MaterialApp(
-                      home: TalkerScreen(
-                    talker: talker,
-                    appBarTitle: '',
-                    appBarLeading: null,
-                  )),
-                ),
+              // LoaderWidgetRoute(),
+              // GreetingNotAuthRoute(),
+              // ProfileRoute(),
+              // AuthGateRoute(),
+              // GreetingAuthRoute(),
+              // GreetingAuthRoute(),
+            ],
+            bottomNavigationBuilder: (_, tabsRouter) {
+              return CupertinoTabBar(
+                currentIndex: tabsRouter.activeIndex,
+                onTap: tabsRouter.setActiveIndex,
+                items: <BottomNavigationBarItem>[
+                  BottomNavigationBarItem(
+                    icon: const Icon(Icons.dashboard_rounded),
+                    label: 'Мои проекты'.tr,
+                  ),
+                  BottomNavigationBarItem(
+                    icon: const Icon(CupertinoIcons.person_solid),
+                    label: 'Мой аккаунт'.tr,
+                  ),
+                ],
               );
+
             },
-            child: const Icon(Icons.info),
           ),
-        ),
-      ],
+          //todo убрать когда буду удалять талкер
+          Positioned(
+            top: 20.0,
+            right: 20.0,
+            child: CupertinoButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  CupertinoPageRoute(
+                    builder: (context) => MaterialApp(
+                        home: TalkerScreen(
+                      talker: talker,
+                      appBarTitle: '',
+                      appBarLeading: null,
+                    )),
+                  ),
+                );
+              },
+              child: const Icon(Icons.info),
+            ),
+          ),
+        ],
+      ),
     );
   }
 

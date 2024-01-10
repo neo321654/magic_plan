@@ -12,22 +12,25 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
   @override
   Widget build(
       BuildContext context, double shrinkOffset, bool overlapsContent) {
-    return CupertinoNavigationBar(
-      previousPageTitle:prevTitle,
-      border: Border.all(color: AppColors.primaryIcons),
-      backgroundColor: AppColors.primaryMainBackground,
-      middle: Text(
-        title,
-        style: AppTextStyles.bodyBold,
+    return SizedBox.expand(
+      child: CupertinoNavigationBar(
+        previousPageTitle:prevTitle,
+        border: Border.all(color: AppColors.primaryIcons),
+        backgroundColor: AppColors.primaryMainBackground,
+        middle: Text(
+          title,
+          style: AppTextStyles.bodyBold,
+        ),
       ),
     );
   }
   //todo на айфонах есть проблемма с отображением
   @override
-  double get maxExtent => 68.0;
+  double get maxExtent => 44;
 
   @override
-  double get minExtent => 68.0;
+  double get minExtent => 44;
+
 
   @override
   bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
