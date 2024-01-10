@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:magic_plan/navigation/app_router.dart';
+import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 import '/main.dart';
@@ -199,7 +200,9 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                                         return true;
                                       }))
                                   .catchError((e,s)  {
-                                talker.debug('msg');
+                                showAlertDialog(context: context,message:'Для того чтобы удалить аккаунт , вам необходимо заново авторизоваться.'.tr,confirmMessage:'Хорошо'.tr);
+
+                                talker.debug('заставить юзера войти по новой и потом удалить');
                                 return true;
                               });
                             },
