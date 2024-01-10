@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:magic_plan/navigation/app_router.dart';
 import '../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 import '/main.dart';
@@ -187,7 +188,21 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           CupertinoButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              //todo заставить юзера войти по новой и потом удалить
+                              auth.currentUser
+                                  ?.delete()
+                                  .then((value) => context.router
+                                          .pushAndPopUntil(
+                                              AuthInTabBarWidgetRoute(),
+                                              predicate: (_) {
+                                        return true;
+                                      }))
+                                  .catchError((e,s)  {
+                                talker.debug('msg');
+                                return true;
+                              });
+                            },
                             color: AppColors.modalsSOS,
                             borderRadius: BorderRadius.circular(
                               13.0,
@@ -202,7 +217,9 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                               ],
                             ),
                           ),
-                          const SizedBox(height: 53.0,),
+                          const SizedBox(
+                            height: 53.0,
+                          ),
                         ],
                       ),
                     ),
