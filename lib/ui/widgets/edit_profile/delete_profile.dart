@@ -192,9 +192,14 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                             borderRadius: BorderRadius.circular(
                               13.0,
                             ),
-                            child: Text(
-                              'Удалить Аккаунт'.tr,
-                              style: AppTextStyles.sfProText,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Удалить Аккаунт'.tr,
+                                  style: AppTextStyles.sfProText,
+                                ),
+                              ],
                             ),
                           ),
                           const SizedBox(height: 53.0,),
