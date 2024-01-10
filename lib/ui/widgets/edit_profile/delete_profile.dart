@@ -1,8 +1,11 @@
 import 'package:auto_route/annotations.dart';
+import 'dart:typed_data';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:magic_plan/navigation/app_router.dart';
 import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
@@ -21,6 +24,7 @@ class DeleteProfilePage extends StatefulWidget {
 
 class DeleteProfilePageState extends State<DeleteProfilePage> {
   late User user;
+
 
   @override
   void initState() {
@@ -63,6 +67,7 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+
                     const SizedBox(
                       height: 24.0,
                     ),

@@ -1,7 +1,12 @@
+import 'dart:typed_data';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 import '../../../navigation/app_router.dart';
+import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
 import '../components/widgets.dart';
 import '/resources/resources.dart';
@@ -31,9 +36,35 @@ class ProfilePageState extends State<ProfilePage> {
   String userName = ',';
   String name = '';
   String surname = '';
+  late final FirebaseStorage _storage;
+
+  Uint8List? _image;
+
+  Future<String> uploadImageToStorage(String childName,Uint8List file) async {
+    Reference ref = _storage.ref().child(childName);
+    UploadTask uploadTask = ref.putData(file);
+    TaskSnapshot snapshot = await uploadTask;
+    String downloadUrl = await snapshot.ref.getDownloadURL();
+    return downloadUrl;
+  }
+
+  void selectImage() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+
+    String imageUrl = await uploadImageToStorage('profileImage', file);
+
+
+    setState(() {
+      _image = img;
+    });
+  }
 
   @override
   void initState() {
+
+     _storage = FirebaseStorage.instance;
+
+
 
     updateData();
 
@@ -96,44 +127,33 @@ class ProfilePageState extends State<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Stack(
+
+                      const SizedBox(
+                        height: 24.0,
+                      ),
+                      Stack(
                         children: [
-                          // CircleAvatar(
-                          //   maxRadius: 60,
-                          //   backgroundImage: NetworkImage(
-                          //     user.photoURL ?? placeholderImage,
-                          //   ),
-                          // ),
-                          // Positioned.directional(
-                          //   textDirection: Directionality.of(context),
-                          //   end: 0,
-                          //   bottom: 0,
-                          //   child: Material(
-                          //     clipBehavior: Clip.antiAlias,
-                          //     color: Theme.of(context).colorScheme.secondary,
-                          //     borderRadius: BorderRadius.circular(40),
-                          //     child: InkWell(
-                          //       onTap: () async {
-                          //         final photoURL = await getPhotoURLFromUser();
-                          //
-                          //         if (photoURL != null) {
-                          //           await user.updatePhotoURL(photoURL);
-                          //           // await user.updateEmail('neo3224@ram.ru');
-                          //           await user
-                          //               .updateDisplayName('NNNNAAMMMEmail');
-                          //         }
-                          //       },
-                          //       radius: 50,
-                          //       child: const SizedBox(
-                          //         width: 35,
-                          //         height: 35,
-                          //         child: Icon(Icons.edit),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
+                          _image != null
+                              ? CircleAvatar(
+                            radius: 64,
+                            backgroundImage: MemoryImage(_image!),
+                          )
+                              : const CircleAvatar(
+                            radius: 64,
+                            backgroundImage: NetworkImage(
+                                'https://png.pngitem.com/pimgs/s/421-4212266_transparent-default-avatar-png-default-avatar-images-png.png'),
+                          ),
+                          Positioned(
+                            bottom: -10,
+                            left: 80,
+                            child: IconButton(
+                              onPressed: selectImage,
+                              icon: const Icon(Icons.add_a_photo),
+                            ),
+                          )
                         ],
                       ),
+
                       const SizedBox(height: 10),
                       Text(
 
