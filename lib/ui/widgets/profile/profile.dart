@@ -40,7 +40,7 @@ class ProfilePageState extends State<ProfilePage> {
 
   Uint8List? _image;
 
-  Future<String> uploadImageToStorage(String childName,Uint8List file) async {
+  Future<String> uploadImageToStorage(String childName, Uint8List file) async {
     Reference ref = _storage.ref().child(childName);
     UploadTask uploadTask = ref.putData(file);
     TaskSnapshot snapshot = await uploadTask;
@@ -51,8 +51,8 @@ class ProfilePageState extends State<ProfilePage> {
   void selectImage() async {
     Uint8List img = await pickImage(ImageSource.gallery);
 
-    String imageUrl = await uploadImageToStorage('profileImage', file);
-
+    String imageUrl = await uploadImageToStorage('profileImage', img);
+    auth.currentUser?.updatePhotoURL(imageUrl);
 
     setState(() {
       _image = img;
@@ -61,10 +61,7 @@ class ProfilePageState extends State<ProfilePage> {
 
   @override
   void initState() {
-
-     _storage = FirebaseStorage.instance;
-
-
+    _storage = FirebaseStorage.instance;
 
     updateData();
 
@@ -82,15 +79,14 @@ class ProfilePageState extends State<ProfilePage> {
   }
 
   void updateData() {
-     if (auth.currentUser != null) {
+    if (auth.currentUser != null) {
       user = auth.currentUser!;
       userName = user.displayName ?? ',';
       List<String> namesList = userName.split(',');
-      if(namesList.length == 2){
+      if (namesList.length == 2) {
         name = namesList[0];
         surname = namesList[1];
       }
-
     }
   }
 
@@ -127,7 +123,6 @@ class ProfilePageState extends State<ProfilePage> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
                       const SizedBox(
                         height: 24.0,
                       ),
@@ -135,14 +130,14 @@ class ProfilePageState extends State<ProfilePage> {
                         children: [
                           _image != null
                               ? CircleAvatar(
-                            radius: 64,
-                            backgroundImage: MemoryImage(_image!),
-                          )
+                                  radius: 64,
+                                  backgroundImage: MemoryImage(_image!),
+                                )
                               : const CircleAvatar(
-                            radius: 64,
-                            backgroundImage: NetworkImage(
-                                'https://png.pngitem.com/pimgs/s/421-4212266_transparent-default-avatar-png-default-avatar-images-png.png'),
-                          ),
+                                  radius: 64,
+                                  backgroundImage: NetworkImage(
+                                      'https://png.pngitem.com/pimgs/s/421-4212266_transparent-default-avatar-png-default-avatar-images-png.png'),
+                                ),
                           Positioned(
                             bottom: -10,
                             left: 80,
@@ -153,11 +148,9 @@ class ProfilePageState extends State<ProfilePage> {
                           )
                         ],
                       ),
-
                       const SizedBox(height: 10),
                       Text(
-
-                        auth.currentUser?.email??'',
+                        auth.currentUser?.email ?? '',
                         style: AppTextStyles.caption1,
                       ),
                       CupertinoListSection.insetGrouped(
@@ -179,10 +172,10 @@ class ProfilePageState extends State<ProfilePage> {
                               onTap: () {
                                 context.router
                                     .push(EditNameRoute(title: 'Ваше Имя'.tr))
-                                    .then((value){
-                                      setState(() {
-                                        updateData();
-                                      });
+                                    .then((value) {
+                                  setState(() {
+                                    updateData();
+                                  });
                                 });
                                 // context.router.push(ProfileRoute());
                               },
@@ -200,8 +193,10 @@ class ProfilePageState extends State<ProfilePage> {
                               ),
                               trailing: const RightArrowWidget(),
                               onTap: () {
-                                context.router.push(
-                                    EditSurnameRoute(title: 'Ваша Фамилия'.tr)).then((value){
+                                context.router
+                                    .push(EditSurnameRoute(
+                                        title: 'Ваша Фамилия'.tr))
+                                    .then((value) {
                                   setState(() {
                                     updateData();
                                   });
@@ -240,8 +235,9 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-                              context.router.push(
-                                  EditEmailRoute(title: 'Смена email'.tr)).then((value){
+                              context.router
+                                  .push(EditEmailRoute(title: 'Смена email'.tr))
+                                  .then((value) {
                                 setState(() {
                                   updateData();
                                 });
@@ -329,9 +325,10 @@ class ProfilePageState extends State<ProfilePage> {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-
-                              context.router.push(
-                                  DeleteProfileRoute(title: 'Удаление'.tr)).then((value){
+                              context.router
+                                  .push(
+                                      DeleteProfileRoute(title: 'Удаление'.tr))
+                                  .then((value) {
                                 setState(() {
                                   updateData();
                                 });
