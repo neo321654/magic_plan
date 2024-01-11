@@ -236,7 +236,8 @@ class EditEmailPageState extends State<EditEmailPage> {
                                         context: context,
                                         message: 'Введите пароль'.tr,
                                         confirmMessage: 'Хорошо'.tr);
-                                  } else if (auth.currentUser?.email == '') {
+                                  } else if (auth.currentUser?.email == '' ||
+                                      auth.currentUser?.email == null) {
                                     final credential =
                                         EmailAuthProvider.credential(
                                             email: emailController.text,
@@ -245,12 +246,20 @@ class EditEmailPageState extends State<EditEmailPage> {
                                     auth.currentUser
                                         ?.linkWithCredential(credential)
                                         .then((value) {
+                                      showAlertDialog(
+                                              context: context,
+                                              message:
+                                                  'Ваш email успешно добавлен!'
+                                                      .tr,
+                                              confirmMessage: 'Хорошо'.tr)
+                                          .then(
+                                              (value) => context.router.pop());
 
-                                          return context.router.pop();
-
-                                        });
+                                      //return context.router.pop();
+                                    });
                                   } else if (auth.currentUser?.emailVerified ??
                                       false) {
+                                    //todo поправить на актуальные значения
                                     // auth.currentUser?.unlink(providerId)
                                     auth.currentUser?.updateEmail(
                                         'nnnneo321654@rambler.ru');

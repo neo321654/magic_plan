@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:magic_plan/main.dart';
 
-void showAlertDialog({required BuildContext context,required String message, required String confirmMessage,
+Future<void> showAlertDialog({required BuildContext context,required String message, required String confirmMessage,
 }) {
 
-  showCupertinoModalPopup<void>(
+ return showCupertinoModalPopup<void>(
     context: context,
     builder: (BuildContext context) => CupertinoAlertDialog(
       // title: const Text('Alert'),
