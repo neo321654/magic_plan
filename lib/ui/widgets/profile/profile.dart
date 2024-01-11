@@ -4,7 +4,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../navigation/app_router.dart';
 import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
@@ -299,6 +301,11 @@ class ProfilePageState extends State<ProfilePage> {
                             style: AppTextStyles.caption1,
                             children: <TextSpan>[
                               TextSpan(
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () {
+                                    launchUrl(Uri.parse('https://flutter.dev'));
+                                    talker.debug('Условиями Использования'.tr);
+                                  },
                                 text: ' Условия политики конф.'.tr,
                                 style: AppTextStyles.caption1.copyWith(
                                   color: AppColors.accentsPrimary,
