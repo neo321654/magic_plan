@@ -27,9 +27,10 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
 
   @override
   void initState() {
+    super.initState();
+
     updateNameSurname();
     updateEmail();
-    super.initState();
   }
 
   void updateEmail() {

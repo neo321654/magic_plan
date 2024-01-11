@@ -33,6 +33,6 @@ pickImage(ImageSource source) async{
 }
 
 List<String> getNameSurnameSplit(String? namSur) {
-  namSur ??= ',';
+  if(namSur==null|| namSur =='')namSur=',';
   return namSur.split(',');
 }
