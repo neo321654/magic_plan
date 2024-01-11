@@ -18,6 +18,7 @@ class GreetingWidgetPage extends StatelessWidget {
       child: Stack(
         children: [
           AutoTabsScaffold(
+            backgroundColor: AppColors.primaryMainBackground,
             routes: const [
               MainRouteWidgetRoute(),
               AuthInTabBarWidgetRoute(),

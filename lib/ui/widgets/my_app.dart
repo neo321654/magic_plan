@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import '../../main.dart';
@@ -7,20 +8,23 @@ import '../../navigation/app_router.dart';
 import '/resources/resources.dart';
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key}) : appRouter = AppRouter();
+  MyApp({super.key}) : appRouter = AppRouter();
 
   final AppRouter appRouter;
 
   @override
   Widget build(BuildContext context) {
-
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
     return CupertinoApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Magic plan'.tr,
-      theme:  CupertinoThemeData(brightness: Brightness.light,primaryColor: AppColors.accentsPrimary),
+      theme: CupertinoThemeData(
+        brightness: Brightness.light,
+        primaryColor: AppColors.accentsPrimary,
+        scaffoldBackgroundColor: AppColors.primaryMainBackground,
+      ),
       // routerConfig: appRouter.config(),
       routeInformationParser: appRouter.defaultRouteParser(),
       routeInformationProvider: appRouter.routeInfoProvider(),

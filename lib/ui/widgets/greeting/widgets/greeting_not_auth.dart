@@ -89,9 +89,11 @@ class GreetingNotAuthPage extends StatelessWidget {
                     ],
                   ),
 
+                  const SizedBox(height: 16.0,),
 
                   CupertinoListSection.insetGrouped(
-                    // separatorColor: Colors.transparent,
+                    backgroundColor: AppColors.primaryMainBackground,
+                    separatorColor: Colors.transparent,
                     margin: const EdgeInsets.all(0),
                     children: [
                       CupertinoListTile(
@@ -99,18 +101,15 @@ class GreetingNotAuthPage extends StatelessWidget {
                           'Помощь & Поддержка'.tr,
                           style: AppTextStyles.callout,
                         ),
-                        trailing: const Row(
-                          children: [
-                            SizedBox(
-                              width: 10,
-                            ),
-                            RightArrowWidget(),
-                          ],
-                        ),
+                        trailing: const RightArrowWidget(),
                         onTap: () {
-                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        context.router.push(const AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
+                      ),
+                      Divider(
+                        height: 2,
+                        color: AppColors.primaryButtons,
                       ),
                       CupertinoListTile(
                         title: Text(
@@ -123,6 +122,10 @@ class GreetingNotAuthPage extends StatelessWidget {
                           // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
+                      ),
+                      Divider(
+                        height: 2,
+                        color: AppColors.primaryButtons,
                       ),
                       CupertinoListTile(
                         title: Text(
@@ -138,11 +141,13 @@ class GreetingNotAuthPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(
-                    height: 24.0,
-                  ),
+                  const SizedBox(height: 16.0,),
+
+
+
+
                   CupertinoListSection.insetGrouped(
-                    // separatorColor: Colors.transparent,
+                    separatorColor: Colors.transparent,
                     margin: const EdgeInsets.all(0),
                     children: [
                       CupertinoListTile(
@@ -162,6 +167,10 @@ class GreetingNotAuthPage extends StatelessWidget {
                           // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
                         },
                         padding: AppDimensions.tilePadding,
+                      ),
+                      Divider(
+                        height: 2,
+                        color: AppColors.primaryButtons,
                       ),
                       CupertinoListTile(
                         title: Text(
