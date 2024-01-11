@@ -79,7 +79,6 @@ class _AuthGatePageState extends State<AuthGatePage> {
         } else {
           isButtonLock = false;
         }
-        ;
       });
 
       talker.debug(phoneController.text);
