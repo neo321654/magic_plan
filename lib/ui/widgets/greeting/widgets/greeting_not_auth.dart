@@ -3,21 +3,42 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../../navigation/app_router.dart';
+import '../../components/device_information.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
 
 @RoutePage()
-class GreetingNotAuthPage extends StatelessWidget {
+class GreetingNotAuthPage extends StatefulWidget {
   const GreetingNotAuthPage({Key? key}) : super(key: key);
+
+  @override
+  State<GreetingNotAuthPage> createState() => _GreetingNotAuthPageState();
+}
+
+class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
+  Map<String, dynamic> _deviceData = <String, dynamic>{};
+
+  @override
+  void initState() {
+    super.initState();
+    DevInf().initPlatformState().then((value) {
+      if (!mounted) return;
+
+      setState(() {
+        _deviceData = value;
+      });
+      return null;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: <Widget>[
         SliverPersistentHeader(
-          delegate: MyNavBar(title:'Мой аккаунт'.tr),
+          delegate: MyNavBar(title: 'Мой аккаунт'.tr),
           pinned: true,
           floating: false,
         ),
@@ -57,7 +78,9 @@ class GreetingNotAuthPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: 14,),
+                  const SizedBox(
+                    height: 14,
+                  ),
                   CupertinoListSection.insetGrouped(
                     backgroundColor: AppColors.primaryMainBackground,
                     separatorColor: Colors.transparent,
@@ -70,7 +93,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                         ),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                        context.router.push(const AuthGateRoute());
+                          context.router.push(const AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
                       ),
@@ -79,7 +102,10 @@ class GreetingNotAuthPage extends StatelessWidget {
                         color: AppColors.primaryButtons,
                       ),
                       CupertinoListTile(
-                        title: Text('Зарегистрироваться'.tr,style:AppTextStyles.callout,),
+                        title: Text(
+                          'Зарегистрироваться'.tr,
+                          style: AppTextStyles.callout,
+                        ),
                         trailing: const RightArrowWidget(),
                         onTap: () {
                           // auth.signInWithEmailAndPassword(email: 'neo321654@rambler.ru', password: '111111');
@@ -88,9 +114,9 @@ class GreetingNotAuthPage extends StatelessWidget {
                       ),
                     ],
                   ),
-
-                  const SizedBox(height: 16.0,),
-
+                  const SizedBox(
+                    height: 16.0,
+                  ),
                   CupertinoListSection.insetGrouped(
                     backgroundColor: AppColors.primaryMainBackground,
                     separatorColor: Colors.transparent,
@@ -103,7 +129,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                         ),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                        context.router.push(const AuthGateRoute());
+                          context.router.push(const AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
                       ),
@@ -141,11 +167,9 @@ class GreetingNotAuthPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: 16.0,),
-
-
-
-
+                  const SizedBox(
+                    height: 16.0,
+                  ),
                   CupertinoListSection.insetGrouped(
                     separatorColor: Colors.transparent,
                     margin: const EdgeInsets.all(0),
@@ -186,9 +210,8 @@ class GreetingNotAuthPage extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(
-                    height: 24,
+                    height: 40,
                   ),
-
                   Row(
                     children: [
                       Expanded(
@@ -199,14 +222,13 @@ class GreetingNotAuthPage extends StatelessWidget {
                             horizontal: 8,
                           ),
                           borderRadius:
-                          const BorderRadius.all(Radius.circular(13.0)),
+                              const BorderRadius.all(Radius.circular(13.0)),
                           minSize: 1,
                           child: SizedBox(
                             height: 50,
                             // width: 67,
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
                                   'Оценить'.tr,
@@ -235,14 +257,13 @@ class GreetingNotAuthPage extends StatelessWidget {
                             horizontal: 8,
                           ),
                           borderRadius:
-                          const BorderRadius.all(Radius.circular(13.0)),
+                              const BorderRadius.all(Radius.circular(13.0)),
                           minSize: 1,
                           child: SizedBox(
                             height: 50,
                             // width: 67,
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceEvenly,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text(
                                   'Поделиться'.tr,
@@ -267,57 +288,46 @@ class GreetingNotAuthPage extends StatelessWidget {
                   const SizedBox(
                     height: 24,
                   ),
-
-                  CupertinoListSection.insetGrouped(
-                    // separatorColor: Colors.transparent,
-                    margin: const EdgeInsets.all(0),
-                    children: [
-                      CupertinoListTile(
-                        title: Row(
-                          children: [
-                            CupertinoButton(
-                              onPressed: () {},
-                              minSize: 1,
-                              padding: const EdgeInsets.all(4),
-                              color: Colors.red.shade50,
-                              child: Icon(
-                                Icons.logout,
-                                size: 20,
-                                textDirection: TextDirection.rtl,
-                                color: AppColors.modalsSOS,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Выйти'.tr,
-                                  style: AppTextStyles.bodyBold
-                                      .copyWith(color: AppColors.modalsSOS),
-                                ),
-                                Text(
-                                  'apollonovasofia@gmail.com'.tr,
-                                  style: AppTextStyles.foontoneBold,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                        onTap: () {
-                          // signOut();
-                        },
-                        padding: AppDimensions.tilePadding,
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
           ),
         ),
+        SliverList(
+          delegate: SliverChildListDelegate(
+
+              _deviceData.keys.map(
+                    (String property) {
+                  return Row(
+                    children: <Widget>[
+                      Container(
+                        padding: const EdgeInsets.all(10),
+                        child: Text(
+                          property,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(vertical: 10),
+                          child: Text(
+                            '${_deviceData[property]}',
+                            maxLines: 10,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ).toList(),
+              // Add more items as needed
+
+          ),
+        ),
+
       ],
     );
   }
