@@ -78,7 +78,7 @@ class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
                           "Рады вас видеть!".tr,
                           style: AppTextStyles.t3Bold,
                         ),
-                        SvgPicture.asset('assets/svg/person.svg'),
+                        SvgPicture.asset(AppImages.person),
                       ],
                     ),
                   ),

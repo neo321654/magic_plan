@@ -6,6 +6,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:magic_plan/resources/resources.dart';
 import '../components/functions.dart';
 import '/main.dart';
@@ -105,7 +106,9 @@ class _AuthGatePageState extends State<AuthGatePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const SizedBox(height: 24.0,),
+                const SizedBox(
+                  height: 24.0,
+                ),
                 GestureDetector(
                   onTap: () {
                     context.router.pop();
@@ -136,61 +139,65 @@ class _AuthGatePageState extends State<AuthGatePage> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Visibility(
-                        visible: error.isNotEmpty,
-                        child: MaterialBanner(
-                          backgroundColor: Theme.of(context).colorScheme.error,
-                          content:
-                              SelectableText('Ошибка для отладки : \n$error'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                setState(() {
-                                  error = '';
-                                });
-                              },
-                              child: Text(
-                                'скрыть'.tr,
-                                style: const TextStyle(color: Colors.white),
-                              ),
-                            ),
-                          ],
-                          contentTextStyle:
-                              const TextStyle(color: Colors.white),
-                          padding: const EdgeInsets.all(10),
+                      // Visibility(Visibility
+                      //   visible: error.isNotEmpty,
+                      //   child: MaterialBanner(
+                      //     backgroundColor: Theme.of(context).colorScheme.error,
+                      //     content:
+                      //         SelectableText('Ошибка для отладки : \n$error'),
+                      //     actions: [
+                      //       TextButton(
+                      //         onPressed: () {
+                      //           setState(() {
+                      //             error = '';
+                      //           });
+                      //         },
+                      //         child: Text(
+                      //           'скрыть'.tr,
+                      //           style: const TextStyle(color: Colors.white),
+                      //         ),
+                      //       ),
+                      //     ],
+                      //     contentTextStyle:
+                      //         const TextStyle(color: Colors.white),
+                      //     padding: const EdgeInsets.all(10),
+                      //   ),
+                      // ),
+                      const SizedBox(height: 20),
+
+                      CupertinoTextField(
+                        padding: AppDimensions.edgeInsetsSearch,
+                        decoration: AppBoxDecorations.editTextDecoration,
+                        placeholderStyle: AppTextStyles.callout
+                            .copyWith(color: AppColors.primaryButtons),
+                        keyboardType: TextInputType.phone,
+                        placeholder: 'Ваш Email'.tr,
+                        controller: phoneController,
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+
+                      CupertinoTextField(
+                        padding: AppDimensions.edgeInsetsSearch,
+                        decoration: AppBoxDecorations.editTextDecoration,
+                        keyboardType: TextInputType.number,
+                        obscureText: isHidePassword,
+                        placeholderStyle: AppTextStyles.callout
+                            .copyWith(color: AppColors.primaryButtons),
+                        placeholder: 'Пароль из смс'.tr,
+                        controller: passwordController,
+                        suffix: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isHidePassword = !isHidePassword;
+                            });
+                          },
+                          child: !isHidePassword
+                              ?  SvgPicture.asset(AppImages.open_yey)
+                              :  SvgPicture.asset(AppImages.closed_yey),
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      !isSendCode
-                          ? const SizedBox.shrink()
-                          : CupertinoTextField(
-                              padding: AppDimensions.edgeInsetsSearch,
-                              decoration: AppBoxDecorations.editTextDecoration,
-                              placeholderStyle: AppTextStyles.callout,
-                              keyboardType: TextInputType.phone,
-                              placeholder: '+71234567899'.tr,
-                              controller: phoneController,
-                            ),
-                      isSendCode
-                          ? const SizedBox.shrink()
-                          : CupertinoTextField(
-                              padding: AppDimensions.edgeInsetsSearch,
-                              decoration: AppBoxDecorations.editTextDecoration,
-                              keyboardType: TextInputType.number,
-                              obscureText: isHidePassword,
-                              placeholder: 'Код из смс'.tr,
-                              controller: passwordController,
-                              suffix: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    isHidePassword = !isHidePassword;
-                                  });
-                                },
-                                child: isHidePassword
-                                    ? const Icon(CupertinoIcons.plus)
-                                    : const Icon(CupertinoIcons.minus),
-                              ),
-                            ),
                       const SizedBox(height: 20),
                       SizedBox(
                         width: double.infinity,

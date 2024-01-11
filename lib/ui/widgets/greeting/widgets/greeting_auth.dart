@@ -124,7 +124,7 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                                   backgroundImage: NetworkImage(
                                       auth.currentUser?.photoURL ?? ''),
                                 )
-                              : SvgPicture.asset('assets/svg/person.svg'),
+                              : SvgPicture.asset(AppImages.person),
                         ],
                       ),
                     ),
