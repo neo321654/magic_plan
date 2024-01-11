@@ -116,8 +116,6 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                                   email,
                                   style: AppTextStyles.t3Bold,
                                 ),
-
-                          //todo добавить условия для аватара
                           (auth.currentUser?.photoURL != null)
                               ? CircleAvatar(
                                   radius: 23.0,
@@ -493,10 +491,15 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                                     style: AppTextStyles.bodyBold
                                         .copyWith(color: AppColors.modalsSOS),
                                   ),
-                                  Text(
-                                    'apollonovasofia@gmail.com'.tr,
-                                    style: AppTextStyles.foontoneBold,
-                                  ),
+                                  (email == '')
+                                      ? Text(
+                                          "email не привязан".tr,
+                                          style: AppTextStyles.foontoneBold,
+                                        )
+                                      : Text(
+                                          email,
+                                          style: AppTextStyles.foontoneBold,
+                                        ),
                                 ],
                               ),
                             ],

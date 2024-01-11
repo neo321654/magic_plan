@@ -65,6 +65,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
   bool isHidePassword = true;
   bool isSendCode = true;
   bool isButtonLock = true;
+  String passwordPlaceholder = 'Пароль из смс'.tr;
+  bool isErrorToPlaceholder = false;
 
   @override
   void initState() {
@@ -72,13 +74,13 @@ class _AuthGatePageState extends State<AuthGatePage> {
 
     phoneController.addListener(() {
       setState(() {
-        if(phoneController.text=='') {
+        if (phoneController.text == '') {
           isButtonLock = true;
-        }else{
+        } else {
           isButtonLock = false;
-        };
+        }
+        ;
       });
-
 
       talker.debug(phoneController.text);
     });
@@ -87,6 +89,15 @@ class _AuthGatePageState extends State<AuthGatePage> {
   void setIsLoading() {
     setState(() {
       isLoading = !isLoading;
+    });
+  }
+  void changePlaceHolder() {
+    setState(() {
+      if(isErrorToPlaceholder){
+        passwordPlaceholder = 'Пароль из смс'.tr;
+      }else{
+        passwordPlaceholder = 'Это неправильный пароль'.tr;
+      }
     });
   }
 
@@ -201,7 +212,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         obscureText: isHidePassword,
                         placeholderStyle: AppTextStyles.callout
                             .copyWith(color: AppColors.primaryButtons),
-                        placeholder: 'Пароль из смс'.tr,
+                        placeholder: passwordPlaceholder,
                         controller: passwordController,
                         suffix: GestureDetector(
                           onTap: () {
@@ -210,8 +221,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
                             });
                           },
                           child: !isHidePassword
-                              ?  SvgPicture.asset(AppImages.open_yey)
-                              :  SvgPicture.asset(AppImages.closed_yey),
+                              ? SvgPicture.asset(AppImages.open_yey)
+                              : SvgPicture.asset(AppImages.closed_yey),
                         ),
                       ),
                       const SizedBox(height: 24.0),
@@ -242,31 +253,37 @@ class _AuthGatePageState extends State<AuthGatePage> {
                           child: isLoading
                               ? const CircularProgressIndicator.adaptive()
                               : isSendCode
-                                  ? Text('Получить код'.tr,style: AppTextStyles.bodyBoldWhite,)
-                                  : Text('Отправить код'.tr,style: AppTextStyles.bodyBoldWhite,),
+                                  ? Text(
+                                      'Получить код'.tr,
+                                      style: AppTextStyles.bodyBoldWhite,
+                                    )
+                                  : Text(
+                                      'Отправить код'.tr,
+                                      style: AppTextStyles.bodyBoldWhite,
+                                    ),
                         ),
                       ),
-                      const SizedBox(height: 12.0,),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
 
                       RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          text:
-                          'Продолжая, вы соглашаетесь с '
-                              .tr,
+                          text: 'Продолжая, вы соглашаетесь с '.tr,
                           style: AppTextStyles.caption1,
                           children: <TextSpan>[
                             TextSpan(
                               recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            launchUrl(Uri.parse('https://flutter.dev'));
-                                talker.debug('Политикой Конфиденциальности'.tr);
-                          },
+                                ..onTap = () {
+                                  launchUrl(Uri.parse('https://flutter.dev'));
+                                  talker
+                                      .debug('Политикой Конфиденциальности'.tr);
+                                },
                               text: 'Политикой Конфиденциальности'.tr,
                               style: AppTextStyles.caption1.copyWith(
                                 color: AppColors.accentsPrimary,
                               ),
-
                             ),
                             TextSpan(
                               text: ' и '.tr,
@@ -295,47 +312,6 @@ class _AuthGatePageState extends State<AuthGatePage> {
         ),
       ),
     );
-  }
-
-  Future _resetPassword() async {
-    String? email;
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-              child: const Text('Send'),
-            ),
-          ],
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text('Enter your email'),
-              const SizedBox(height: 20),
-              TextFormField(
-                onChanged: (value) {
-                  email = value;
-                },
-              ),
-            ],
-          ),
-        );
-      },
-    );
-
-    if (email != null) {
-      try {
-        await auth.sendPasswordResetEmail(email: email!);
-        ScaffoldSnackbar.of(context).show('Password reset email is sent');
-      } catch (e) {
-        ScaffoldSnackbar.of(context).show('Error resetting');
-      }
-    }
   }
 
   Future<void> _handleMultiFactorException(
@@ -422,9 +398,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
   Future<void> _phoneAuth() async {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
-      verificationCompleted: (credential) {
-
-      },
+      verificationCompleted: (credential) {},
       verificationFailed: (e) {
         setState(() {
           talker.debug(e.message);
@@ -434,9 +408,11 @@ class _AuthGatePageState extends State<AuthGatePage> {
       codeSent: (String verificationIdloc, int? resendToken) async {
         verificationId = verificationIdloc;
 
+        talker.debug('codeSent');
         // final smsCode = await getSmsCodeFromUser(context);
       },
       codeAutoRetrievalTimeout: (e) {
+        talker.error('codeAutoRetrievalTimeout $e');
         if (mounted) {
           setState(() {
             talker.debug(e);
@@ -449,7 +425,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
+    passwordController.dispose();
+    phoneController.dispose();
     super.dispose();
   }
 
@@ -465,13 +442,19 @@ class _AuthGatePageState extends State<AuthGatePage> {
           await auth.signInWithCredential(credential);
       if (userCredential.user != null) {
         context.router.popUntilRoot();
-        // context.router.popUntilRoot();
-        // context.router.popAndPush(const AuthInTabBarWidgetRoute());
-        // context.router.push(AuthInTabBarWidgetRoute());
-        //todo replace не работает
-        // context.router.replace(AuthInTabBarWidgetRoute());
       }
     } on FirebaseAuthException catch (e) {
+
+        passwordController.text = '';
+        changePlaceHolder();
+
+
+
+      // showAlertDialog(
+      //     context: context,
+      //     message: 'Error'.tr,
+      //     confirmMessage: 'Хорошо'.tr);
+
       setState(() {
         error = e.message ?? '';
       });
@@ -480,26 +463,5 @@ class _AuthGatePageState extends State<AuthGatePage> {
 }
 
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
-  String? smsCode;
-
   return '111111';
 }
-
-// void _showAlertDialog(BuildContext context) {
-//   showCupertinoModalPopup<void>(
-//     context: context,
-//     builder: (BuildContext context) => CupertinoAlertDialog(
-//       // title: const Text('Alert'),
-//       content: Text('Введите код из смс в поле код для авторизации.'.tr),
-//       actions: <CupertinoDialogAction>[
-//         CupertinoDialogAction(
-//           isDestructiveAction: false,
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           child: Text('Хорошо'.tr),
-//         ),
-//       ],
-//     ),
-//   );
-// }
