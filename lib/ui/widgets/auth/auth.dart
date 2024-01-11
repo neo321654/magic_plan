@@ -80,19 +80,19 @@ class _AuthGatePageState extends State<AuthGatePage> {
         backgroundColor: AppColors.primaryMainBackground,
         child: Padding(
           padding: const EdgeInsets.only(
-            top: 24.0,
+            top: 14.0,
           ),
           child: Container(
             decoration: BoxDecoration(
               boxShadow: const [
                 BoxShadow(
                   color: Colors.grey,
-                  spreadRadius: 5,
-                  blurRadius: 7,
+                  spreadRadius: 0,
+                  blurRadius: 6,
                   offset: Offset(0, 3),
                 ),
               ],
-              color: AppColors.accentsPrimary,
+              color: AppColors.phonePlashek,
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(13.0),
                 topRight: Radius.circular(13.0),
@@ -105,6 +105,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                const SizedBox(height: 24.0,),
                 GestureDetector(
                   onTap: () {
                     context.router.pop();

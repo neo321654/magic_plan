@@ -1,11 +1,8 @@
-import 'package:auto_route/annotations.dart';
-import 'dart:typed_data';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:magic_plan/navigation/app_router.dart';
 import '../components/functions.dart';
 import '../components/my_custom_nav_bar.dart';
@@ -200,7 +197,7 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                                   ?.delete()
                                   .then((value) => context.router
                                           .pushAndPopUntil(
-                                              AuthInTabBarWidgetRoute(),
+                                              const AuthInTabBarWidgetRoute(),
                                               predicate: (_) {
                                         return true;
                                       }))

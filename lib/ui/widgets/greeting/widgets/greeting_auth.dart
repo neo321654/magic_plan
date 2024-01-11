@@ -12,7 +12,7 @@ import '../../components/widgets.dart';
 
 @RoutePage()
 class GreetingAuthPage extends StatefulWidget {
-  GreetingAuthPage({Key? key}) : super(key: key);
+  const GreetingAuthPage({Key? key}) : super(key: key);
 
   @override
   State<GreetingAuthPage> createState() => _GreetingAuthPageState();
