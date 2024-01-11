@@ -8,14 +8,27 @@ class MainScreenWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(child:Column(
+    return SafeArea(
+        child: Column(
       children: [
-        SizedBox(height: 8.0,),
+        SizedBox(
+          height: 8.0,
+        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 21.0,)),
-            IconButton(onPressed: (){}, icon: Icon(Icons.add,size: 21.0,)),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.add,
+                  size: 21.0,
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.add,
+                  size: 21.0,
+                )),
           ],
         ),
       ],
