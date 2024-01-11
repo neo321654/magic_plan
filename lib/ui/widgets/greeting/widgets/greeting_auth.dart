@@ -23,11 +23,17 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
 
   String name = '';
   String surname = '';
+  String email = '';
 
   @override
   void initState() {
     updateNameSurname();
+    updateEmail();
     super.initState();
+  }
+
+  void updateEmail() {
+    email = auth.currentUser?.email ?? '';
   }
 
   void updateNameSurname() {
@@ -101,14 +107,13 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          (auth.currentUser?.email == '' ||
-                                  auth.currentUser?.email == null)
+                          (email == '')
                               ? Text(
                                   "email не привязан".tr,
                                   style: AppTextStyles.t3Bold,
                                 )
                               : Text(
-                                  '${auth.currentUser?.email}',
+                                  email,
                                   style: AppTextStyles.t3Bold,
                                 ),
 
@@ -137,9 +142,12 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-                              context.router.push(const ProfileRoute()).then((value){
+                              context.router
+                                  .push(const ProfileRoute())
+                                  .then((value) {
                                 setState(() {
                                   updateNameSurname();
+                                  updateEmail();
                                 });
                               });
                             },
