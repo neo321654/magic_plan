@@ -293,41 +293,102 @@ class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
             ),
           ),
         ),
+
+        //'name': if 14 pro,
+        //identifierForVendor
+        //systemVersion
+
+        //device
+        //id
+        //version.sdkInt
+
         SliverList(
           delegate: SliverChildListDelegate(
-
-              _deviceData.keys.map(
-                    (String property) {
-                  return Row(
-                    children: <Widget>[
-                      Container(
-                        padding: const EdgeInsets.all(10),
-                        child: Text(
-                          property,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
+            (_deviceData.keys.contains('name'))
+                ? [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 23.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Модель: ${_deviceData['name']}',
+                            textAlign: TextAlign.start,
                           ),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Text(
-                            '${_deviceData[property]}',
-                            maxLines: 10,
-                            overflow: TextOverflow.ellipsis,
+                          const SizedBox(
+                            height: 5.0,
                           ),
-                        ),
+                          Text(
+                              'ID устройства: ${_deviceData['identifierForVendor']}'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                          Text('Версия IOS: ${_deviceData['systemVersion']}'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                        ],
                       ),
-                    ],
-                  );
-                },
-              ).toList(),
-              // Add more items as needed
+                    ),
+                  ]
+                : [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 23.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Модель: ${_deviceData['device']}',
+                            textAlign: TextAlign.start,
+                          ),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                          Text(
+                              'ID устройства: ${_deviceData['id']}'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                          Text('Версия SDK: ${_deviceData['version.sdkInt']}'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
 
+            // _deviceData.keys.map(
+            //
+            //       (String property) {
+            //     return Row(
+            //       children: <Widget>[
+            //         Container(
+            //           padding: const EdgeInsets.all(10),
+            //           child: Text(
+            //             property,
+            //             style: const TextStyle(
+            //               fontWeight: FontWeight.bold,
+            //             ),
+            //           ),
+            //         ),
+            //         Expanded(
+            //           child: Container(
+            //             padding: const EdgeInsets.symmetric(vertical: 10),
+            //             child: Text(
+            //               '${_deviceData[property]}',
+            //               maxLines: 10,
+            //               overflow: TextOverflow.ellipsis,
+            //             ),
+            //           ),
+            //         ),
+            //       ],
+            //     );
+            //   },
+            // ).toList(),
+            // Add more items as needed
           ),
         ),
-
       ],
     );
   }
