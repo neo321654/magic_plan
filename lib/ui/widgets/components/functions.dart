@@ -31,3 +31,8 @@ pickImage(ImageSource source) async{
   }
  talker.debug ('No Images Selected');
 }
+
+List<String> getNameSurnameSplit(String? namSur) {
+  namSur ??= ',';
+  return namSur.split(',');
+}

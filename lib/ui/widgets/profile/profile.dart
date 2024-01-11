@@ -13,8 +13,6 @@ import '/resources/resources.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
 
-
-
 @RoutePage()
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -32,7 +30,6 @@ class ProfilePageState extends State<ProfilePage> {
   bool showSaveButton = false;
   bool isLoading = false;
 
-  String userName = ',';
   String name = '';
   String surname = '';
   late final FirebaseStorage _storage;
@@ -50,7 +47,8 @@ class ProfilePageState extends State<ProfilePage> {
   void selectImage() async {
     Uint8List img = await pickImage(ImageSource.gallery);
 
-    String imageUrl = await uploadImageToStorage(auth.currentUser?.uid??'imgProfile', img);
+    String imageUrl =
+        await uploadImageToStorage(auth.currentUser?.uid ?? 'imgProfile', img);
     auth.currentUser?.updatePhotoURL(imageUrl);
 
     setState(() {
@@ -80,14 +78,14 @@ class ProfilePageState extends State<ProfilePage> {
   void updateData() {
     if (auth.currentUser != null) {
       user = auth.currentUser!;
-      userName = user.displayName ?? ',';
-      List<String> namesList = userName.split(',');
-      if (namesList.length == 2) {
-        name = namesList[0];
-        surname = namesList[1];
-      }
+      List<String> namesList = getNameSurnameSplit(user.displayName);
+
+      name = namesList[0];
+      surname = namesList[1];
     }
   }
+
+
 
   void setIsLoading() {
     setState(() {
@@ -132,10 +130,10 @@ class ProfilePageState extends State<ProfilePage> {
                                   radius: 64,
                                   backgroundImage: MemoryImage(_image!),
                                 )
-                              :  CircleAvatar(
+                              : CircleAvatar(
                                   radius: 64,
                                   backgroundImage: NetworkImage(
-                                      auth.currentUser?.photoURL??''),
+                                      auth.currentUser?.photoURL ?? ''),
                                 ),
                           Positioned(
                             bottom: -10,
