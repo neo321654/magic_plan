@@ -75,145 +75,155 @@ class _AuthGatePageState extends State<AuthGatePage> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: FocusScope.of(context).unfocus,
+    return SafeArea(
       child: CupertinoPageScaffold(
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              vertical: 24.0,
-              horizontal: 8.0,
+        backgroundColor: AppColors.primaryMainBackground,
+        child: Padding(
+          padding: const EdgeInsets.only(
+            top: 24.0,
+          ),
+          child: Container(
+            decoration: BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 3),
+                ),
+              ],
+              color: AppColors.accentsPrimary,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(13.0),
+                topRight: Radius.circular(13.0),
+              ),
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: (){
-                      context.router.pop();
-                    },
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        "Закрыть".tr,
-                        style: AppTextStyles.callout.copyWith(
-                          color: AppColors.accentsPrimary,
+            padding: const EdgeInsets.only(
+              left: 8.0,
+              right: 8.0,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    context.router.pop();
+                  },
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      "Закрыть".tr,
+                      style: AppTextStyles.callout.copyWith(
+                        color: AppColors.accentsPrimary,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 35.0,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    "Вход в Аккаунт".tr,
+                    style: AppTextStyles.proDisplay,
+                  ),
+                ),
+                Form(
+                  key: formKey,
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Visibility(
+                        visible: error.isNotEmpty,
+                        child: MaterialBanner(
+                          backgroundColor: Theme.of(context).colorScheme.error,
+                          content:
+                              SelectableText('Ошибка для отладки : \n$error'),
+                          actions: [
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  error = '';
+                                });
+                              },
+                              child: Text(
+                                'скрыть'.tr,
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ],
+                          contentTextStyle:
+                              const TextStyle(color: Colors.white),
+                          padding: const EdgeInsets.all(10),
                         ),
                       ),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 35.0,
-                  ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: Text(
-                      "Вход в Аккаунт".tr,
-                      style: AppTextStyles.proDisplay,
-                    ),
-                  ),
-                  Form(
-                    key: formKey,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    child: ConstrainedBox(
-                      constraints: const BoxConstraints(maxWidth: 400),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Visibility(
-                            visible: error.isNotEmpty,
-                            child: MaterialBanner(
-                              backgroundColor:
-                                  Theme.of(context).colorScheme.error,
-                              content: SelectableText(
-                                  'Ошибка для отладки : \n$error'),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      error = '';
-                                    });
-                                  },
-                                  child: Text(
-                                    'скрыть'.tr,
-                                    style: const TextStyle(color: Colors.white),
-                                  ),
-                                ),
-                              ],
-                              contentTextStyle:
-                                  const TextStyle(color: Colors.white),
-                              padding: const EdgeInsets.all(10),
+                      const SizedBox(height: 20),
+                      !isSendCode
+                          ? const SizedBox.shrink()
+                          : CupertinoTextField(
+                              padding: AppDimensions.edgeInsetsSearch,
+                              decoration: AppBoxDecorations.editTextDecoration,
+                              placeholderStyle: AppTextStyles.callout,
+                              keyboardType: TextInputType.phone,
+                              placeholder: '+71234567899'.tr,
+                              controller: phoneController,
                             ),
-                          ),
-                          const SizedBox(height: 20),
-                          !isSendCode
-                              ? const SizedBox.shrink()
-                              : CupertinoTextField(
-                                  padding: AppDimensions.edgeInsetsSearch,
-                                  decoration:
-                                      AppBoxDecorations.editTextDecoration,
-                                  placeholderStyle: AppTextStyles.callout,
-                                  keyboardType: TextInputType.phone,
-                                  placeholder: '+71234567899'.tr,
-                                  controller: phoneController,
-                                ),
-                          isSendCode
-                              ? const SizedBox.shrink()
-                              : CupertinoTextField(
-                                  padding: AppDimensions.edgeInsetsSearch,
-                                  decoration:
-                                      AppBoxDecorations.editTextDecoration,
-                                  keyboardType: TextInputType.number,
-                                  obscureText: isHidePassword,
-                                  placeholder: 'Код из смс'.tr,
-                                  controller: passwordController,
-                                  suffix: GestureDetector(
-                                    onTap: () {
+                      isSendCode
+                          ? const SizedBox.shrink()
+                          : CupertinoTextField(
+                              padding: AppDimensions.edgeInsetsSearch,
+                              decoration: AppBoxDecorations.editTextDecoration,
+                              keyboardType: TextInputType.number,
+                              obscureText: isHidePassword,
+                              placeholder: 'Код из смс'.tr,
+                              controller: passwordController,
+                              suffix: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isHidePassword = !isHidePassword;
+                                  });
+                                },
+                                child: isHidePassword
+                                    ? const Icon(CupertinoIcons.plus)
+                                    : const Icon(CupertinoIcons.minus),
+                              ),
+                            ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        // height: 50,
+                        child: CupertinoButton(
+                          color: AppColors.accentsPrimary,
+                          onPressed: isLoading
+                              ? null
+                              : !isSendCode
+                                  ? () {
+                                      //todo добавить проверку на поля
+                                      _sendCode(
+                                          verId: verificationId,
+                                          smsCode: passwordController.text);
+                                    }
+                                  : () {
                                       setState(() {
-                                        isHidePassword = !isHidePassword;
+                                        isSendCode = !isSendCode;
                                       });
+                                      _handleMultiFactorException(
+                                        _emailAndPassword,
+                                      );
                                     },
-                                    child: isHidePassword
-                                        ? const Icon(CupertinoIcons.plus)
-                                        : const Icon(CupertinoIcons.minus),
-                                  ),
-                                ),
-                          const SizedBox(height: 20),
-                          SizedBox(
-                            width: double.infinity,
-                            // height: 50,
-                            child: CupertinoButton(
-                              color: AppColors.accentsPrimary,
-                              onPressed: isLoading
-                                  ? null
-                                  : !isSendCode
-                                      ? () {
-                                          //todo добавить проверку на поля
-                                          _sendCode(
-                                              verId: verificationId,
-                                              smsCode: passwordController.text);
-                                        }
-                                      : () {
-                                          setState(() {
-                                            isSendCode = !isSendCode;
-                                          });
-                                          _handleMultiFactorException(
-                                            _emailAndPassword,
-                                          );
-                                        },
-                              child: isLoading
-                                  ? const CircularProgressIndicator.adaptive()
-                                  : isSendCode
-                                      ? Text('Получить код'.tr)
-                                      : Text('Отправить код'.tr),
-                            ),
-                          ),
-                        ],
+                          child: isLoading
+                              ? const CircularProgressIndicator.adaptive()
+                              : isSendCode
+                                  ? Text('Получить код'.tr)
+                                  : Text('Отправить код'.tr),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
@@ -266,7 +276,10 @@ class _AuthGatePageState extends State<AuthGatePage> {
     Future<void> Function() authFunction,
   ) async {
     setIsLoading();
-    showAlertDialog(context: context,message:'Введите код из смс в поле код для авторизации.'.tr,confirmMessage:'Хорошо'.tr);
+    showAlertDialog(
+        context: context,
+        message: 'Введите код из смс в поле код для авторизации.'.tr,
+        confirmMessage: 'Хорошо'.tr);
 
     try {
       await authFunction();
@@ -345,9 +358,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
         print('!!!!!dfdf');
-       // context.router.navigateNamed('/root');
-       // context.router.navigate(AuthInTabBarWidgetRoute());
-
+        // context.router.navigateNamed('/root');
+        // context.router.navigate(AuthInTabBarWidgetRoute());
       },
       verificationFailed: (e) {
         setState(() {
@@ -388,8 +400,6 @@ class _AuthGatePageState extends State<AuthGatePage> {
       UserCredential userCredential =
           await auth.signInWithCredential(credential);
       if (userCredential.user != null) {
-
-
         context.router.popUntilRoot();
         // context.router.popUntilRoot();
         // context.router.popAndPush(const AuthInTabBarWidgetRoute());
@@ -408,14 +418,8 @@ class _AuthGatePageState extends State<AuthGatePage> {
 Future<String?> getSmsCodeFromUser(BuildContext context) async {
   String? smsCode;
 
-
-
   return '111111';
 }
-
-
-
-
 
 // void _showAlertDialog(BuildContext context) {
 //   showCupertinoModalPopup<void>(
