@@ -89,7 +89,12 @@ class GreetingAuthPage extends StatelessWidget {
                           ),
 
                           //todo добавить условия для аватара
-
+                          (auth.currentUser?.photoURL!=null)?
+                          CircleAvatar(
+                            radius: 23.0,
+                            backgroundImage: NetworkImage(
+                                auth.currentUser?.photoURL??''),
+                          ):
                           SvgPicture.asset('assets/svg/person.svg'),
                         ],
                       ),
