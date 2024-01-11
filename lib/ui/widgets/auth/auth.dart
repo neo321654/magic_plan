@@ -64,10 +64,24 @@ class _AuthGatePageState extends State<AuthGatePage> {
   bool isLoading = false;
   bool isHidePassword = true;
   bool isSendCode = true;
+  bool isButtonLock = true;
 
   @override
   void initState() {
     super.initState();
+
+    phoneController.addListener(() {
+      setState(() {
+        if(phoneController.text=='') {
+          isButtonLock = true;
+        }else{
+          isButtonLock = false;
+        };
+      });
+
+
+      talker.debug(phoneController.text);
+    });
   }
 
   void setIsLoading() {
@@ -173,7 +187,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         placeholderStyle: AppTextStyles.callout
                             .copyWith(color: AppColors.primaryButtons),
                         keyboardType: TextInputType.phone,
-                        placeholder: 'Ваш Email'.tr,
+                        placeholder: 'Ваш номер телефона'.tr,
                         controller: phoneController,
                       ),
                       const SizedBox(
@@ -205,9 +219,10 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         width: double.infinity,
                         // height: 50,
                         child: CupertinoButton(
+                          disabledColor: AppColors.primaryIcons,
                           borderRadius: BorderRadius.circular(13.0),
                           color: AppColors.accentsPrimary,
-                          onPressed: isLoading
+                          onPressed: isButtonLock
                               ? null
                               : !isSendCode
                                   ? () {
@@ -408,9 +423,7 @@ class _AuthGatePageState extends State<AuthGatePage> {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
       verificationCompleted: (credential) {
-        print('!!!!!dfdf');
-        // context.router.navigateNamed('/root');
-        // context.router.navigate(AuthInTabBarWidgetRoute());
+
       },
       verificationFailed: (e) {
         setState(() {
