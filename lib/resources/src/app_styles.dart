@@ -7,6 +7,11 @@ abstract class AppTextStyles {
     fontSize: 17.toFigma,
     fontWeight: FontWeight.w600,
   );
+  static TextStyle bodyBoldWhite = TextStyle(
+    color: AppColors.primaryContainersBackground,
+    fontSize: 17.toFigma,
+    fontWeight: FontWeight.w600,
+  );
   static TextStyle subheadline = TextStyle(
     color: AppColors.primaryButtons,
     fontSize: 15.toFigma,

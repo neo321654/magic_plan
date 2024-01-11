@@ -198,11 +198,12 @@ class _AuthGatePageState extends State<AuthGatePage> {
                               :  SvgPicture.asset(AppImages.closed_yey),
                         ),
                       ),
-                      const SizedBox(height: 20),
+                      const SizedBox(height: 24.0),
                       SizedBox(
                         width: double.infinity,
                         // height: 50,
                         child: CupertinoButton(
+                          borderRadius: BorderRadius.circular(13.0),
                           color: AppColors.accentsPrimary,
                           onPressed: isLoading
                               ? null
@@ -224,8 +225,27 @@ class _AuthGatePageState extends State<AuthGatePage> {
                           child: isLoading
                               ? const CircularProgressIndicator.adaptive()
                               : isSendCode
-                                  ? Text('Получить код'.tr)
-                                  : Text('Отправить код'.tr),
+                                  ? Text('Получить код'.tr,style: AppTextStyles.bodyBoldWhite,)
+                                  : Text('Отправить код'.tr,style: AppTextStyles.bodyBoldWhite,),
+                        ),
+                      ),
+                      const SizedBox(height: 12.0,),
+
+                      RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:
+                          'Сейчас вы получаете информацию об обновлениях платформы на ваш email.'
+                              .tr,
+                          style: AppTextStyles.caption1,
+                          children: <TextSpan>[
+                            TextSpan(
+                              text: ' Условия политики конф.'.tr,
+                              style: AppTextStyles.caption1.copyWith(
+                                color: AppColors.accentsPrimary,
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
