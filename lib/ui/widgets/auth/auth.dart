@@ -210,8 +210,9 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         decoration: AppBoxDecorations.editTextDecoration,
                         keyboardType: TextInputType.number,
                         obscureText: isHidePassword,
-                        placeholderStyle: AppTextStyles.callout
-                            .copyWith(color: AppColors.primaryButtons),
+                        placeholderStyle: isErrorToPlaceholder? AppTextStyles.callout
+                            .copyWith(color: AppColors.primaryButtons):AppTextStyles.callout
+                            .copyWith(color: AppColors.systemComment),
                         placeholder: passwordPlaceholder,
                         controller: passwordController,
                         suffix: GestureDetector(

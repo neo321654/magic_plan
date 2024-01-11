@@ -12,6 +12,7 @@ abstract class AppColors {
   static Color accentsPrimary = const Color(0xFF0098EE);
   static Color accentsBackground = const Color(0xFFDAE6F8);
   static Color modalsRooms = const Color(0xFF1ADA44);
+  static Color systemComment = const Color(0xFF50AB64);
   static Color modalsSOS = const Color(0xFFFF3A30);
   static Color modalsBackgroundSOS = const Color(0xFFF5E1DF);
 }
