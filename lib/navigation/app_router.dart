@@ -11,7 +11,7 @@ import '../ui/widgets/greeting/tab_bar_widget.dart';
 import '../ui/widgets/greeting/widgets/greeting_auth.dart';
 import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
 import '../ui/widgets/loader_widget.dart';
-import '../ui/widgets/maintab/main_screen.dart';
+import '../ui/widgets/my_progects_tab/my_progects_screen.dart';
 import '../ui/widgets/profile/profile.dart';
 import '../ui/widgets/wrapper_screen.dart';
 
@@ -22,12 +22,6 @@ class AppRouter extends _$AppRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: LoaderWidgetRoute.page, path: '/'),
-        // AutoRoute(page: LoaderWidgetRoute.page, path: '/zz'),
-
-        // AutoRoute(
-        //   page: ProfileRoute.page,
-        //   path: '/',
-        // ),
         AutoRoute(
           page: GreetingWidgetRoute.page,
           path: '/root',

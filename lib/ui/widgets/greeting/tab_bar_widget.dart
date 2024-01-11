@@ -17,8 +17,7 @@ class AuthInTabBarWidgetPage extends StatelessWidget {
         if (snapshot.hasData) {
           return GreetingAuthPage();
         }
-        return  GreetingAuthPage();
-        // return const GreetingNotAuthPage();
+         return const GreetingNotAuthPage();
       },
     );
   }

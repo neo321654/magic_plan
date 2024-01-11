@@ -13,7 +13,7 @@ class GreetingWidgetPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    //todo убрать когда буду удалять талкер
+    //todo убрать stack когда буду удалять талкер
     return SafeArea(
       child: Stack(
         children: [
@@ -21,13 +21,6 @@ class GreetingWidgetPage extends StatelessWidget {
             routes: const [
               MainRouteWidgetRoute(),
               AuthInTabBarWidgetRoute(),
-
-              // LoaderWidgetRoute(),
-              // GreetingNotAuthRoute(),
-              // ProfileRoute(),
-              // AuthGateRoute(),
-              // GreetingAuthRoute(),
-              // GreetingAuthRoute(),
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
               return CupertinoTabBar(
@@ -49,8 +42,8 @@ class GreetingWidgetPage extends StatelessWidget {
           ),
           //todo убрать когда буду удалять талкер
           Positioned(
-            top: 20.0,
-            right: 20.0,
+            top: 0.0,
+            right: 100.0,
             child: CupertinoButton(
               onPressed: () {
                 Navigator.of(context).push(

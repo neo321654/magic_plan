@@ -8,28 +8,18 @@ class LoaderWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(
-      builder: (context) {
-        return CupertinoPageScaffold(
-          backgroundColor: const Color(0xFF171717),
-          child:  Center(
-            child: CupertinoButton(
-              onPressed: () {
-                // context.read<_ViewModel>().checkAuth();
-                // context.router.pushNamed('auth');
-                context.router.replace(const GreetingWidgetRoute());
-                // context.router.navigateNamed('/greeting');
-                // AutoRouter.of(context).push(GreetingWidgetRoute());
-
-              },
-              child: const Text('enter'),
-            ),
+    return Builder(builder: (context) {
+      return CupertinoPageScaffold(
+        backgroundColor: const Color(0xFF171717),
+        child: Center(
+          child: CupertinoButton(
+            onPressed: () {
+              context.router.replace(const GreetingWidgetRoute());
+            },
+            child: const Text('enter'),
           ),
-
-        );
-      }
-    );
+        ),
+      );
+    });
   }
-
-
 }

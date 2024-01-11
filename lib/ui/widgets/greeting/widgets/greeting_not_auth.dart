@@ -36,7 +36,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(left: 16.0),
                     child: Text(
-                      "ПриветствуемAuth,".tr,
+                      "Приветствуем,".tr,
                       style: AppTextStyles.subheadline,
                     ),
                   ),
@@ -59,6 +59,7 @@ class GreetingNotAuthPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 14,),
                   CupertinoListSection.insetGrouped(
+                    backgroundColor: AppColors.primaryMainBackground,
                     separatorColor: Colors.transparent,
                     margin: const EdgeInsets.all(0),
                     children: [
@@ -69,13 +70,6 @@ class GreetingNotAuthPage extends StatelessWidget {
                         ),
                         trailing: const RightArrowWidget(),
                         onTap: () {
-                          //todo изменить на вход в аккаунт
-                          // context.router.push(AuthGateRoute());
-                          // router.root
-                          // context.router.root.replace(const AuthGateRoute());
-                          // context.router.navigate(const ProfileRoute());
-                          print(context.router.current.path);
-                          // context.router.replaceNamed('/root/authInTabBar/auth');
                         context.router.push(const AuthGateRoute());
                         },
                         padding: AppDimensions.tilePadding,
@@ -94,8 +88,221 @@ class GreetingNotAuthPage extends StatelessWidget {
                       ),
                     ],
                   ),
+
+
+                  CupertinoListSection.insetGrouped(
+                    // separatorColor: Colors.transparent,
+                    margin: const EdgeInsets.all(0),
+                    children: [
+                      CupertinoListTile(
+                        title: Text(
+                          'Помощь & Поддержка'.tr,
+                          style: AppTextStyles.callout,
+                        ),
+                        trailing: const Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RightArrowWidget(),
+                          ],
+                        ),
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                      CupertinoListTile(
+                        title: Text(
+                          'Сообщить об ошибке'.tr,
+                          style: AppTextStyles.callout
+                              .copyWith(color: AppColors.accentsPrimary),
+                        ),
+                        trailing: const Icon(CupertinoIcons.link),
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                      CupertinoListTile(
+                        title: Text(
+                          'Предложить улучшение'.tr,
+                          style: AppTextStyles.callout
+                              .copyWith(color: AppColors.accentsPrimary),
+                        ),
+                        trailing: const Icon(CupertinoIcons.link),
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                    ],
+                  ),
                   const SizedBox(
-                    height: 1000,
+                    height: 24.0,
+                  ),
+                  CupertinoListSection.insetGrouped(
+                    // separatorColor: Colors.transparent,
+                    margin: const EdgeInsets.all(0),
+                    children: [
+                      CupertinoListTile(
+                        title: Text(
+                          'Пользовательские настройки'.tr,
+                          style: AppTextStyles.callout,
+                        ),
+                        trailing: const Row(
+                          children: [
+                            SizedBox(
+                              width: 10,
+                            ),
+                            RightArrowWidget(),
+                          ],
+                        ),
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                      CupertinoListTile(
+                        title: Text(
+                          'Безопасность'.tr,
+                          style: AppTextStyles.callout,
+                        ),
+                        trailing: const RightArrowWidget(),
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CupertinoButton(
+                          onPressed: () {},
+                          color: AppColors.accentsBackground,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(13.0)),
+                          minSize: 1,
+                          child: SizedBox(
+                            height: 50,
+                            // width: 67,
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'Оценить'.tr,
+                                  style: AppTextStyles.bodyBold.copyWith(
+                                    color: AppColors.accentsPrimary,
+                                  ),
+                                ),
+                                // const SizedBox(width: 20.0,),
+                                Icon(
+                                  CupertinoIcons.star_fill,
+                                  color: AppColors.accentsPrimary,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 25,
+                      ),
+                      Expanded(
+                        child: CupertinoButton(
+                          onPressed: () {},
+                          color: AppColors.accentsBackground,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                          ),
+                          borderRadius:
+                          const BorderRadius.all(Radius.circular(13.0)),
+                          minSize: 1,
+                          child: SizedBox(
+                            height: 50,
+                            // width: 67,
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  'Поделиться'.tr,
+                                  style: AppTextStyles.bodyBold.copyWith(
+                                    color: AppColors.accentsPrimary,
+                                  ),
+                                ),
+                                // const SizedBox(width: 20.0,),
+                                Icon(
+                                  Icons.reply,
+                                  size: 36,
+                                  textDirection: TextDirection.rtl,
+                                  color: AppColors.accentsPrimary,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+
+                  CupertinoListSection.insetGrouped(
+                    // separatorColor: Colors.transparent,
+                    margin: const EdgeInsets.all(0),
+                    children: [
+                      CupertinoListTile(
+                        title: Row(
+                          children: [
+                            CupertinoButton(
+                              onPressed: () {},
+                              minSize: 1,
+                              padding: const EdgeInsets.all(4),
+                              color: Colors.red.shade50,
+                              child: Icon(
+                                Icons.logout,
+                                size: 20,
+                                textDirection: TextDirection.rtl,
+                                color: AppColors.modalsSOS,
+                              ),
+                            ),
+                            const SizedBox(
+                              width: 10,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Выйти'.tr,
+                                  style: AppTextStyles.bodyBold
+                                      .copyWith(color: AppColors.modalsSOS),
+                                ),
+                                Text(
+                                  'apollonovasofia@gmail.com'.tr,
+                                  style: AppTextStyles.foontoneBold,
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        onTap: () {
+                          // signOut();
+                        },
+                        padding: AppDimensions.tilePadding,
+                      ),
+                    ],
                   ),
                 ],
               ),

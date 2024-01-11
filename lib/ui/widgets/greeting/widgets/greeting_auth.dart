@@ -24,21 +24,6 @@ class GreetingAuthPage extends StatelessWidget {
           pinned: true,
           floating: true,
         ),
-
-        // const CupertinoSliverNavigationBar(
-        //   automaticallyImplyLeading: false,
-        //   padding: EdgeInsetsDirectional.zero,
-        //   automaticallyImplyTitle: false,
-        //   middle: Text('11dfd'),
-        //   largeTitle: Text(''),
-        //   stretch: true,
-        // ),
-
-        // SliverPersistentHeader(delegate: delegate)
-        // SliverToBoxAdapter(
-        //   child:         CupertinoNavigationBar(),
-        //
-        // ),
         SliverToBoxAdapter(
           child: Column(
             children: [
@@ -249,7 +234,6 @@ class GreetingAuthPage extends StatelessWidget {
                         ),
                       ],
                     ),
-                    //todo нужно подумать над общим отступом
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 16,

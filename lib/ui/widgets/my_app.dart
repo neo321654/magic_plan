@@ -17,14 +17,6 @@ class MyApp extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    // return CupertinoApp.router(
-    //
-    //   routerConfig: appRouter.config(),
-    //   title: 'Magic plan'.tr,
-    //   theme:  CupertinoThemeData(brightness: Brightness.light,primaryColor: AppColors.accentsPrimary),
-    //
-    // );
-
     return CupertinoApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Magic plan'.tr,

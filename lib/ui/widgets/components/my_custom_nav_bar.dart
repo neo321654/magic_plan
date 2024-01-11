@@ -24,7 +24,6 @@ class MyNavBar extends SliverPersistentHeaderDelegate {
       ),
     );
   }
-  //todo на айфонах есть проблемма с отображением
   @override
   double get maxExtent => 44;
 
