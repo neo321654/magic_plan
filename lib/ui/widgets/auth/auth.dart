@@ -91,14 +91,16 @@ class _AuthGatePageState extends State<AuthGatePage> {
       isLoading = !isLoading;
     });
   }
+
   void changePlaceHolder() {
     setState(() {
-      if(isErrorToPlaceholder){
+      if (isErrorToPlaceholder) {
         passwordPlaceholder = 'Пароль из смс'.tr;
-      }else{
+      } else {
         passwordPlaceholder = 'Это неправильный пароль'.tr;
       }
     });
+    isErrorToPlaceholder = !isErrorToPlaceholder;
   }
 
   @override
@@ -210,9 +212,11 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         decoration: AppBoxDecorations.editTextDecoration,
                         keyboardType: TextInputType.number,
                         obscureText: isHidePassword,
-                        placeholderStyle: isErrorToPlaceholder? AppTextStyles.callout
-                            .copyWith(color: AppColors.primaryButtons):AppTextStyles.callout
-                            .copyWith(color: AppColors.systemComment),
+                        placeholderStyle: !isErrorToPlaceholder
+                            ? AppTextStyles.callout
+                                .copyWith(color: AppColors.primaryButtons)
+                            : AppTextStyles.callout
+                                .copyWith(color: AppColors.systemComment),
                         placeholder: passwordPlaceholder,
                         controller: passwordController,
                         suffix: GestureDetector(
@@ -399,28 +403,32 @@ class _AuthGatePageState extends State<AuthGatePage> {
   Future<void> _phoneAuth() async {
     await auth.verifyPhoneNumber(
       phoneNumber: phoneController.text,
-      verificationCompleted: (credential) {},
+      verificationCompleted: (credential) {
+        talker.debug('verificationCompleted $credential');
+      },
       verificationFailed: (e) {
         setState(() {
-          talker.debug(e.message);
+          talker.debug('verificationFailed  ${e.message}');
           error = '${e.message}';
         });
       },
       codeSent: (String verificationIdloc, int? resendToken) async {
         verificationId = verificationIdloc;
 
-        talker.debug('codeSent');
+        talker.debug('codeSent  $verificationIdloc  $resendToken');
         // final smsCode = await getSmsCodeFromUser(context);
       },
       codeAutoRetrievalTimeout: (e) {
-        talker.error('codeAutoRetrievalTimeout $e');
+        talker.error('codeAutoRetrievalTimeout   $e');
         if (mounted) {
           setState(() {
-            talker.debug(e);
             error = e;
           });
         }
       },
+      timeout: const Duration(
+        seconds: 90,
+      ),
     );
   }
 
@@ -445,20 +453,11 @@ class _AuthGatePageState extends State<AuthGatePage> {
         context.router.popUntilRoot();
       }
     } on FirebaseAuthException catch (e) {
-
-        passwordController.text = '';
-        changePlaceHolder();
-
-
-
-      // showAlertDialog(
-      //     context: context,
-      //     message: 'Error'.tr,
-      //     confirmMessage: 'Хорошо'.tr);
-
-      setState(() {
-        error = e.message ?? '';
-      });
+      passwordController.text = '';
+      changePlaceHolder();
+      talker.error('FirebaseAuthException $e');
+    } catch (e) {
+      talker.error('FirebaseException $e');
     }
   }
 }
