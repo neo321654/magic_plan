@@ -6,8 +6,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:collection/collection.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:magic_plan/resources/resources.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../components/functions.dart';
 import '/main.dart';
 import 'package:flutter/material.dart';
@@ -235,12 +237,33 @@ class _AuthGatePageState extends State<AuthGatePage> {
                         textAlign: TextAlign.center,
                         text: TextSpan(
                           text:
-                          'Сейчас вы получаете информацию об обновлениях платформы на ваш email.'
+                          'Продолжая, вы соглашаетесь с '
                               .tr,
                           style: AppTextStyles.caption1,
                           children: <TextSpan>[
                             TextSpan(
-                              text: ' Условия политики конф.'.tr,
+                              recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            launchUrl(Uri.parse('https://flutter.dev'));
+                                talker.debug('Политикой Конфиденциальности'.tr);
+                          },
+                              text: 'Политикой Конфиденциальности'.tr,
+                              style: AppTextStyles.caption1.copyWith(
+                                color: AppColors.accentsPrimary,
+                              ),
+
+                            ),
+                            TextSpan(
+                              text: ' и '.tr,
+                              style: AppTextStyles.caption1,
+                            ),
+                            TextSpan(
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  launchUrl(Uri.parse('https://flutter.dev'));
+                                  talker.debug('Условиями Использования'.tr);
+                                },
+                              text: 'Условиями Использования'.tr,
                               style: AppTextStyles.caption1.copyWith(
                                 color: AppColors.accentsPrimary,
                               ),
