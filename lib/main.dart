@@ -17,7 +17,7 @@ late final FirebaseAuth auth;
 //todo убрать перед публикацией
 late final Talker talker;
 
-//commit return to mac
+//commit return drunk nout
 
 void main() async {
   talker = TalkerFlutter.init();
