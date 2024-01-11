@@ -4,16 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:magic_plan/main.dart';
 import 'package:magic_plan/navigation/app_router.dart';
+import 'package:magic_plan/ui/widgets/components/functions.dart';
 import '../../components/my_custom_nav_bar.dart';
 import '/resources/resources.dart';
 
 import '../../components/widgets.dart';
 
 @RoutePage()
-class GreetingAuthPage extends StatelessWidget {
+class GreetingAuthPage extends StatefulWidget {
   GreetingAuthPage({Key? key}) : super(key: key);
 
+  @override
+  State<GreetingAuthPage> createState() => _GreetingAuthPageState();
+}
+
+class _GreetingAuthPageState extends State<GreetingAuthPage> {
   final Future<void> Function() signOut = auth.signOut;
+
+  String name = '';
+  String surname = '';
+
+  @override
+  void initState() {
+    updateNameSurname();
+    super.initState();
+  }
+
+  void updateNameSurname() {
+    List<String> nameSurList =
+        getNameSurnameSplit(auth.currentUser?.displayName);
+    name = nameSurList[0];
+    surname = nameSurList[1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,23 +101,25 @@ class GreetingAuthPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          (auth.currentUser?.email==''||auth.currentUser?.email ==null)?
-                          Text(
-                            "email не привязан".tr,
-                            style: AppTextStyles.t3Bold,
-                          ): Text(
-                            '${auth.currentUser?.email}',
-                            style: AppTextStyles.t3Bold,
-                          ),
+                          (auth.currentUser?.email == '' ||
+                                  auth.currentUser?.email == null)
+                              ? Text(
+                                  "email не привязан".tr,
+                                  style: AppTextStyles.t3Bold,
+                                )
+                              : Text(
+                                  '${auth.currentUser?.email}',
+                                  style: AppTextStyles.t3Bold,
+                                ),
 
                           //todo добавить условия для аватара
-                          (auth.currentUser?.photoURL!=null)?
-                          CircleAvatar(
-                            radius: 23.0,
-                            backgroundImage: NetworkImage(
-                                auth.currentUser?.photoURL??''),
-                          ):
-                          SvgPicture.asset('assets/svg/person.svg'),
+                          (auth.currentUser?.photoURL != null)
+                              ? CircleAvatar(
+                                  radius: 23.0,
+                                  backgroundImage: NetworkImage(
+                                      auth.currentUser?.photoURL ?? ''),
+                                )
+                              : SvgPicture.asset('assets/svg/person.svg'),
                         ],
                       ),
                     ),
@@ -113,9 +137,11 @@ class GreetingAuthPage extends StatelessWidget {
                             ),
                             trailing: const RightArrowWidget(),
                             onTap: () {
-                              // context.router.navigateNamed('/root/profile');
-                              // context.router.popAndPush(ProfileRoute());
-                              context.router.push(const ProfileRoute());
+                              context.router.push(const ProfileRoute()).then((value){
+                                setState(() {
+                                  updateNameSurname();
+                                });
+                              });
                             },
                             padding: AppDimensions.tilePadding,
                           ),
@@ -138,10 +164,15 @@ class GreetingAuthPage extends StatelessWidget {
                         CupertinoListTile(
                           title: Row(
                             children: [
-                              Text(
-                                'Apollonovasofia'.tr,
-                                style: AppTextStyles.callout,
-                              ),
+                              (name == '')
+                                  ? Text(
+                                      'Укажите имя'.tr,
+                                      style: AppTextStyles.callout,
+                                    )
+                                  : Text(
+                                      '$name $surname',
+                                      style: AppTextStyles.callout,
+                                    ),
                               const SizedBox(
                                 width: 10,
                               ),
@@ -346,7 +377,6 @@ class GreetingAuthPage extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-
                     Row(
                       children: [
                         Expanded(
@@ -425,7 +455,6 @@ class GreetingAuthPage extends StatelessWidget {
                     const SizedBox(
                       height: 24,
                     ),
-
                     CupertinoListSection.insetGrouped(
                       // separatorColor: Colors.transparent,
                       margin: const EdgeInsets.all(0),
