@@ -1,13 +1,18 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 
 class DevInf{
 
   final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
+  late PackageInfo packageInfo;
+
+
 
    Future<Map<String,dynamic>> initPlatformState() async {
+     packageInfo = await PackageInfo.fromPlatform();
     var deviceData = <String, dynamic>{};
 
     try {

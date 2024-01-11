@@ -19,15 +19,19 @@ class GreetingNotAuthPage extends StatefulWidget {
 
 class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
   Map<String, dynamic> _deviceData = <String, dynamic>{};
+  String _appVersion = '';
+
 
   @override
   void initState() {
     super.initState();
-    DevInf().initPlatformState().then((value) {
+    DevInf devInf = DevInf();
+    devInf.initPlatformState().then((value) {
       if (!mounted) return;
 
       setState(() {
         _deviceData = value;
+        _appVersion = devInf.packageInfo.version;
       });
       return null;
     });
@@ -327,6 +331,11 @@ class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
                           const SizedBox(
                             height: 5.0,
                           ),
+                          Text(
+                              'Версия приложения: $_appVersion'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
                         ],
                       ),
                     ),
@@ -344,12 +353,16 @@ class _GreetingNotAuthPageState extends State<GreetingNotAuthPage> {
                           const SizedBox(
                             height: 5.0,
                           ),
-                          Text(
-                              'ID устройства: ${_deviceData['id']}'),
+                          Text('ID устройства: ${_deviceData['id']}'),
                           const SizedBox(
                             height: 5.0,
                           ),
                           Text('Версия SDK: ${_deviceData['version.sdkInt']}'),
+                          const SizedBox(
+                            height: 5.0,
+                          ),
+                          Text(
+                              'Версия приложения: $_appVersion'),
                           const SizedBox(
                             height: 5.0,
                           ),
