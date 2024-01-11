@@ -88,12 +88,17 @@ class _AuthGatePageState extends State<AuthGatePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      "Закрыть".tr,
-                      style: AppTextStyles.callout.copyWith(
-                        color: AppColors.accentsPrimary,
+                  GestureDetector(
+                    onTap: (){
+                      context.router.pop();
+                    },
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Text(
+                        "Закрыть".tr,
+                        style: AppTextStyles.callout.copyWith(
+                          color: AppColors.accentsPrimary,
+                        ),
                       ),
                     ),
                   ),
