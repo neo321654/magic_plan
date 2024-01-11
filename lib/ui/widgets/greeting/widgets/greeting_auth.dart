@@ -79,10 +79,17 @@ class GreetingAuthPage extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+                          (auth.currentUser?.email==''||auth.currentUser?.email ==null)?
                           Text(
-                            "apollonovasophia@gmail.com".tr,
+                            "email не привязан".tr,
+                            style: AppTextStyles.t3Bold,
+                          ): Text(
+                            '${auth.currentUser?.email}',
                             style: AppTextStyles.t3Bold,
                           ),
+
+                          //todo добавить условия для аватара
+
                           SvgPicture.asset('assets/svg/person.svg'),
                         ],
                       ),
