@@ -24,28 +24,33 @@ class GreetingWidgetPage extends StatelessWidget {
               AuthInTabBarWidgetRoute(),
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
-              return CupertinoTabBar(
-                backgroundColor: AppColors.primaryBackgroundSearch,
-                currentIndex: tabsRouter.activeIndex,
-                onTap: tabsRouter.setActiveIndex,
-                items: <BottomNavigationBarItem>[
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset(
-                      AppImages.window_tab_icon,
+              return Container(
+                padding: const EdgeInsets.only(bottom: 14),
+                color: AppColors.primaryBackgroundSearch,
+                child: CupertinoTabBar(
+                  // height: 75,
+                  backgroundColor: AppColors.primaryBackgroundSearch,
+                  currentIndex: tabsRouter.activeIndex,
+                  onTap: tabsRouter.setActiveIndex,
+                  items: <BottomNavigationBarItem>[
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        AppImages.window_tab_icon,
+                      ),
+                      activeIcon:SvgPicture.asset(
+                        AppImages.window_active,
+                      ) ,
+                      label: 'Мои проекты'.tr,
                     ),
-                    activeIcon:SvgPicture.asset(
-                      AppImages.window_active,
-                    ) ,
-                    label: 'Мои проекты'.tr,
-                  ),
-                  BottomNavigationBarItem(
-                    icon: SvgPicture.asset(AppImages.person_tab_icon),
-                    activeIcon:SvgPicture.asset(
-                      AppImages.person_active,
-                    ) ,
-                    label: 'Мой аккаунт'.tr,
-                  ),
-                ],
+                    BottomNavigationBarItem(
+                      icon: SvgPicture.asset(AppImages.person_tab_icon),
+                      activeIcon:SvgPicture.asset(
+                        AppImages.person_active,
+                      ) ,
+                      label: 'Мой аккаунт'.tr,
+                    ),
+                  ],
+                ),
               );
             },
           ),

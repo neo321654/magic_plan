@@ -35,7 +35,7 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
     _removeWidgetAfterDelay();
   }
   void _removeWidgetAfterDelay() {
-    Future.delayed(Duration(seconds: 1), () {
+    Future.delayed(const Duration(seconds: 1), () {
       setState(() {
         isVisible = false;
       });
