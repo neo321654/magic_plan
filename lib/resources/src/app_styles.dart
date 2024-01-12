@@ -41,6 +41,12 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );
+  static TextStyle foontoneBoldBold = TextStyle(
+    color: AppColors.primaryTexts,
+    fontSize: 13.toFigma,
+    fontWeight: FontWeight.w600,
+    letterSpacing: -0.8,
+  );
   static TextStyle foontoneBoldPrimaryButtonsColor = TextStyle(
     color: AppColors.primaryButtons,
     fontSize: 13.toFigma,
@@ -74,6 +80,12 @@ abstract class AppTextStyles {
   static TextStyle proText = TextStyle(
     color: AppColors.primaryButtons,
     fontSize: 13.toFigma,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.8,
+  );
+  static TextStyle proText12 = TextStyle(
+    color: AppColors.primaryButtons,
+    fontSize: 12.toFigma,
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );

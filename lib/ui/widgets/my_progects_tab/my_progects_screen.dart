@@ -143,14 +143,72 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
-          Container(
-            clipBehavior: Clip.hardEdge,
-            decoration: const BoxDecoration(
-              color: Colors.red,     
-              borderRadius: BorderRadius.all(Radius.circular(10))
+          Expanded(
+            child: GridView.count(
+              crossAxisSpacing: 9,
+              padding: const EdgeInsets.symmetric(horizontal: 8.0,),
+              crossAxisCount: 2,
+              children: [
+                Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.hardEdge,
+                      height: 220,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(AppImages.demo_prog_img),
+                            fit: BoxFit.fill),
+                        color: Colors.red,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      'Демо проект'.tr,
+                      style: AppTextStyles.foontoneBoldBold,
+                    ),
+                    Text(
+                      'Нажмите, чтобы изучить'.tr,
+                      style: AppTextStyles.proText12,
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Container(
+                      clipBehavior: Clip.hardEdge,
+                      height: 204,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage(AppImages.demo_prog_img),
+                            fit: BoxFit.fill),
+                        color: Colors.red,
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      'Демо проект'.tr,
+                      style: AppTextStyles.foontoneBoldBold,
+                    ),
+                    Text(
+                      'Нажмите, чтобы изучить'.tr,
+                      style: AppTextStyles.proText12,
+                    ),
+                  ],
+                ),
+              ],
             ),
-            child: Image.asset(AppImages.demo_prog_img),
           ),
+
         ],
       ),
     );
