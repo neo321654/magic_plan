@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../ui/tab_bar_start_widget.dart';
 import '../ui/widgets/auth/auth.dart';
+import '../ui/widgets/components/wrapper_first_tab_screen.dart';
 import '../ui/widgets/edit_profile/delete_profile.dart';
 import '../ui/widgets/edit_profile/edit_email.dart';
 import '../ui/widgets/edit_profile/edit_name.dart';
@@ -11,9 +12,11 @@ import '../ui/widgets/greeting/tab_bar_widget.dart';
 import '../ui/widgets/greeting/widgets/greeting_auth.dart';
 import '../ui/widgets/greeting/widgets/greeting_not_auth.dart';
 import '../ui/widgets/loader_widget.dart';
-import '../ui/widgets/my_progects_tab/my_progects_screen.dart';
+import '../ui/widgets/my_progects_tab/my_progect_streambuilder.dart';
+import '../ui/widgets/my_progects_tab/widgets/my_progects_auth_screen.dart';
+import '../ui/widgets/my_progects_tab/widgets/my_progects_not_auth_screen.dart';
 import '../ui/widgets/profile/profile.dart';
-import '../ui/widgets/wrapper_screen.dart';
+import '../ui/widgets/components/wrapper_second_tab_screen.dart';
 
 part 'app_router.gr.dart';
 
@@ -27,7 +30,7 @@ class AppRouter extends _$AppRouter {
           path: '/root',
           children: [
             AutoRoute(
-              page: ListWrapperRoute.page,
+              page: ListWrapperSecondTabRoute.page,
               initial: true,
               children: [
                 AutoRoute(
@@ -70,17 +73,19 @@ class AppRouter extends _$AppRouter {
               ],
             ),
             AutoRoute(
-              page: MainRouteWidgetRoute.page,
-              path: 'mainRouteWidget',
-            ),
+                page: ListWrapperFirstTabRoute.page,
+                children: [
+                  AutoRoute(
+                    page: MyProgectsStreamWidgetRoute.page,
+                    path: 'myProgectsStreamRouteWidget',
+                  ),
+                ]),
           ],
         ),
 
-
-
-    // AutoRoute(
-    //   page: ProfileRoute.page,
-    //   path: '/root/profile',
-    // ),
+        // AutoRoute(
+        //   page: ProfileRoute.page,
+        //   path: '/root/profile',
+        // ),
       ];
 }

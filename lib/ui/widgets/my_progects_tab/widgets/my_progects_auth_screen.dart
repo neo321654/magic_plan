@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:magic_plan/resources/resources.dart';
 
-import '../../../main.dart';
-import '../components/functions.dart';
+import '../../../../main.dart';
+import '../../components/functions.dart';
 
 @RoutePage()
-class MainScreenWidgetPage extends StatefulWidget {
-  const MainScreenWidgetPage({Key? key}) : super(key: key);
+class MyProgectsAuthWidgetPage extends StatefulWidget {
+  const MyProgectsAuthWidgetPage({Key? key}) : super(key: key);
 
   @override
-  State<MainScreenWidgetPage> createState() => _MainScreenWidgetPageState();
+  State<MyProgectsAuthWidgetPage> createState() => _MyProgectsAuthWidgetPageState();
 }
 
-class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
+class _MyProgectsAuthWidgetPageState extends State<MyProgectsAuthWidgetPage> {
   String name = '';
   String surname = '';
 

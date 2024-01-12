@@ -2,8 +2,8 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
-class ListWrapperScreen extends StatelessWidget implements AutoRouteWrapper {
-  const ListWrapperScreen({super.key});
+class ListWrapperSecondTabScreen extends StatelessWidget implements AutoRouteWrapper {
+  const ListWrapperSecondTabScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

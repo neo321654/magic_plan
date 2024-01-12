@@ -20,7 +20,7 @@ class GreetingWidgetPage extends StatelessWidget {
           AutoTabsScaffold(
             backgroundColor: AppColors.primaryMainBackground,
             routes: const [
-              MainRouteWidgetRoute(),
+              MyProgectsStreamWidgetRoute(),
               AuthInTabBarWidgetRoute(),
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
