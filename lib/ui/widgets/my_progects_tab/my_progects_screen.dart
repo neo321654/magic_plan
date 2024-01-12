@@ -143,7 +143,7 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 16.0,
           ),
           Expanded(
@@ -241,6 +241,40 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
+
+          Center(
+            child: Column(
+
+              children: [
+                Text(
+                  'Остался 1 бесплатный проект'.tr,
+                  style: AppTextStyles.foontoneTextGray,
+                ),
+                const SizedBox(height: 4.0,),
+                Row(
+                  children: [
+                    Expanded(
+                      child: CupertinoButton(
+                          minSize: 0,
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 13.0,
+                             horizontal: 12.0,
+                          ),
+                          color: AppColors.accentsBackground,
+                          child: Text(
+                            'Перейти к Тарифам'.tr,
+                            style: AppTextStyles.bodyBold.copyWith(
+                                color: AppColors.accentsPrimary),
+                          ),
+                          onPressed: () {}),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 28.0,),
+              ],
+            ),
+          ),
+
         ],
       ),
     );
