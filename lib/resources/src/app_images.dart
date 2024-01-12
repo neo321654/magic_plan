@@ -11,4 +11,6 @@ abstract class AppImages {
   static const String window_active = 'assets/svg/window_active.svg';
   static const String person_active = 'assets/svg/person_active.svg';
   static const String update_icon = 'assets/svg/update_icon.svg';
+  static const String demo_prog_img = 'assets/png/demo_prog_img.png';
+  static const String current_progect = 'assets/png/current_progect.png';
 }

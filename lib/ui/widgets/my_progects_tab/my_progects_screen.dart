@@ -143,6 +143,14 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
+          Container(
+            clipBehavior: Clip.hardEdge,
+            decoration: const BoxDecoration(
+              color: Colors.red,     
+              borderRadius: BorderRadius.all(Radius.circular(10))
+            ),
+            child: Image.asset(AppImages.demo_prog_img),
+          ),
         ],
       ),
     );
