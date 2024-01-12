@@ -131,14 +131,19 @@ class ProfilePageState extends State<ProfilePage> {
                         children: [
                           _image != null
                               ? CircleAvatar(
+                            backgroundColor: Colors.transparent,
                                   radius: 40,
                                   backgroundImage: MemoryImage(_image!),
                                 )
-                              : CircleAvatar(
+                              : (auth.currentUser?.photoURL!=null)? CircleAvatar(
                                   radius: 40,
                                   backgroundImage: NetworkImage(
                                       auth.currentUser?.photoURL ?? ''),
-                                ),
+                                ):CircleAvatar(
+                            backgroundColor: Colors.transparent,
+                            radius: 40,
+                            child: SvgPicture.asset(AppImages.person,height: 90.0,),
+                          ),
                           Positioned(
                             bottom: -5,
                             right: -5,
@@ -269,16 +274,19 @@ class ProfilePageState extends State<ProfilePage> {
                               'Информация об Обновлениях'.tr,
                               style: AppTextStyles.callout,
                             ),
-                            trailing: CupertinoSwitch(
-                              // This bool value toggles the switch.
-                              value: true,
-                              activeColor: AppColors.accentsPrimary,
-                              onChanged: (bool? value) {
-                                // This is called when the user toggles the switch.
-                                // setState(() {
-                                //   switchValue = value ?? false;
-                                // });
-                              },
+                            trailing: Transform.scale(
+                              scale: 0.7,
+                              child: CupertinoSwitch(
+                                // This bool value toggles the switch.
+                                value: true,
+                                activeColor: AppColors.accentsPrimary,
+                                onChanged: (bool? value) {
+                                  // This is called when the user toggles the switch.
+                                  // setState(() {
+                                  //   switchValue = value ?? false;
+                                  // });
+                                },
+                              ),
                             ),
                             onTap: () {
                               // context.router.push(ProfileRoute());
