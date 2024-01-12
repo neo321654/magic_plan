@@ -253,6 +253,7 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
                 const SizedBox(height: 4.0,),
                 Row(
                   children: [
+                    const SizedBox(width: 8.0,),
                     Expanded(
                       child: CupertinoButton(
                           minSize: 0,
@@ -268,6 +269,8 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
                           ),
                           onPressed: () {}),
                     ),
+                    const SizedBox(width: 8.0,),
+
                   ],
                 ),
                 const SizedBox(height: 28.0,),
