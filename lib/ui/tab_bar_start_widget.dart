@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 import '/resources/resources.dart';
 import '../navigation/app_router.dart';
@@ -12,7 +13,6 @@ class GreetingWidgetPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     //todo убрать stack когда буду удалять талкер
     return SafeArea(
       child: Stack(
@@ -30,16 +30,23 @@ class GreetingWidgetPage extends StatelessWidget {
                 onTap: tabsRouter.setActiveIndex,
                 items: <BottomNavigationBarItem>[
                   BottomNavigationBarItem(
-                    icon: const Icon(Icons.dashboard_rounded),
+                    icon: SvgPicture.asset(
+                      AppImages.window_tab_icon,
+                    ),
+                    activeIcon:SvgPicture.asset(
+                      AppImages.window_active,
+                    ) ,
                     label: 'Мои проекты'.tr,
                   ),
                   BottomNavigationBarItem(
-                    icon: const Icon(CupertinoIcons.person_solid),
+                    icon: SvgPicture.asset(AppImages.person_tab_icon),
+                    activeIcon:SvgPicture.asset(
+                      AppImages.person_active,
+                    ) ,
                     label: 'Мой аккаунт'.tr,
                   ),
                 ],
               );
-
             },
           ),
           //todo убрать когда буду удалять талкер
@@ -65,9 +72,5 @@ class GreetingWidgetPage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  Future<void> _signOut() async {
-    await auth.signOut();
   }
 }
