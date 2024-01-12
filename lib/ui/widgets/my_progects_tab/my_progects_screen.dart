@@ -143,7 +143,9 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
-          SizedBox(height: 16.0,),
+          SizedBox(
+            height: 16.0,
+          ),
           Expanded(
             child: GridView.count(
               childAspectRatio: 0.4,
@@ -183,26 +185,55 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
                 ),
                 Column(
                   children: [
-                    Container(
-                      clipBehavior: Clip.hardEdge,
-                      height: 158.0,                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage(AppImages.current_progect),
-                            fit: BoxFit.fill),
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(10),
+                    Stack(
+                      children: [
+                        Container(
+                          clipBehavior: Clip.hardEdge,
+                          height: 158.0,
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(AppImages.current_progect),
+                                fit: BoxFit.fill),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(10),
+                            ),
+                          ),
                         ),
-                      ),
+                        Positioned(
+                          top: 4.0,
+                          right: 0,
+                          child: Row(
+                            children: [
+                              SvgPicture.asset(AppImages.cloud_update_icon),
+                              const SizedBox(width: 6.0,),
+                              CupertinoButton(
+                                minSize: 0,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 8.0,
+                                    horizontal: 12.0,
+                                  ),
+                                  color: AppColors.accentsPrimary,
+                                  child: Text(
+                                    'БЕСПЛ'.tr,
+                                    style: AppTextStyles.caption2bold.copyWith(
+                                        color: AppColors.phonePlashek),
+                                  ),
+                                  onPressed: () {}),
+                              const SizedBox(width: 10.0,)
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(
                       height: 10.0,
                     ),
                     Text(
-                      'Демо проект'.tr,
+                      'Проект 1'.tr,
                       style: AppTextStyles.foontoneBoldBold,
                     ),
                     Text(
-                      'Нажмите, чтобы изучить'.tr,
+                      'Нет адреса'.tr,
                       style: AppTextStyles.proText12,
                     ),
                   ],
