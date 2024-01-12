@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../navigation/app_router.dart';
@@ -126,32 +127,31 @@ class ProfilePageState extends State<ProfilePage> {
                         height: 24.0,
                       ),
                       Stack(
+                        clipBehavior: Clip.none,
                         children: [
                           _image != null
                               ? CircleAvatar(
-                                  radius: 64,
+                                  radius: 40,
                                   backgroundImage: MemoryImage(_image!),
                                 )
                               : CircleAvatar(
-                                  radius: 64,
+                                  radius: 40,
                                   backgroundImage: NetworkImage(
                                       auth.currentUser?.photoURL ?? ''),
                                 ),
                           Positioned(
-                            bottom: -10,
-                            left: 80,
-                            child: IconButton(
-                              onPressed: selectImage,
-                              icon: const Icon(Icons.add_a_photo),
-                            ),
+                            bottom: -5,
+                            right: -5,
+                            child:SvgPicture.asset(AppImages.doted)
                           )
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 16.0),
                       Text(
                         auth.currentUser?.email ?? '',
                         style: AppTextStyles.caption1,
                       ),
+                      const SizedBox(height: 24.0,),
                       CupertinoListSection.insetGrouped(
 
                           // separatorColor: Colors.transparent,
