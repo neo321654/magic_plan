@@ -88,8 +88,6 @@ class ProfilePageState extends State<ProfilePage> {
     }
   }
 
-
-
   void setIsLoading() {
     setState(() {
       isLoading = !isLoading;
@@ -131,23 +129,30 @@ class ProfilePageState extends State<ProfilePage> {
                         children: [
                           _image != null
                               ? CircleAvatar(
-                            backgroundColor: Colors.transparent,
+                                  backgroundColor: Colors.transparent,
                                   radius: 40,
                                   backgroundImage: MemoryImage(_image!),
                                 )
-                              : (auth.currentUser?.photoURL!=null)? CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage: NetworkImage(
-                                      auth.currentUser?.photoURL ?? ''),
-                                ):CircleAvatar(
-                            backgroundColor: Colors.transparent,
-                            radius: 40,
-                            child: SvgPicture.asset(AppImages.person,height: 90.0,),
-                          ),
+                              : (auth.currentUser?.photoURL != null)
+                                  ? CircleAvatar(
+                                      radius: 40,
+                                      backgroundImage: NetworkImage(
+                                          auth.currentUser?.photoURL ?? ''),
+                                    )
+                                  : CircleAvatar(
+                                      backgroundColor: Colors.transparent,
+                                      radius: 40,
+                                      child: SvgPicture.asset(
+                                        AppImages.person,
+                                        height: 90.0,
+                                      ),
+                                    ),
                           Positioned(
                             bottom: -5,
                             right: -5,
-                            child:SvgPicture.asset(AppImages.doted)
+                            child: GestureDetector(
+                              onTap: selectImage,
+                                child: SvgPicture.asset(AppImages.doted)),
                           )
                         ],
                       ),
@@ -156,7 +161,9 @@ class ProfilePageState extends State<ProfilePage> {
                         auth.currentUser?.email ?? '',
                         style: AppTextStyles.caption1,
                       ),
-                      const SizedBox(height: 24.0,),
+                      const SizedBox(
+                        height: 24.0,
+                      ),
                       CupertinoListSection.insetGrouped(
 
                           // separatorColor: Colors.transparent,

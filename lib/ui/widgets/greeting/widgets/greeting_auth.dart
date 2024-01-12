@@ -24,6 +24,7 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
   String name = '';
   String surname = '';
   String email = '';
+  bool isVisible = true;
 
   @override
   void initState() {
@@ -31,6 +32,14 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
 
     updateNameSurname();
     updateEmail();
+    _removeWidgetAfterDelay();
+  }
+  void _removeWidgetAfterDelay() {
+    Future.delayed(Duration(seconds: 1), () {
+      setState(() {
+        isVisible = false;
+      });
+    });
   }
 
   void updateEmail() {
@@ -56,7 +65,11 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
         SliverToBoxAdapter(
           child: Column(
             children: [
-              Container(
+              AnimatedContainer(
+
+                duration: const Duration(seconds: 1),
+                clipBehavior: Clip.hardEdge,
+                height: isVisible ? 33.0 : 0.0,
                 color: AppColors.primaryBackgroundSearch,
                 width: double.infinity,
                 //todo заменить на настоящую иконку
@@ -119,6 +132,7 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                                 ),
                           (auth.currentUser?.photoURL != null)
                               ? CircleAvatar(
+                                  backgroundColor: Colors.transparent,
                                   radius: 23.0,
                                   backgroundImage: NetworkImage(
                                       auth.currentUser?.photoURL ?? ''),
