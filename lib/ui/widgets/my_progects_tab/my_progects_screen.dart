@@ -4,9 +4,38 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:magic_plan/resources/resources.dart';
 
+import '../../../main.dart';
+import '../components/functions.dart';
+
 @RoutePage()
-class MainScreenWidgetPage extends StatelessWidget {
+class MainScreenWidgetPage extends StatefulWidget {
   const MainScreenWidgetPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainScreenWidgetPage> createState() => _MainScreenWidgetPageState();
+}
+
+class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
+  String name = '';
+  String surname = '';
+
+  @override
+  void initState() {
+    updateNameSurname();
+    auth.userChanges().listen((event) {
+      setState(() {
+        updateNameSurname();
+      });
+    });
+    super.initState();
+  }
+
+  void updateNameSurname() {
+    List<String> nameSurList =
+        getNameSurnameSplit(auth.currentUser?.displayName);
+    name = nameSurList[0];
+    surname = nameSurList[1];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,10 +119,10 @@ class MainScreenWidgetPage extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            width: 24.0,
+            height: 24.0,
           ),
-          Container(
-            color: Colors.red,
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -105,7 +134,7 @@ class MainScreenWidgetPage extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      'Apollonovasofia'.tr,
+                      '$name $surname',
                       style: AppTextStyles.t3Bold,
                     ),
                     const Icon(Icons.expand_less_outlined),
