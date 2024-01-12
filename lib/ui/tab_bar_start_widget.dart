@@ -25,6 +25,7 @@ class GreetingWidgetPage extends StatelessWidget {
             ],
             bottomNavigationBuilder: (_, tabsRouter) {
               return CupertinoTabBar(
+                backgroundColor: AppColors.primaryBackgroundSearch,
                 currentIndex: tabsRouter.activeIndex,
                 onTap: tabsRouter.setActiveIndex,
                 items: <BottomNavigationBarItem>[

@@ -192,7 +192,9 @@ class DeleteProfilePageState extends State<DeleteProfilePage> {
                         children: [
                           CupertinoButton(
                             onPressed: () {
+
                               //todo заставить юзера войти по новой и потом удалить
+                              //todo удалить аватарку из хранилища
                               auth.currentUser
                                   ?.delete()
                                   .then((value) => context.router
