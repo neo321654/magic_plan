@@ -16,6 +16,7 @@ import '../ui/widgets/my_progects_tab/my_progect_streambuilder.dart';
 import '../ui/widgets/my_progects_tab/widgets/my_progects_auth_screen.dart';
 import '../ui/widgets/my_progects_tab/widgets/my_progects_not_auth_screen.dart';
 import '../ui/widgets/profile/profile.dart';
+import '../ui/widgets/tarifs/tarifs.dart';
 import '../ui/widgets/components/wrapper_second_tab_screen.dart';
 
 part 'app_router.gr.dart';
@@ -69,6 +70,10 @@ class AppRouter extends _$AppRouter {
                 AutoRoute(
                   page: GreetingAuthRoute.page,
                   path: 'authIn',
+                ),
+                AutoRoute(
+                  page: TarifsWidgetRoute.page,
+                  path: 'tarifs',
                 ),
               ],
             ),

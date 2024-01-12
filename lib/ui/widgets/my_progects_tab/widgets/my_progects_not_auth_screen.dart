@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:magic_plan/navigation/app_router.dart';
 import 'package:magic_plan/resources/resources.dart';
 
 @RoutePage()

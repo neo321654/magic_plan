@@ -267,7 +267,9 @@ class _MyProgectsAuthWidgetPageState extends State<MyProgectsAuthWidgetPage> {
                             style: AppTextStyles.bodyBold.copyWith(
                                 color: AppColors.accentsPrimary),
                           ),
-                          onPressed: () {}),
+                          onPressed: () {
+                            context.router.navigateNamed('/root/tarifs');
+                          }),
                     ),
                     const SizedBox(width: 8.0,),
 
