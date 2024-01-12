@@ -41,6 +41,12 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w400,
     letterSpacing: -0.8,
   );
+  static TextStyle foontoneBoldPrimaryButtonsColor = TextStyle(
+    color: AppColors.primaryButtons,
+    fontSize: 13.toFigma,
+    fontWeight: FontWeight.w400,
+    letterSpacing: -0.8,
+  );
   static TextStyle foontoneText = TextStyle(
     color: AppColors.modalsSOS,
     fontSize: 13.toFigma,
