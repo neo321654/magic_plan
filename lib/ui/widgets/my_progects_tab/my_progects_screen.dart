@@ -143,22 +143,26 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
+          SizedBox(height: 16.0,),
           Expanded(
             child: GridView.count(
+              childAspectRatio: 0.4,
               crossAxisSpacing: 9,
-              padding: const EdgeInsets.symmetric(horizontal: 8.0,),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 8.0,
+              ),
               crossAxisCount: 2,
               children: [
                 Column(
                   children: [
                     Container(
                       clipBehavior: Clip.hardEdge,
-                      height: 220,
+                      height: 158.0,
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(AppImages.demo_prog_img),
-                            fit: BoxFit.fill),
-                        color: Colors.red,
+                          image: AssetImage(AppImages.demo_prog_img),
+                          fit: BoxFit.fill,
+                        ),
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
@@ -181,12 +185,10 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
                   children: [
                     Container(
                       clipBehavior: Clip.hardEdge,
-                      height: 204,
-                      decoration: const BoxDecoration(
+                      height: 158.0,                      decoration: const BoxDecoration(
                         image: DecorationImage(
-                            image: AssetImage(AppImages.demo_prog_img),
+                            image: AssetImage(AppImages.current_progect),
                             fit: BoxFit.fill),
-                        color: Colors.red,
                         borderRadius: BorderRadius.all(
                           Radius.circular(10),
                         ),
@@ -208,7 +210,6 @@ class _MainScreenWidgetPageState extends State<MainScreenWidgetPage> {
               ],
             ),
           ),
-
         ],
       ),
     );
