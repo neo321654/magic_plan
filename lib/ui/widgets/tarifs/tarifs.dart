@@ -106,7 +106,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                Expanded(
+                Flexible(
                   child: ListView(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -123,6 +123,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                           ),
                         ),
                         child: Column(
+                          mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
