@@ -251,7 +251,8 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                           ),
                           trailing: const RightArrowWidget(),
                           onTap: () {
-                            // Navigator.of(context).pushNamedAndRemoveUntil('greeting', (route) => false);
+                            context.router.navigateNamed('/root/tarifs');
+
                           },
                           padding: AppDimensions.tilePadding,
                         ),
