@@ -261,14 +261,14 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Тариф Старт'.tr,
+                                'Тариф Профессионал'.tr,
                                 style: AppTextStyles.bodyBold,
                               ),
                               const SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                'Создавайте и делитесь профессиональными планами интерьера в 2D и 3D'
+                                'Создавайте отчеты  с графическими данными  и комментариями'
                                     .tr,
                                 style: AppTextStyles.foontoneTextGray,
                               ),
@@ -276,7 +276,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                 height: 16.0,
                               ),
                               Text(
-                                'Включает'.tr,
+                                'Все из “Старта”, а также'.tr,
                                 style: AppTextStyles.foontoneBoldBold,
                               ),
                               const SizedBox(
@@ -289,7 +289,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Безлимитные проекты'.tr,
+                                    'Панорамные фото 360° '.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -304,7 +304,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Измерение и отрисовка'.tr,
+                                    'Заметки и наценка'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -319,7 +319,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Экспорт 2D и 3D скетчей'.tr,
+                                    'Кастом формы & объекты'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -334,7 +334,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Общение в командах'.tr,
+                                    'Экспортируйте отчеты'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -356,7 +356,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                       Column(
                                         children: [
                                           Text(
-                                            '429,00 руб'.tr,
+                                            '1790,00 руб'.tr,
                                             style: AppTextStyles.bodyBoldWhite,
                                           ),
                                           Text(
@@ -392,14 +392,14 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'Тариф Старт'.tr,
+                                'Тариф Сметный Ас'.tr,
                                 style: AppTextStyles.bodyBold,
                               ),
                               const SizedBox(
                                 height: 10.0,
                               ),
                               Text(
-                                'Создавайте и делитесь профессиональными планами интерьера в 2D и 3D'
+                                'Быстрая автоматическая  калькуляция смет, точность просчетов'
                                     .tr,
                                 style: AppTextStyles.foontoneTextGray,
                               ),
@@ -407,7 +407,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                 height: 16.0,
                               ),
                               Text(
-                                'Включает'.tr,
+                                'Все из “Профессионала” и'.tr,
                                 style: AppTextStyles.foontoneBoldBold,
                               ),
                               const SizedBox(
@@ -420,7 +420,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Безлимитные проекты'.tr,
+                                    'Кастом прайс'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -435,7 +435,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Измерение и отрисовка'.tr,
+                                    'Калькуляция смет'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -450,7 +450,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                     width: 8.0,
                                   ),
                                   Text(
-                                    'Экспорт 2D и 3D скетчей'.tr,
+                                    'Экспорт смет'.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -460,12 +460,8 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                               ),
                               Row(
                                 children: [
-                                  SvgPicture.asset(AppImages.check_mark),
-                                  const SizedBox(
-                                    width: 8.0,
-                                  ),
                                   Text(
-                                    'Общение в командах'.tr,
+                                    ''.tr,
                                     style: AppTextStyles.caption1,
                                   ),
                                 ],
@@ -487,7 +483,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                                       Column(
                                         children: [
                                           Text(
-                                            '429,00 руб'.tr,
+                                            '3890,00 руб'.tr,
                                             style: AppTextStyles.bodyBoldWhite,
                                           ),
                                           Text(
