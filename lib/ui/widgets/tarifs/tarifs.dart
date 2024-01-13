@@ -3,9 +3,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:magic_plan/resources/resources.dart';
 import 'package:flutter/material.dart';
 
-
-
-
 @RoutePage()
 class TarifsWidgetPage extends StatefulWidget {
   const TarifsWidgetPage({Key? key}) : super(key: key);
@@ -15,10 +12,6 @@ class TarifsWidgetPage extends StatefulWidget {
 }
 
 class _TarifsPageState extends State<TarifsWidgetPage> {
-
-
-
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -78,7 +71,30 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                     style: AppTextStyles.proDisplay,
                   ),
                 ),
-
+                const SizedBox(
+                  height: 24.0,
+                ),
+                CupertinoSlidingSegmentedControl(
+                  backgroundColor: CupertinoColors.systemGrey2,
+                  groupValue: 1,
+                  onValueChanged: (value) {
+                    if (value != null) {
+                      setState(() {
+                        //_selectedSegment = value;
+                      });
+                    }
+                  },
+                  children: {
+                    1: Text(
+                      'Ежемесячный'.tr,
+                      style: AppTextStyles.foontoneBoldBold,
+                    ),
+                    2: Text(
+                      'Годовой'.tr,
+                      style: AppTextStyles.foontoneBoldBold,
+                    ),
+                  },
+                ),
               ],
             ),
           ),
@@ -86,10 +102,4 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
       ),
     );
   }
-
-
-
-
-
 }
-
