@@ -420,11 +420,12 @@ class PayPlanWidget extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              '1790,00 руб'.tr,
+                              (selectedSegment==1)?
+                              '1790,00 руб'.tr:'17 900,00 руб/год'.tr,
                               style: AppTextStyles.bodyBoldWhite,
                             ),
                             Text(
-                              'Ежемесячно'.tr,
+                              (selectedSegment==1)?  'Ежемесячно'.tr:'(1 491,67 руб/мес)'.tr,
                               style: AppTextStyles.caption1white,
                             ),
                           ],
@@ -547,11 +548,13 @@ class PayPlanWidget extends StatelessWidget {
                         Column(
                           children: [
                             Text(
-                              '3890,00 руб'.tr,
+                              (selectedSegment==1)?
+                              '3890,00 руб'.tr:'37 990,00 руб/год'.tr,
                               style: AppTextStyles.bodyBoldWhite,
                             ),
                             Text(
-                              'Ежемесячно'.tr,
+                              (selectedSegment==1)?
+                              'Ежемесячно'.tr:'(3 165,83 руб/мес)'.tr,
                               style: AppTextStyles.caption1white,
                             ),
                           ],
