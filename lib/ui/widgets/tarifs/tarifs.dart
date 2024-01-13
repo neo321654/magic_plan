@@ -43,7 +43,6 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
               right: 8.0,
             ),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
@@ -106,13 +105,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-
-                    // minHeight: 70,
-
-                    maxHeight: 330,
-                  ),
+                Expanded(
                   child: ListView(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -215,82 +208,75 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                             const SizedBox(
                               height: 24.0,
                             ),
-                            CupertinoButton(
-                                borderRadius: BorderRadius.all(
-                                    const Radius.circular(13.0)),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 13.0,
-                                ),
-                                minSize: 0,
-                                color: AppColors.accentsPrimary,
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          '429,00 руб'.tr,
-                                          style: AppTextStyles.bodyBoldWhite,
-                                        ),
-                                        Text(
-                                          'Ежемесячно'.tr,
-                                          style: AppTextStyles.caption1white,
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                onPressed: () {}),
+                            // CupertinoButton(
+                            //     borderRadius: BorderRadius.all(
+                            //         const Radius.circular(13.0)),
+                            //     padding: const EdgeInsets.symmetric(
+                            //       vertical: 13.0,
+                            //     ),
+                            //     minSize: 0,
+                            //     color: AppColors.accentsPrimary,
+                            //     child: Row(
+                            //       mainAxisAlignment: MainAxisAlignment.center,
+                            //       children: [
+                            //         Column(
+                            //           children: [
+                            //             Text(
+                            //               '429,00 руб'.tr,
+                            //               style: AppTextStyles.bodyBoldWhite,
+                            //             ),
+                            //             Text(
+                            //               'Ежемесячно'.tr,
+                            //               style: AppTextStyles.caption1white,
+                            //             ),
+                            //           ],
+                            //         ),
+                            //       ],
+                            //     ),
+                            //     onPressed: () {}),
                           ],
                         ),
-                      ),
-                      Text(
-                        'Годовой'.tr,
-                        style: AppTextStyles.foontoneBoldBold,
-                      ),
-                      Text(
-                        'Годовой'.tr,
-                        style: AppTextStyles.foontoneBoldBold,
                       ),
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Продлевается автоматически Вы можете завершить в любое время'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1,
-                      ),
+                // Flexible(child: SizedBox(height: 1,)),
 
-                      const SizedBox(
-                        height: 40.0,
-                      ),
-                      Text(
-                        'Условия использования'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1blue,
-                      ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Продлевается автоматически Вы можете завершить в любое время'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1,
+                    ),
 
-                      const SizedBox(
-                        height: 4.0,
-                      ),
+                    const SizedBox(
+                      height: 40.0,
+                    ),
+                    Text(
+                      'Условия использования'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1blue,
+                    ),
 
-                      Text(
-                        'Условия использования'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1blue,
-                      ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
 
-                      const SizedBox(
-                        height: 16.0,
-                      ),
+                    Text(
+                      'Условия использования'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1blue,
+                    ),
+
+                    const SizedBox(
+                      height: 16.0,
+                    ),
 
 
-                    ],
-                  ),
+                  ],
                 ),
               ],
             ),
