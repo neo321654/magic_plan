@@ -106,7 +106,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                Flexible(
+                Expanded(
                   child: ListView(
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
@@ -209,9 +209,29 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                               height: 24.0,
                             ),
                             CupertinoButton(
-                                child: Text(
-                                  'Общение в командах'.tr,
-                                  style: AppTextStyles.caption1,
+                                borderRadius: BorderRadius.all(
+                                    const Radius.circular(13.0)),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 13.0,
+                                ),
+                                minSize: 0,
+                                color: AppColors.accentsPrimary,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '429,00 руб'.tr,
+                                          style: AppTextStyles.bodyBoldWhite,
+                                        ),
+                                        Text(
+                                          'Ежемесячно'.tr,
+                                          style: AppTextStyles.caption1white,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
                                 ),
                                 onPressed: () {}),
                           ],
@@ -225,6 +245,43 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                         'Годовой'.tr,
                         style: AppTextStyles.foontoneBoldBold,
                       ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Продлевается автоматически Вы можете завершить в любое время'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1,
+                      ),
+
+                      const SizedBox(
+                        height: 40.0,
+                      ),
+                      Text(
+                        'Условия использования'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
+
+                      const SizedBox(
+                        height: 4.0,
+                      ),
+
+                      Text(
+                        'Условия использования'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
+
+                      const SizedBox(
+                        height: 16.0,
+                      ),
+
+
                     ],
                   ),
                 ),

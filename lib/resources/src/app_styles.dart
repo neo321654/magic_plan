@@ -71,6 +71,18 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w500,
     // letterSpacing: -0.8,
   );
+  static TextStyle caption1blue = TextStyle(
+    color: AppColors.accentsPrimary,
+    fontSize: 12.toFigma,
+    fontWeight: FontWeight.w500,
+    // letterSpacing: -0.8,
+  );
+  static TextStyle caption1white = TextStyle(
+    color: AppColors.phonePlashek,
+    fontSize: 12.toFigma,
+    fontWeight: FontWeight.w500,
+    // letterSpacing: -0.8,
+  );
   static TextStyle caption2bold = TextStyle(
     color: AppColors.primaryButtons,
     fontSize: 11.toFigma,
