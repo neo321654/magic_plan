@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:magic_plan/resources/resources.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class TarifsWidgetPage extends StatefulWidget {
@@ -521,20 +522,30 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                     const SizedBox(
                       height: 40.0,
                     ),
-                    Text(
-                      'Условия использования'.tr,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1blue,
+                    GestureDetector(
+                      onTap: (){
+                        launchUrl(Uri.parse('https://flutter.dev'));
+                      },
+                      child: Text(
+                        'Условия использования'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
                     ),
 
                     const SizedBox(
                       height: 4.0,
                     ),
 
-                    Text(
-                      'Политика конфиденциальности'.tr,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1blue,
+                    GestureDetector(
+                      onTap: (){
+                        launchUrl(Uri.parse('https://flutter.dev'));
+                      },
+                      child: Text(
+                        'Политика конфиденциальности'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
                     ),
 
                     const SizedBox(
