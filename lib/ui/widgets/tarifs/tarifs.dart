@@ -122,7 +122,8 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                             ),
                           ),
                         ),
-                        child: Column(
+                        child:
+                        Column(
                           mainAxisSize: MainAxisSize.min,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -248,42 +249,40 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                     ],
                   ),
                 ),
-                Expanded(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        'Продлевается автоматически Вы можете завершить в любое время'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1,
-                      ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      'Продлевается автоматически Вы можете завершить в любое время'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1,
+                    ),
 
-                      const SizedBox(
-                        height: 40.0,
-                      ),
-                      Text(
-                        'Условия использования'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1blue,
-                      ),
+                    const SizedBox(
+                      height: 40.0,
+                    ),
+                    Text(
+                      'Условия использования'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1blue,
+                    ),
 
-                      const SizedBox(
-                        height: 4.0,
-                      ),
+                    const SizedBox(
+                      height: 4.0,
+                    ),
 
-                      Text(
-                        'Условия использования'.tr,
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.caption1blue,
-                      ),
+                    Text(
+                      'Условия использования'.tr,
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.caption1blue,
+                    ),
 
-                      const SizedBox(
-                        height: 16.0,
-                      ),
+                    const SizedBox(
+                      height: 16.0,
+                    ),
 
 
-                    ],
-                  ),
+                  ],
                 ),
               ],
             ),
