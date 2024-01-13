@@ -106,190 +106,191 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                 const SizedBox(
                   height: 16.0,
                 ),
-                Expanded(
-                  child: Column(
+                ConstrainedBox(
+                  constraints: const BoxConstraints(
+
+                    // minHeight: 70,
+
+                    maxHeight: 330,
+                  ),
+                  child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
                     children: [
                       Container(
-                        height: 200,
-                        child: ListView(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.all(16.0),
+                        width: 228.0,
+                        decoration: BoxDecoration(
+                          color: AppColors.accentsBackground,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              13.0,
+                            ),
+                          ),
+                        ),
+                        child:
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              padding: const EdgeInsets.all(16.0),
-                              width: 228.0,
-                              decoration: BoxDecoration(
-                                color: AppColors.accentsBackground,
-                                borderRadius: const BorderRadius.all(
-                                  Radius.circular(
-                                    13.0,
-                                  ),
+                            Text(
+                              'Тариф Старт'.tr,
+                              style: AppTextStyles.bodyBold,
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              'Создавайте и делитесь профессиональными планами интерьера в 2D и 3D'
+                                  .tr,
+                              style: AppTextStyles.foontoneTextGray,
+                            ),
+                            const SizedBox(
+                              height: 16.0,
+                            ),
+                            Text(
+                              'Включает'.tr,
+                              style: AppTextStyles.foontoneBoldBold,
+                            ),
+                            const SizedBox(
+                              height: 12.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
                                 ),
-                              ),
-                              child:
-                              Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'Тариф Старт'.tr,
-                                    style: AppTextStyles.bodyBold,
-                                  ),
-                                  const SizedBox(
-                                    height: 10.0,
-                                  ),
-                                  Text(
-                                    'Создавайте и делитесь профессиональными планами интерьера в 2D и 3D'
-                                        .tr,
-                                    style: AppTextStyles.foontoneTextGray,
-                                  ),
-                                  const SizedBox(
-                                    height: 16.0,
-                                  ),
-                                  Text(
-                                    'Включает'.tr,
-                                    style: AppTextStyles.foontoneBoldBold,
-                                  ),
-                                  const SizedBox(
-                                    height: 12.0,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(AppImages.check_mark),
-                                      const SizedBox(
-                                        width: 8.0,
-                                      ),
-                                      Text(
-                                        'Безлимитные проекты'.tr,
-                                        style: AppTextStyles.caption1,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 9.0,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(AppImages.check_mark),
-                                      const SizedBox(
-                                        width: 8.0,
-                                      ),
-                                      Text(
-                                        'Измерение и отрисовка'.tr,
-                                        style: AppTextStyles.caption1,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 9.0,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(AppImages.check_mark),
-                                      const SizedBox(
-                                        width: 8.0,
-                                      ),
-                                      Text(
-                                        'Экспорт 2D и 3D скетчей'.tr,
-                                        style: AppTextStyles.caption1,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 9.0,
-                                  ),
-                                  Row(
-                                    children: [
-                                      SvgPicture.asset(AppImages.check_mark),
-                                      const SizedBox(
-                                        width: 8.0,
-                                      ),
-                                      Text(
-                                        'Общение в командах'.tr,
-                                        style: AppTextStyles.caption1,
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(
-                                    height: 24.0,
-                                  ),
-                                  CupertinoButton(
-                                      borderRadius: BorderRadius.all(
-                                          const Radius.circular(13.0)),
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 13.0,
-                                      ),
-                                      minSize: 0,
-                                      color: AppColors.accentsPrimary,
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        children: [
-                                          Column(
-                                            children: [
-                                              Text(
-                                                '429,00 руб'.tr,
-                                                style: AppTextStyles.bodyBoldWhite,
-                                              ),
-                                              Text(
-                                                'Ежемесячно'.tr,
-                                                style: AppTextStyles.caption1white,
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                      onPressed: () {}),
-                                ],
-                              ),
+                                Text(
+                                  'Безлимитные проекты'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
                             ),
-                            Text(
-                              'Годовой'.tr,
-                              style: AppTextStyles.foontoneBoldBold,
+                            const SizedBox(
+                              height: 9.0,
                             ),
-                            Text(
-                              'Годовой'.tr,
-                              style: AppTextStyles.foontoneBoldBold,
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Измерение и отрисовка'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
                             ),
+                            const SizedBox(
+                              height: 9.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Экспорт 2D и 3D скетчей'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 9.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Общение в командах'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 24.0,
+                            ),
+                            CupertinoButton(
+                                borderRadius: BorderRadius.all(
+                                    const Radius.circular(13.0)),
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 13.0,
+                                ),
+                                minSize: 0,
+                                color: AppColors.accentsPrimary,
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          '429,00 руб'.tr,
+                                          style: AppTextStyles.bodyBoldWhite,
+                                        ),
+                                        Text(
+                                          'Ежемесячно'.tr,
+                                          style: AppTextStyles.caption1white,
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                onPressed: () {}),
                           ],
                         ),
+                      ),
+                      Text(
+                        'Годовой'.tr,
+                        style: AppTextStyles.foontoneBoldBold,
+                      ),
+                      Text(
+                        'Годовой'.tr,
+                        style: AppTextStyles.foontoneBoldBold,
                       ),
                     ],
                   ),
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      'Продлевается автоматически Вы можете завершить в любое время'.tr,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1,
-                    ),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        'Продлевается автоматически Вы можете завершить в любое время'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1,
+                      ),
 
-                    const SizedBox(
-                      height: 40.0,
-                    ),
-                    Text(
-                      'Условия использования'.tr,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1blue,
-                    ),
+                      const SizedBox(
+                        height: 40.0,
+                      ),
+                      Text(
+                        'Условия использования'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
 
-                    const SizedBox(
-                      height: 4.0,
-                    ),
+                      const SizedBox(
+                        height: 4.0,
+                      ),
 
-                    Text(
-                      'Условия использования'.tr,
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.caption1blue,
-                    ),
+                      Text(
+                        'Условия использования'.tr,
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.caption1blue,
+                      ),
 
-                    const SizedBox(
-                      height: 16.0,
-                    ),
+                      const SizedBox(
+                        height: 16.0,
+                      ),
 
 
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),
