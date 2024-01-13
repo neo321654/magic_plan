@@ -254,6 +254,7 @@ class _GreetingAuthPageState extends State<GreetingAuthPage> {
                             context.router.navigateNamed('/root/tarifs');
 
                           },
+
                           padding: AppDimensions.tilePadding,
                         ),
                         CupertinoListTile(
