@@ -6,6 +6,7 @@ abstract class AppImages {
   static const String history_icon = 'assets/svg/history_icon.svg';
   static const String tune_icon = 'assets/svg/tune_icon.svg';
   static const String plus = 'assets/svg/plus.svg';
+  static const String check_mark = 'assets/svg/check_mark.svg';
   static const String cloud_update_icon = 'assets/svg/cloud_update_icon.svg';
   static const String person_tab_icon = 'assets/svg/person_tab_icon.svg';
   static const String window_tab_icon = 'assets/svg/window_tab_icon.svg';

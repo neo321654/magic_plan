@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:magic_plan/resources/resources.dart';
 import 'package:flutter/material.dart';
 
@@ -42,6 +43,7 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
               right: 8.0,
             ),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const SizedBox(
@@ -74,26 +76,156 @@ class _TarifsPageState extends State<TarifsWidgetPage> {
                 const SizedBox(
                   height: 24.0,
                 ),
-                CupertinoSlidingSegmentedControl(
-                  backgroundColor: CupertinoColors.systemGrey2,
-                  groupValue: 1,
-                  onValueChanged: (value) {
-                    if (value != null) {
-                      setState(() {
-                        //_selectedSegment = value;
-                      });
-                    }
-                  },
-                  children: {
-                    1: Text(
-                      'Ежемесячный'.tr,
-                      style: AppTextStyles.foontoneBoldBold,
+                Row(
+                  children: [
+                    Expanded(
+                      child: CupertinoSlidingSegmentedControl(
+                        backgroundColor: AppColors.primaryBackgroundSearch,
+                        groupValue: 1,
+                        onValueChanged: (value) {
+                          if (value != null) {
+                            setState(() {
+                              //_selectedSegment = value;
+                            });
+                          }
+                        },
+                        children: {
+                          1: Text(
+                            'Ежемесячный'.tr,
+                            style: AppTextStyles.foontoneBoldBold,
+                          ),
+                          2: Text(
+                            'Годовой'.tr,
+                            style: AppTextStyles.foontoneBoldBold,
+                          ),
+                        },
+                      ),
                     ),
-                    2: Text(
-                      'Годовой'.tr,
-                      style: AppTextStyles.foontoneBoldBold,
-                    ),
-                  },
+                  ],
+                ),
+                const SizedBox(
+                  height: 16.0,
+                ),
+                Expanded(
+                  child: ListView(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(16.0),
+                        width: 228.0,
+                        decoration: BoxDecoration(
+                          color: AppColors.accentsBackground,
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(
+                              13.0,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Тариф Старт'.tr,
+                              style: AppTextStyles.bodyBold,
+                            ),
+                            const SizedBox(
+                              height: 10.0,
+                            ),
+                            Text(
+                              'Создавайте и делитесь профессиональными планами интерьера в 2D и 3D'
+                                  .tr,
+                              style: AppTextStyles.foontoneTextGray,
+                            ),
+                            const SizedBox(
+                              height: 16.0,
+                            ),
+                            Text(
+                              'Включает'.tr,
+                              style: AppTextStyles.foontoneBoldBold,
+                            ),
+                            const SizedBox(
+                              height: 12.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Безлимитные проекты'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 9.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Измерение и отрисовка'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 9.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Экспорт 2D и 3D скетчей'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 9.0,
+                            ),
+                            Row(
+                              children: [
+                                SvgPicture.asset(AppImages.check_mark),
+                                const SizedBox(
+                                  width: 8.0,
+                                ),
+                                Text(
+                                  'Общение в командах'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: 24.0,
+                            ),
+                            CupertinoButton(
+                                child: Text(
+                                  'Общение в командах'.tr,
+                                  style: AppTextStyles.caption1,
+                                ),
+                                onPressed: () {}),
+                          ],
+                        ),
+                      ),
+                      Text(
+                        'Годовой'.tr,
+                        style: AppTextStyles.foontoneBoldBold,
+                      ),
+                      Text(
+                        'Годовой'.tr,
+                        style: AppTextStyles.foontoneBoldBold,
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
