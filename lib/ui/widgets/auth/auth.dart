@@ -42,14 +42,14 @@ class AuthGatePage extends StatefulWidget {
 }
 
 class _AuthGatePageState extends State<AuthGatePage> {
-  TextEditingController phoneController =
-      TextEditingController(text: '+79853085859');
+  // TextEditingController phoneController =
+  //     TextEditingController(text: '+79853085859');
 
-  // TextEditingController phoneController = TextEditingController();
-  TextEditingController passwordController =
-      TextEditingController(text: '111111');
+  TextEditingController phoneController = TextEditingController();
+  // TextEditingController passwordController =
+  //     TextEditingController(text: '111111');
 
-  // TextEditingController passwordController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String error = '';
